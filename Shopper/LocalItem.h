@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AWSSimpleDB/AWSSimpleDB.h>
+
 
 @class Item;
 
@@ -37,8 +37,6 @@
 
 -(id) init;
 -(id) initWithItem:(Item *)item;
--(id) initWithDownloadedItem:(SimpleDBGetAttributesResponse *)resp;
--(void) updateItem:(SimpleDBGetAttributesResponse *)resp;
 -(id) copyFromItem:(Item *)item;
 
 

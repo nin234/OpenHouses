@@ -17,7 +17,6 @@
 #import <Social/SLServiceTypes.h>
 #import "FriendDetails.h"
 #import "SelectFriendViewController.h"
-#import <AWSRuntime/AWSRuntime.h>
 #import "AddFriendViewController.h"
 
 
