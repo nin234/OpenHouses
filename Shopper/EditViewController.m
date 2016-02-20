@@ -388,7 +388,7 @@
         AVAssetImageGenerator *generate1 = [[AVAssetImageGenerator alloc] initWithAsset:asset1];
         generate1.appliesPreferredTrackTransform = YES;
         NSError *err = NULL;
-        CMTime time = CMTimeMake(1, 2);
+        CMTime time = CMTimeMakeWithSeconds(0.0, 600);
         CGImageRef oneRef = [generate1 copyCGImageAtTime:time actualTime:NULL error:&err];
         UIImage *thumbnail = [[UIImage alloc] initWithCGImage:oneRef];
     
