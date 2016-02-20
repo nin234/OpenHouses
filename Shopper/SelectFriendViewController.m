@@ -73,7 +73,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET_1 = 35;
 -(NSArray *) getSelectedFriends
 {
     NSUInteger cnt = [seletedItems count];
-    NSLog(@"Selected %d friends to share with", cnt);
+    NSLog(@"Selected %lu friends to share with", (unsigned long)cnt);
     NSMutableArray *selFrnds = [[NSMutableArray alloc] initWithCapacity:cnt];
     for (NSUInteger i=0; i < cnt; ++i)
     {
@@ -224,7 +224,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET_1 = 35;
     else
     {
         NSArray *pVws = [cell.contentView subviews];
-        int cnt = [pVws count];
+        int cnt = (int)[pVws count];
         for (NSUInteger i=0; i < cnt; ++i)
         {
             [[pVws objectAtIndex:i] removeFromSuperview];
@@ -260,7 +260,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET_1 = 35;
     label = [[UILabel alloc] initWithFrame:CGRectMake(SIDE_PADDING, 0, 320, tableView.rowHeight)];
     label.tag = TEXT_LABEL_TAG_1;
         
-    label.textAlignment = UITextAlignmentLeft;
+    label.textAlignment = NSTextAlignmentLeft;
     label.font = [UIFont boldSystemFontOfSize:14];
     [cell.contentView addSubview:label];
     NSUInteger row = indexPath.row;
@@ -355,7 +355,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET_1 = 35;
         indicator.image = [UIImage imageNamed:@"IsSelected.png"];
         NSUInteger crnt = indexPath.row;
         
-        NSLog(@"Changing  image to selected at index %d\n", crnt);
+        NSLog(@"Changing  image to selected at index %lu\n", (unsigned long)crnt);
         [seletedItems replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:YES]];
     }
 

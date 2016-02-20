@@ -210,7 +210,7 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize);
         NSArray *baritems = [NSArray arrayWithObjects:pBarItem1, pBarItem2, pBarItem, pBarItem4, pBarItem3, nil];
         [bar setItems:baritems];
         NSArray *pVws = [imagePickerController.cameraOverlayView subviews];
-        int cnt = [pVws count];
+        NSUInteger cnt = [pVws count];
         for (NSUInteger i=0; i < cnt; ++i)
         {
             [[pVws objectAtIndex:i] removeFromSuperview];
@@ -270,7 +270,7 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize);
     if([locArry count])
     {
         CLLocation *loc = [locArry objectAtIndex:[locArry count]-1];
-        NSLog(@"starting reverse geocoder in set location %@  count=%d\n", loc,[locArry count]);
+        NSLog(@"starting reverse geocoder in set location %@  count=%lu\n", loc,(unsigned long)[locArry count]);
         [geocoder reverseGeocodeLocation:loc completionHandler:
          ^(NSArray* placemarks, NSError* error)
          {
@@ -401,9 +401,9 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize);
             NSString *cityname = [NSString stringWithUTF8String:[[placemark locality] UTF8String]];
             if (cityname != nil)
             {
-                int loclen = [cityname length];
-                int subloclen = [city length];
-                int len = subloclen + loclen;
+                NSUInteger loclen = [cityname length];
+                NSUInteger subloclen = [city length];
+                NSUInteger len = subloclen + loclen;
                 if (len < 24)
                     city = [city stringByAppendingString:cityname];
                 else
@@ -467,7 +467,7 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize);
     if([locArry count])
     {
         CLLocation *loc = [locArry objectAtIndex:[locArry count]-1];
-       NSLog(@"starting reverse geocoder in set location %@  count=%d\n", loc,[locArry count]);
+       NSLog(@"starting reverse geocoder in set location %@  count=%lu\n", loc,(unsigned long)[locArry count]);
         [geocoder reverseGeocodeLocation:loc completionHandler:
          ^(NSArray* placemarks, NSError* error)
         {
@@ -498,7 +498,7 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize);
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSLog(@"13 rows in section %d of AddViewController\n" , section);
+    NSLog(@"13 rows in section %ld of AddViewController\n" , (long)section);
     return 13;
 }
 
@@ -712,8 +712,8 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
     ++pNewItem.pic_cnt;
     struct timeval tv;
     gettimeofday(&tv, 0);
-    int filno = tv.tv_sec/2;
-    NSString *pFlName = [[NSNumber numberWithInt:filno] stringValue];
+    long filno = tv.tv_sec/2;
+    NSString *pFlName = [[NSNumber numberWithLong:filno] stringValue];
     NSString *pImgFlName = [pFlName stringByAppendingString:@".jpg"];
     
     pFlName = [pFlName stringByAppendingString:@".MOV"];
@@ -724,13 +724,13 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
     NSData *data = [NSData dataWithContentsOfURL:movie];
     if ([data writeToURL:movurl atomically:YES] == NO)
     {
-        printf("Failed to write to file %d\n", filno);
+        printf("Failed to write to file %ld\n", filno);
         // --nAlNo;
         
     }
     else
     {
-        NSLog(@"Save file %d in album %@ filename %@ URL %@\n", filno, movurl, pFlPath, movie);
+        NSLog(@"Save file %ld in album %@ filename %@ URL %@\n", filno, movurl, pFlPath, movie);
     }
     
     //__block UIImage *thumbnail;
@@ -775,13 +775,13 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
         
         if ([thumbnaildata writeToURL:thumburl atomically:YES] == NO)
         {
-            NSLog(@"Failed to write to thumbnail file %d thumburl %@\n", filno, thumburl);
+            NSLog(@"Failed to write to thumbnail file %ld thumburl %@\n", filno, thumburl);
             // --nAlNo;
             
         }
         else
         {
-            NSLog(@"Save thumbnail file %d in album %s file %@\n", filno, [pDlg.pAlName UTF8String], thumburl);
+            NSLog(@"Save thumbnail file %ld in album %s file %@\n", filno, [pDlg.pAlName UTF8String], thumburl);
         }
 
         
@@ -801,8 +801,8 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
     ++pNewItem.pic_cnt;
     struct timeval tv;
     gettimeofday(&tv, 0);
-    int filno = tv.tv_sec/2;
-    NSString *pFlName = [[NSNumber numberWithInt:filno] stringValue];
+    long filno = tv.tv_sec/2;
+    NSString *pFlName = [[NSNumber numberWithLong:filno] stringValue];
      
     pFlName = [pFlName stringByAppendingString:@".jpg"];
    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -812,13 +812,13 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
     NSURL *imgurl = [NSURL URLWithString:pFlPath];
     if ([data writeToURL:imgurl atomically:YES] == NO)
     {
-        printf("Failed to write to file %d\n", filno);
+        printf("Failed to write to file %ld\n", filno);
        // --nAlNo;
         
     }
     else
     {
-        NSLog(@"Save file %d in album %s file %@\n", filno, [pDlg.pAlName UTF8String], imgurl);
+        NSLog(@"Save file %ld in album %s file %@\n", filno, [pDlg.pAlName UTF8String], imgurl);
     }
     CGSize oImgSize;
     oImgSize.height = 71;
@@ -838,13 +838,13 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
     NSURL *thumburl = [NSURL URLWithString:pTmpNlFlPath];
     if ([thumbnaildata writeToURL:thumburl atomically:YES] == NO)
     {
-        printf("Failed to write to thumbnail file %d\n", filno);
+        printf("Failed to write to thumbnail file %ld\n", filno);
        // --nAlNo;
         
     }
     else
     {
-         NSLog(@"Save thumbnail file %d in album %s file %@\n", filno, [pDlg.pAlName UTF8String], thumburl);
+         NSLog(@"Save thumbnail file %ld in album %s file %@\n", filno, [pDlg.pAlName UTF8String], thumburl);
     }
     
     
@@ -916,13 +916,13 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
 
 - (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Editing ended at row at IndexPath %d in AddViewController\n", indexPath.row);
+    NSLog(@"Editing ended at row at IndexPath %ld in AddViewController\n", (long)indexPath.row);
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-    NSLog(@"Text field should change character %s %d %d %d\n", [textField.text UTF8String], textField.tag, range.location , range.length);
+    NSLog(@"Text field should change character %s %ld %lu %lu\n", [textField.text UTF8String], (long)textField.tag, (unsigned long)range.location , (unsigned long)range.length);
     switch (textField.tag)
     {
         case HOUSE_PRICE:
@@ -1059,7 +1059,7 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
 - (void)textChanged:(id)sender
 {
     UITextField *textField = (UITextField *)sender;
-    NSLog(@"Text field changed editing %s %d\n", [textField.text UTF8String], textField.tag);
+    NSLog(@"Text field changed editing %s %ld\n", [textField.text UTF8String], (long)textField.tag);
     [self populateValues:textField];
         return;
     
@@ -1068,7 +1068,7 @@ CGImageRef MyCreateThumbnailImageFromData (NSData * data, int imageSize)
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     
-     NSLog(@"Text field did end editing %s %d\n", [textField.text UTF8String], textField.tag);
+     NSLog(@"Text field did end editing %s %ld\n", [textField.text UTF8String], (long)textField.tag);
     return YES;
 }
 
@@ -1110,7 +1110,7 @@ tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPat
         else
         {
             NSArray *pVws = [cell.contentView subviews];
-            int cnt = [pVws count];
+            NSUInteger cnt = [pVws count];
             for (NSUInteger i=0; i < cnt; ++i)
             {
                 [[pVws objectAtIndex:i] removeFromSuperview];
@@ -1330,7 +1330,7 @@ tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPat
                         if ([isReg boolValue] == YES)
                         {
                             NSString *pFil = [fileurl lastPathComponent];
-                            int size = strcspn([pFil UTF8String], ".");
+                            unsigned long size = strcspn([pFil UTF8String], ".");
                             if (size)
                             {
                                 strncpy(szFileNo, [pFil UTF8String], size);

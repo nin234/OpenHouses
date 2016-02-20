@@ -196,7 +196,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
         [pMovP.view addGestureRecognizer:right];
         
         [imageScrollView addSubview:pMovP.view];
-        NSLog(@"Load state %d %@", [pMovP loadState], pMovP);
+        NSLog(@"Load state %lu %@", (unsigned long)[pMovP loadState], pMovP);
        // [imageScrollView zoomToRect:CGRectMake(0.0, 0.0, pMovP.view.frame.size.width, pMovP.view.frame.size.height) animated:NO];
 
         if ([pMovP isPreparedToPlay])
@@ -332,7 +332,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
         [pMovP.view addGestureRecognizer:right];
         
         [imageScrollView addSubview:pMovP.view];
-        NSLog(@"Load state %d %@", [pMovP loadState], pMovP);
+        NSLog(@"Load state %lu %@", (unsigned long)[pMovP loadState], pMovP);
         // [imageScrollView zoomToRect:CGRectMake(0.0, 0.0, pMovP.view.frame.size.width, pMovP.view.frame.size.height) animated:NO];
         
         if ([pMovP isPreparedToPlay])
@@ -387,7 +387,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    printf("Clicked button at index %d\n", buttonIndex);
+    printf("Clicked button at index %ld\n", (long)buttonIndex);
     if (buttonIndex == 0)
     {
         if (delconfirm)
@@ -403,7 +403,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
             NSUInteger len = [last length];
             
             NSString *name = [last substringToIndex:len-4];
-            NSLog(@"File name %@ length %d no extn name %@ \n", last, len, name);
+            NSLog(@"File name %@ length %lu no extn name %@ \n", last, (unsigned long)len, name);
             NSString *newlast = [name stringByAppendingString:@".jpg"];
             NSURL *thumburl = [baseurl URLByAppendingPathComponent:@"thumbnails" isDirectory:YES];
             thumburl = [thumburl URLByAppendingPathComponent:newlast isDirectory:NO];
@@ -444,7 +444,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
                     [controller addAttachmentData:[NSData dataWithContentsOfURL:currURL] mimeType:@"video/quicktime" fileName:@"video"];    
                 }
                 // [controller setMessageBody:[pMainVwCntrl.pAllItms getMessage] isHTML:NO]; 
-                if (controller) [self presentModalViewController:controller animated:YES];
+                if (controller) [self presentViewController:controller animated:YES completion:nil];
 
             }
         }
@@ -473,14 +473,14 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
         if (result == MFMailComposeResultSent) {
         NSLog(@"It's away!");
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) handleLeftSwipe : (UISwipeGestureRecognizer *) left
 {
  
-    NSLog (@"Got left swipe in movie %d\n", [pMovP playbackState]);
-    printf("Curr Index %d\n", currIndx);
+    NSLog (@"Got left swipe in movie %ld\n", (long)[pMovP playbackState]);
+    printf("Curr Index %lu\n", (unsigned long)currIndx);
     if ([pMovP playbackState] == MPMoviePlaybackStatePlaying)
     {
         NSLog(@"Play back state playing ignoring swipe \n");
@@ -498,7 +498,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
     if (currIndx < (pAlbmVw.nPicCnt -1))
     {
         ++currIndx;   
-        printf("Curr Index %d\n", currIndx);
+        printf("Curr Index %lu\n", (unsigned long)currIndx);
        // [pMovP pause];
         [self changePhoto];
     }
@@ -508,8 +508,8 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 -(void) handleRightSwipe : (UISwipeGestureRecognizer *) right
 {
     
-    NSLog (@"Got right swipe in movie load state %d\n", [pMovP playbackState]);
-    printf("Curr Index %d \n", currIndx);
+    NSLog (@"Got right swipe in movie load state %ld\n", (long)[pMovP playbackState]);
+    printf("Curr Index %lu \n", (unsigned long)currIndx);
     
     if ([pMovP playbackState] == MPMoviePlaybackStatePlaying)
     {
@@ -528,7 +528,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
     if (currIndx)
     {
         --currIndx;
-        printf("Curr Index %d\n", currIndx);
+        printf("Curr Index %lu\n", (unsigned long)currIndx);
         //[pMovP pause];
         [self changePhoto];
     }
@@ -554,7 +554,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
      // pMovP.useApplicationAudioSession = NO;
     MPMoviePlayerController *movie = [notification object];
     pMovP.controlStyle = MPMovieControlStyleEmbedded;
-    NSLog(@"Playable duration %f %f mediatypes %d", [movie   playableDuration], [movie duration], [movie movieMediaTypes]);
+    NSLog(@"Playable duration %f %f mediatypes %lu", [movie   playableDuration], [movie duration], (unsigned long)[movie movieMediaTypes]);
    [movie pause];
   
     return;
@@ -589,7 +589,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
     [scrollView setScrollEnabled:YES];
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
     NSLog(@"Scroll view end zooming %f\n", scale);
     if (scale < 0.14)
@@ -637,11 +637,11 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
     if (!left)
     {
         printf("Show the left picture\n");
-        printf("Curr Index %d\n", currIndx);
+        printf("Curr Index %lu\n", (unsigned long)currIndx);
         if (currIndx)
         {
             --currIndx;
-            printf("Curr Index %d\n", currIndx);
+            printf("Curr Index %lu\n", (unsigned long)currIndx);
 //            [self setAsset:[assets objectAtIndex:currIndx]];
             //[self viewDidUnload];
             //[self viewDidLoad];
@@ -651,11 +651,11 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
     else
     {
         printf("Show the right picture\n");
-         printf("Curr Index %d\n", currIndx);
+         printf("Curr Index %lu\n", (unsigned long)currIndx);
         if (currIndx < (pAlbmVw.nPicCnt -1))
         {
             ++currIndx;   
-            printf("Curr Index %d\n", currIndx);
+            printf("Curr Index %lu\n", (unsigned long)currIndx);
            // [self setAsset:[assets objectAtIndex:currIndx]];
            // [self viewDidUnload];
            // [self viewDidLoad];

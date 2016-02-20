@@ -206,7 +206,7 @@
     else
     {
         NSArray *pVws = [cell.contentView subviews];
-        int cnt = [pVws count];
+        int cnt = (int)[pVws count];
         for (NSUInteger i=0; i < cnt; ++i)
         {
             [[pVws objectAtIndex:i] removeFromSuperview];
@@ -394,7 +394,7 @@
     {
         NSLog(@"It's away! Email sent to friend %@ email=%@", nickName, userName);
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     return;
 }
 
@@ -423,7 +423,7 @@
             	[controller setMessageBody:messageBody isHTML:NO];
             }
             if (controller)
-                [self presentModalViewController:controller animated:YES];
+                [self presentViewController:controller animated:YES completion:nil];
         }
         else
         {

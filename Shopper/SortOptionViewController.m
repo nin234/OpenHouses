@@ -177,7 +177,7 @@
     {
         fieldNames = [NSArray arrayWithObjects:@"Viewed", @"Price", @"Area", @"Year", @"Beds", @"Baths", nil];
     }
-    NSLog(@"Sortoption cellforRowAtIndexPath %d", indexPath.row);
+    NSLog(@"Sortoption cellforRowAtIndexPath %ld", (long)indexPath.row);
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -188,7 +188,7 @@
     {
         cell.accessoryType = UITableViewCellAccessoryNone;  
         NSArray *pVws = [cell.contentView subviews];
-        int cnt = [pVws count];
+        int cnt = (int)[pVws count];
         for (NSUInteger i=0; i < cnt; ++i)
         {
             [[pVws objectAtIndex:i] removeFromSuperview];
@@ -198,7 +198,7 @@
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     UILabel  *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
-    label.textAlignment = UITextAlignmentLeft;
+    label.textAlignment = NSTextAlignmentLeft;
     label.font = [UIFont boldSystemFontOfSize:14];
     [cell.contentView addSubview:label];
      NSString* fieldName = [fieldNames objectAtIndex:indexPath.row];
@@ -271,7 +271,7 @@
     //[butview addSubview:button];
     [cell.contentView addSubview:button];
     UILabel  *label1 = [[UILabel alloc] initWithFrame:CGRectMake(179, 10, 75, 25)];
-    label1.textAlignment = UITextAlignmentLeft;
+    label1.textAlignment = NSTextAlignmentLeft;
     label1.font = [UIFont boldSystemFontOfSize:14];
     [cell.contentView addSubview:label1];
     switch (indexPath.row)
@@ -370,7 +370,7 @@
     if (newCell.accessoryType == UITableViewCellAccessoryNone)
     {
         newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        pDlg.sortIndx =  indexPath.row;
+        pDlg.sortIndx =  (int) indexPath.row;
     }
     UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldIndexPath];
     if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark) 

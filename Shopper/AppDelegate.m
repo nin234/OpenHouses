@@ -104,79 +104,6 @@
     
 }
 
-- (NSMetadataQuery*) imagesQuery 
-{
-    NSMetadataQuery* aQuery = [[NSMetadataQuery alloc] init];
-    if (aQuery) 
-    {
-        // Search the Documents subdirectory only.
-       // AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        //  NSURL *albumurl = [NSURL URLWithString:pDlg.pAlName];
-        // [aQuery setSearchScopes:[NSArray
-        //       arrayWithObject:albumurl]];
-        [aQuery setSearchScopes:[NSArray
-                                 arrayWithObject:NSMetadataQueryUbiquitousDocumentsScope]];
-        
-        // Add a predicate for finding the documents.
-        NSString* filePattern = @"*.jpg";
-        NSString* filePattern1 = @"*.MOV";
-        [aQuery setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE %@ OR %K LIKE %@",
-                              NSMetadataItemFSNameKey, filePattern, NSMetadataItemFSNameKey, filePattern1]];
-    }
-    
-    return aQuery;
-}
-
-- (void)processQueryResults:(NSNotification*)aNotification
-{
-    
-    [query disableUpdates];
-    NSArray *queryResults = [query results];
-    NSLog(@"Processing iCloud query results no of items %lu\n", (unsigned long)[queryResults count]);
-    
-    for (NSMetadataItem *result in queryResults) 
-    {
-        
-        
-        NSURL *fileURL = [result valueForAttribute:NSMetadataItemURLKey];
-        
-        NSError *err;
-        if ([[result valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue] == NO&& [[result valueForAttribute:NSMetadataUbiquitousItemIsDownloadingKey] boolValue] == NO)
-        {
-            [pFlMgr startDownloadingUbiquitousItemAtURL:fileURL error:&err];
-            NSLog(@"Downloading item at URL %@ \n", fileURL);
-        }
-    }
-    [query enableUpdates];
-    return;
-}
-
-- (void)setupAndStartQuery 
-{
-    // Create the query object if it does not exist.
-    if (!query)
-        query = [self imagesQuery];
-    
-    // Register for the metadata query notifications.
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidFinishGatheringNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidUpdateNotification
-                                               object:nil];
-    
-    // Start the query and let it run.
-    NSLog(@"In set up and  start query %@\n", query);
-    if (![query startQuery])
-        NSLog(@"Failed to start query %@\n", query);
-    if ([query isStarted])
-        NSLog(@"Started query %@\n", query);
-    if ([query isGathering])
-        NSLog(@" query Gathering %@\n", query);
-}
-
 -(void) itemEdit
 {
     //putchar('I');
@@ -344,7 +271,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Clicked button at index %d", buttonIndex);
+    NSLog(@"Clicked button at index %ld", (long)buttonIndex);
     if(bSystemAbrt)
     {
         bSystemAbrt = true;
@@ -364,7 +291,7 @@
         return;
     }
     MainViewController *pMainVwCntrl = [self.navViewController.viewControllers objectAtIndex:0];
-    attchmnts = buttonIndex;
+    attchmnts = (int)buttonIndex;
     
     if(bNoICloudAlrt)
     {
@@ -452,7 +379,7 @@
     [controller setMessageBody:[pMainVwCntrl.pAllItms getMessage:PHOTOREQSOURCE_EMAIL] isHTML:NO];
      
     NSUInteger cnt = [pMainVwCntrl.pAllItms.attchments count];
-    NSLog (@"Attaching %d images\n",cnt);
+    NSLog (@"Attaching %lu images\n",(unsigned long)cnt);
     for (NSUInteger i=0; i < cnt; ++i) 
     {
         if ([[pMainVwCntrl.pAllItms.movOrImg objectAtIndex:i] boolValue])
@@ -465,7 +392,7 @@
         }
     }
     if (controller) 
-        [pMainVwCntrl presentModalViewController:controller animated:YES];
+        [pMainVwCntrl presentViewController:controller animated:YES completion:nil];
     [self iCloudEmailCancel];
     return;
 }
@@ -497,7 +424,7 @@
     }
     else
     {
-        NSLog(@"%d friends selected to share with", [selFrnds count]);
+        NSLog(@"%lu friends selected to share with", (unsigned long)[selFrnds count]);
     }
     MainViewController *pMainVwCntrl = [self.navViewController.viewControllers objectAtIndex:0];
     if(![pMainVwCntrl.pAllItms itemsSelected])
@@ -573,7 +500,7 @@
     {
         [fbVwCntrl setInitialText:[pMainVwCntrl.pAllItms getMessage:PHOTOREQSOURCE_FB]];
         NSUInteger cnt = [pMainVwCntrl.pAllItms.attchments count];
-        NSLog (@"Attaching %d images\n",cnt);
+        NSLog (@"Attaching %lu images\n",(unsigned long)cnt);
         for (NSUInteger i=0; i < cnt; ++i)
         {
             [fbVwCntrl addImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[pMainVwCntrl.pAllItms.attchments objectAtIndex:i]]]];
@@ -646,7 +573,7 @@
     if (result == MFMailComposeResultSent) {
         NSLog(@"It's away!");
     }
-    [pMainVwCntrl dismissModalViewControllerAnimated:YES];
+    [pMainVwCntrl dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) showShareView
@@ -665,7 +592,7 @@
     UIBarButtonItem *pBarItem1;
     pMainVwCntrl.pAllItms.bInEmail = true;
     self.dataSync.loginNow = true;
-    pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStyleBordered target:self action:@selector(shareNow)];
+    pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStylePlain target:self action:@selector(shareNow)];
     
     [pMainVwCntrl setToolbarItems:[NSArray arrayWithObjects:
                                    flexibleSpaceButtonItem,
@@ -680,7 +607,7 @@
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
      MainViewController *pMainVwCntrl = [self.navViewController.viewControllers objectAtIndex:0];
-    printf("Clicked button at index %d\n", buttonIndex);
+    printf("Clicked button at index %ld\n", (long)buttonIndex);
     UIBarButtonItem *pBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(iCloudEmailCancel) ];
     self.navViewController.navigationBar.topItem.leftBarButtonItem = pBarItem;
      self.navViewController.toolbarHidden = NO;
@@ -730,7 +657,7 @@
         NSLog(@"In email \n");
         pMainVwCntrl.pAllItms.bInEmail = true;
         pMainVwCntrl.emailAction = true;
-        pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStyleBordered target:self action:@selector(emailNow)];
+        pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(emailNow)];
         
     }
     else if (buttonIndex == 1)
@@ -745,7 +672,7 @@
         pMainVwCntrl.pAllItms.bInEmail = true;
         if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
         {
-            pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Facebook" style:UIBarButtonItemStyleBordered target:self action:@selector(fbshareNow)];
+            pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Facebook" style:UIBarButtonItemStylePlain target:self action:@selector(fbshareNow)];
             
 
         }
@@ -1254,26 +1181,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMainScreen:) name:@"RefetchAllDatabaseData" object:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadFetchedResults:) name:@"RefreshAllViews" object:self];
-    [self setupAndStartQuery];
     
     if (biCloudAvail)
         NSLog (@"iCloud available\n");
     else
         NSLog (@"iCloud NOT available at this point\n");
-    if (bRegistered)
-    {
-        UIRemoteNotificationType types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-        if (types & UIRemoteNotificationTypeBadge)
-        {
-            bSharingDisabled = false;
-        }
-        else
-        {
-            NSLog(@"Sharing disabled");
-            
-        }
-        
-    }
     self.window.backgroundColor = [UIColor whiteColor];
     //[self.window addSubview:self.navViewController.view];
     [self.window setRootViewController:self.navViewController];
@@ -1605,163 +1517,7 @@
     }
     return __persistentStoreCoordinator;
     
-    // prep the store path and bundle stuff here since NSBundle isn't totally thread safe
-    NSPersistentStoreCoordinator* psc = __persistentStoreCoordinator;
-	
-    
-    // do this asynchronously since if this is the first time this particular device is syncing with preexisting
-    // iCloud content it may take a long long time to download
-        NSString *containerID = @"3JEQ693MKL.com.rekhaninan.OpenHouses";
-        
-        if ([pFlMgr
-             URLForUbiquityContainerIdentifier:containerID] != nil)
-        {
-            NSLog(@"iCloud is available\n");
-            biCloudAvail = true;
-        }
-        else
-            NSLog(@"iCloud,  is not available.\n");
-        
-        if (biCloudAvail)
-        {
-        // this needs to match the entitlements and provisioning profile
-            cloudURL = [pFlMgr URLForUbiquityContainerIdentifier:containerID];
-            NSLog(@"ubiquituous url %@", cloudURL);
-            UIDevice *dev = [UIDevice currentDevice];
-            if ([[dev systemVersion] doubleValue] >= 6.0)
-            {
-            id currentiCloudToken = [pFlMgr ubiquityIdentityToken];
-            NSData *tokenData = [kvlocal objectForKey:@"iCloudToken"];
-            NSData *newTokenData =
-            [NSKeyedArchiver archivedDataWithRootObject: currentiCloudToken];
-            if (tokenData == nil)
-            {
-                 [kvlocal setObject: newTokenData forKey: @"iCloudToken"];
-                tokenData = newTokenData;
-                NSArray *tokArry = [NSArray arrayWithObject:newTokenData];
-                [kvlocal setObject:tokArry forKey:@"iCloudTokens"];
-            }
-            NSLog(@"newTokenData %@", newTokenData);
-                NSArray *tokArry = [kvlocal arrayForKey:@"iCloudTokens"];
-                int i=0;
-                bool bTokInArry = false;
-                for (NSData *tok in tokArry)
-                {
-                    NSLog(@"Token Data %@", tok);
-                        if ([tok isEqualToData:newTokenData])
-                        {
-                            bTokInArry = true;
-                            if (i)
-                            {
-                                NSString *storeURLStr = [NSString stringWithFormat:@"Shopper%d.sqlite", i];
-                               storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:storeURLStr];
-                                NSLog(@"Changing store URL to %@", storeURL);
-                            }
-                            break;
-                        }
-                    ++i;
-                }
-                if (!bTokInArry)
-                {
-                    NSString *storeURLStr = [NSString stringWithFormat:@"Shopper%d.sqlite", [tokArry count]];
-                    storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:storeURLStr];
-                    NSLog(@"Changing store URL to %@", storeURL);
-                    NSArray *newTokArry = [tokArry arrayByAddingObject:newTokenData];
-                    [kvlocal setObject:newTokArry forKey:@"iCloudTokens"];
-                }
-                [kvlocal setObject: newTokenData forKey: @"iCloudToken"];
-            }
-                        /*
-            removed = [[NSFileManager defaultManager] removeItemAtURL:cloudURL error:&error];
-            if (removed == YES)
-            {
-                NSLog(@"Removed ubiquity url\n");
-            }
-            else
-            {
-                NSLog(@"Failed to remove ubiquity url %@\n", error);
-            }
-             abort();
-             */
-            NSString* coreDataCloudContent = [[cloudURL path] stringByAppendingPathComponent:@"HouseData"];
-            NSString* coreDocCloudContent = [[cloudURL path] stringByAppendingPathComponent:@"Documents"];
-            cloudDocsURL = [NSURL fileURLWithPath:coreDocCloudContent];
-            cloudURL = [NSURL fileURLWithPath:coreDataCloudContent];
-        
-            //  The API to turn on Core Data iCloud support here.
-            NSDictionary* options = [NSDictionary dictionaryWithObjectsAndKeys:@"com.rekhaninan.OpenHouses.housedatainfo", NSPersistentStoreUbiquitousContentNameKey, cloudURL, NSPersistentStoreUbiquitousContentURLKey, [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,nil];
-            NSLog(@"Store URL %@", storeURL);
-        
-            [psc lock];
-            if (![psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) 
-            {
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                UIDevice *dev = [UIDevice currentDevice];
-                if ([[dev systemVersion] doubleValue] >= 6.0)
-                {
-                  if (error.code == 134316 && [error.domain isEqualToString:@"NSCocoaErrorDomain"])
-                  {
-                     const char *data = "UnknownAcct";
-                    NSData *tokData = [NSData dataWithBytes:data length:strlen(data)];
-                    NSArray *tokArry = [kvlocal arrayForKey:@"iCloudTokens"];
-                    if (tokArry != nil && [tokArry count] > 1)
-                    {
-                        dispatch_async(dispatch_get_main_queue(),
-                        ^{
-                            bPersistError =true;
-                            UIAlertView *pAvw = [[UIAlertView alloc] initWithTitle:@"Error occured" message:@"Error occurred , try deleting app and icloud contents and reinstalling app" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            [pAvw show];
-                        });
-                    }
-                    NSArray *newTokArry = [NSArray arrayWithObjects:tokData, [tokArry objectAtIndex:0], nil];
-                    [kvlocal setObject:newTokArry forKey:@"iCloudTokens"];
-                    storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Shopper1.sqlite"];
-                    if (![psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
-                    {
-                        bPersistError =true;
-                        dispatch_async(dispatch_get_main_queue(), ^{
-
-                        UIAlertView *pAvw = [[UIAlertView alloc] initWithTitle:@"Error occured" message:[NSString stringWithFormat:@"Error occurred , try deleting app and icloud contents and reinstalling app %@", [error localizedDescription]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                        [pAvw show];
-                        });
-                    }
-                    [psc unlock];
-                    NSLog(@"synchronously added persistent store!");
-                    
-                    unlocked = true;
-                    
-                    return __persistentStoreCoordinator;
-                  }
-
-                }
-                bPersistError =true;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *pAvw = [[UIAlertView alloc] initWithTitle:@"Error occured" message:[NSString stringWithFormat:@"Error occurred , try deleting app and icloud contents and reinstalling app %@", [error localizedDescription]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [pAvw show];
-                 });
-            }
-            [psc unlock];
-        }
-        else
-        {
-             NSError *error = nil;
-            if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-            {
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }    
-
-        }
-        
-        // tell the UI on the main thread we finally added the store and then
-        // post a custom notification to make your views do whatever they need to such as tell their
-        // NSFetchedResultsController to -performFetch again now there is a real store
-        
-        NSLog(@"synchronously added persistent store!");
-    
-    unlocked = true;
-       
-    return __persistentStoreCoordinator;
+   
 }
 
 #pragma mark - Application's Documents directory

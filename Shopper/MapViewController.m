@@ -90,7 +90,7 @@
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    printf("Clicked button at index %d\n", buttonIndex);
+    printf("Clicked button at index %ld\n", (long)buttonIndex);
      
     switch (buttonIndex)
     {

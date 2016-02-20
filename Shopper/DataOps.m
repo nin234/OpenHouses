@@ -596,11 +596,11 @@
         {
             bShowSelfHelp = false;
             NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
-            int COUNT = [kvlocal integerForKey:@"SelfHelp"];
+            NSInteger COUNT = [kvlocal integerForKey:@"SelfHelp"];
             ++COUNT;
             if (COUNT < 3)
             {
-                NSLog(@"Self help count %d", COUNT);
+                NSLog(@"Self help count %ld", (long)COUNT);
                 [kvlocal setInteger:COUNT forKey:@"SelfHelp"];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -660,7 +660,7 @@
         NSManagedObjectModel *managedObjectModel =
         [[pDlg.managedObjectContext persistentStoreCoordinator] managedObjectModel];
         NSDictionary *ent = [managedObjectModel entitiesByName];
-        printf("entity count %d\n", [[ent allKeys] count]);
+        printf("entity count %lu\n", (unsigned long)[[ent allKeys] count]);
         NSEntityDescription *entity =
         [ent objectForKey:@"Item"];
         Item *newItem = [[Item alloc]
@@ -849,8 +849,8 @@
     // nRows = [itemNames count];
     
     //seletedItems = [NSMutableArray arrayWithCapacity:nRows];
-    int nItems = [itemNamesTmp count];
-    NSLog(@"Main list counts %d %d\n", nItems, [itemNamesTmp count]);
+    NSUInteger nItems = [itemNamesTmp count];
+    NSLog(@"Main list counts %lu %lu\n", (unsigned long)nItems, (unsigned long)[itemNamesTmp count]);
     indexesTmp = [[NSMutableArray alloc] initWithCapacity:nItems];
     seletedItemsTmp = [[NSMutableArray alloc] initWithCapacity:nItems];
     for (int i=0 ; i < nItems; ++i)
@@ -878,7 +878,7 @@
         }
     }
     // nRows = [indexes count] + 1;
-    NSLog(@"UPDATED Main list row count %d %d\n", [itemNamesTmp count], [indexesTmp count]);
+    NSLog(@"UPDATED Main list row count %lu %lu\n", (unsigned long)[itemNamesTmp count], (unsigned long)[indexesTmp count]);
     //Temp created so that there is no need to lock for the entire duration of refreshData
     [workToDo lock];
     seletedItems = [NSMutableArray arrayWithArray:seletedItemsTmp];
@@ -910,7 +910,7 @@
     pMainVwCntrl.pAllItms.indexes = [NSMutableArray arrayWithArray:indexes];
     pMainVwCntrl.pAllItms.seletedItems = [NSMutableArray arrayWithArray:seletedItems];
     [workToDo unlock];
-    NSLog(@"Refreshing main row itemNames = %d indexes = %d seletedItems = %d\n", [itemNames count], [indexes count], [seletedItems count]);
+    NSLog(@"Refreshing main row itemNames = %lu indexes = %lu seletedItems = %lu\n", (unsigned long)[itemNames count], (unsigned long)[indexes count], (unsigned long)[seletedItems count]);
     
    // 
    // [pMainVwCntrl.pAllItms.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];

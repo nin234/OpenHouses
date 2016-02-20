@@ -301,7 +301,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
     NSArray *movarr = [NSArray arrayWithArray:albumContentsViewController.movOrImg];
     [movOrImg addObjectsFromArray:movarr];
     
-    NSLog(@"No of attchments  %d no of movOrImg %d original count attchments %d  movOrImg %lu\n",  [attchments count], [movOrImg count],[albumContentsViewController.attchments count], (unsigned long)[albumContentsViewController.movOrImg count]);
+    NSLog(@"No of attchments  %lu no of movOrImg %lu original count attchments %lu  movOrImg %lu\n",  (unsigned long)[attchments count], (unsigned long)[movOrImg count],(unsigned long)[albumContentsViewController.attchments count], (unsigned long)[albumContentsViewController.movOrImg count]);
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [pDlg.navViewController popViewControllerAnimated:NO];
     [self getPhotos:currPhotoSelIndx+1 source:photoreqsource];
@@ -477,7 +477,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
         else
         {
             NSArray *pVws = [cell.contentView subviews];
-            int cnt = [pVws count];
+            NSUInteger cnt = [pVws count];
             for (NSUInteger i=0; i < cnt; ++i)
             {
                 [[pVws objectAtIndex:i] removeFromSuperview];
@@ -602,7 +602,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
         [pDlg.navViewController pushViewController:aViewController animated:YES];
         return;
     }
-    printf("Row selected %d\n", indexPath.row);
+    printf("Row selected %ld\n", (long)indexPath.row);
     if (indexPath.row > [indexes count])
         return;
     
@@ -623,7 +623,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
             indicator.image = [UIImage imageNamed:@"IsSelected.png"];
             NSUInteger crnt = indexPath.row - 1;
 
-            NSLog(@"Changing  image to selected at index %d\n", crnt);
+            NSLog(@"Changing  image to selected at index %lu\n", (unsigned long)crnt);
              [seletedItems replaceObjectAtIndex:indexPath.row-1 withObject:[NSNumber numberWithBool:YES]];
                         NSUInteger cnt = [seletedItems count];
             for (NSUInteger i=0; i < cnt; ++i)
@@ -637,7 +637,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
                     [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i+1 inSection:0]];
                     UIImageView *othr_row_indicator = (UIImageView *)[othr_row_cell.contentView viewWithTag:SELECTION_INDICATOR_TAG];
                     othr_row_indicator.image = [UIImage imageNamed:@"NotSelected.png"];
-                    NSLog(@"Changing image Not selected at index %d\n", i);
+                    NSLog(@"Changing image Not selected at index %lu\n", (unsigned long)i);
                     [seletedItems replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
                 }
             }
@@ -650,8 +650,8 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
    //  pDlg.selectedItem = [itemNames objectAtIndex:indexPath.row-1];
     pDlg.selectedItem = [itemNames objectAtIndex:[[indexes objectAtIndex:indexPath.row-1] intValue]];
     pDlg.editItem = [itemNames objectAtIndex:[[indexes objectAtIndex:indexPath.row-1] intValue]];
-    pDlg.selectIndx = indexPath.row-1;
-    pDlg.editIndx = indexPath.row-1;
+    pDlg.selectIndx = (int)indexPath.row-1;
+    pDlg.editIndx = (int)indexPath.row-1;
     if (pDlg.selectedItem.icloudsync == YES)
         pDlg.pAlName = pDlg.selectedItem.album_name;
     else

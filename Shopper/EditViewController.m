@@ -44,25 +44,6 @@
 @synthesize tnailurls;
 @synthesize movurls;
 
-- (NSMetadataQuery*) imagesQuery 
-{
-    NSMetadataQuery* aQuery = [[NSMetadataQuery alloc] init];
-    if (aQuery) 
-    {
-        // Search the Documents subdirectory only.
-        [aQuery setSearchScopes:[NSArray
-                                 arrayWithObject:NSMetadataQueryUbiquitousDocumentsScope]];
-
-        
-        // Add a predicate for finding the documents.
-        NSString* filePattern = @"*.jpg";
-        [aQuery setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE %@",
-                              NSMetadataItemFSNameKey, filePattern]];
-    }
-    
-    return aQuery;
-}
-
 -(void) queryStop
 {
     processQuery = false;
@@ -71,99 +52,6 @@
     
 }
 
-- (void)processQueryResults:(NSNotification*)aNotification
-{
-    if (!processQuery)
-        return;
-    [query disableUpdates];
-     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSArray *queryResults = [query results];
-    NSLog(@"Processing iCloud query results no of items %lu for album %@\n", (unsigned long)[queryResults count], pDlg.pAlName);
-    NSMutableArray *thumbindexes = [[NSMutableArray alloc] initWithCapacity:[queryResults count]];
-    
-    for (NSMetadataItem *result in queryResults) 
-    {
-        NSURL *fileURL = [result valueForAttribute:NSMetadataItemURLKey];
-     //   NSLog(@"Processing item at URL %@ \n", fileURL);
-        if ([[result valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue] == NO)
-            continue;
-        
-        NSNumber *aBool = nil;
-        [fileURL getResourceValue:&aBool forKey:NSURLIsRegularFileKey error:nil];
-        if (aBool && [aBool boolValue])
-        {
-            NSString *str = [fileURL absoluteString];
-            NSRange found = [str rangeOfString:pDlg.pAlName options:NSBackwardsSearch];
-            if (found.location == NSNotFound)
-                continue;
-            NSURL *pIsThumbnail = [fileURL URLByDeletingLastPathComponent];
-            NSString *last = [pIsThumbnail lastPathComponent];
-            if ([last isEqualToString:@"thumbnails"] == YES)
-            {
-                NSString *pFil = [fileURL lastPathComponent];
-                char szFileNo[64];
-                int size = (int)strcspn([pFil UTF8String], ".");
-                if (size)
-                {
-                    strncpy(szFileNo, [pFil UTF8String], size);
-                    szFileNo[size] = '\0';
-                    int val = strtod(szFileNo, NULL);
-                    [thumbindexes addObject:[NSNumber numberWithInt:val]];
-                }
-                
-            }
-        }
-    }
-    NSArray *tIndxes = [NSArray arrayWithArray:[thumbindexes sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        
-        if ([obj1 integerValue] > [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        
-        if ([obj1 integerValue] < [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        return (NSComparisonResult)NSOrderedSame;
-    }]];
-    
-    
-    NSUInteger tcnt = [tIndxes count];
-    if (tcnt)
-    {
-        nSmallest = [[tIndxes objectAtIndex:0] intValue];
-    }
-    
-    [self.tableView reloadData];
-    [query enableUpdates];
-    return;
-}
-
-- (void)setupAndStartQuery 
-{
-    // Create the query object if it does not exist.
-    if (!query)
-        query = [self imagesQuery];
-    
-    // Register for the metadata query notifications.
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidFinishGatheringNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidUpdateNotification
-                                               object:nil];
-    
-    // Start the query and let it run.
-    NSLog(@"In set up and  start query %@\n", query);
-    if (![query startQuery])
-        NSLog(@"Failed to start query %@\n", query);
-    if ([query isStarted])
-        NSLog(@"Started query %@\n", query);
-    if ([query isGathering])
-        NSLog(@" query Gathering %@\n", query);
-
-}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -222,7 +110,7 @@
                 if ([isReg boolValue] == YES)
                 {
                     NSString *pFil = [fileurl lastPathComponent];
-                    int size = strcspn([pFil UTF8String], ".");
+                    int size = (int)strcspn([pFil UTF8String], ".");
                     if (size)
                     {
                         strncpy(szFileNo, [pFil UTF8String], size);
@@ -320,7 +208,7 @@
         NSArray *baritems = [NSArray arrayWithObjects:pBarItem1, pBarItem2, pBarItem, pBarItem4, pBarItem3, nil];
         [bar setItems:baritems];
         NSArray *pVws = [imagePickerController.cameraOverlayView subviews];
-        int cnt = [pVws count];
+        NSUInteger cnt = [pVws count];
         for (NSUInteger i=0; i < cnt; ++i)
         {
             [[pVws objectAtIndex:i] removeFromSuperview];
@@ -486,7 +374,7 @@
 {
     NSUInteger tcnt = [tnailurls count];
     NSUInteger mcnt = [movurls count];
-    NSLog(@"Saving thumbnails tcnt %d mcnt %d\n", tcnt, mcnt);
+    NSLog(@"Saving thumbnails tcnt %lu mcnt %lu\n", (unsigned long)tcnt, (unsigned long)mcnt);
     
     if (tcnt != mcnt || !tcnt)
         return;
@@ -496,15 +384,15 @@
     for (NSUInteger i =0; i < mcnt; ++i)
     {
         NSLog(@"Trying to save thumbnail %@ for movie %@\n", [tnailurls objectAtIndex:i], [movurls objectAtIndex:i]);
-       // if (i != 0)
-         //   pMovP.contentURL = [movurls objectAtIndex:i];
-         MPMoviePlayerController *pMovP = [[MPMoviePlayerController alloc] initWithContentURL:[movurls objectAtIndex:i]];
-   
-        [pMovP pause];
+            AVURLAsset *asset1 = [[AVURLAsset alloc] initWithURL:[movurls objectAtIndex:i] options:nil];
+        AVAssetImageGenerator *generate1 = [[AVAssetImageGenerator alloc] initWithAsset:asset1];
+        generate1.appliesPreferredTrackTransform = YES;
+        NSError *err = NULL;
+        CMTime time = CMTimeMake(1, 2);
+        CGImageRef oneRef = [generate1 copyCGImageAtTime:time actualTime:NULL error:&err];
+        UIImage *thumbnail = [[UIImage alloc] initWithCGImage:oneRef];
     
-        UIImage *thumbnail = [pMovP thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
-        [pMovP pause];
-        NSData *thumbnaildata = UIImageJPEGRepresentation(thumbnail, 0.3);
+            NSData *thumbnaildata = UIImageJPEGRepresentation(thumbnail, 0.3);
 
         if ([thumbnaildata writeToURL:[tnailurls objectAtIndex:i] atomically:YES] == NO)
         {
@@ -521,10 +409,10 @@
     [self.tableView reloadData];
     if (bInShowCam)
     {
-        [imagePickerController dismissModalViewControllerAnimated:NO];
+        [imagePickerController dismissViewControllerAnimated:NO completion:nil];
           
         NSLog(@"Dismissed  imagePickerController about to show it again in Save thumbnails\n");
-        [self presentModalViewController:imagePickerController animated:YES];
+        [self presentViewController:imagePickerController animated:YES completion:nil];
     }
     return;
 }
@@ -550,7 +438,7 @@
     NSLog(@"Add save thumbnail to queue\n");
     [pDlg.saveQ addOperation:theOp];
 */
-    [imagePickerController dismissModalViewControllerAnimated:NO];
+    [imagePickerController dismissViewControllerAnimated:NO completion:nil];
     [self.tableView reloadData];
     bInShowCam = false;
 }
@@ -597,7 +485,7 @@
         imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
     else 
         imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
-    [self presentModalViewController:imagePickerController animated:YES];
+    [self presentViewController:imagePickerController animated:YES completion:nil];
     bInShowCam = true;
 }
 
@@ -607,9 +495,9 @@
     
     struct timeval tv;
     gettimeofday(&tv, 0);
-    int filno = tv.tv_sec/2;
+    long filno = tv.tv_sec/2;
 
-    NSString *pFlName = [[NSNumber numberWithInt:filno] stringValue];
+    NSString *pFlName = [[NSNumber numberWithLong:filno] stringValue];
     NSString *pImgFlName = [pFlName stringByAppendingString:@".jpg"];
     
     pFlName = [pFlName stringByAppendingString:@".MOV"];
@@ -641,13 +529,13 @@
     
     if ([data writeToURL:pFlUrl atomically:YES] == NO)
     {
-        printf("Failed to write to file %d\n", filno);
+        printf("Failed to write to file %ld\n", filno);
         // --nAlNo;
         
     }
     else
     {
-        printf("Save file %d in album %s\n", filno, [pDlg.editItem.album_name UTF8String]);
+        printf("Save file %ld in album %s\n", filno, [pDlg.editItem.album_name UTF8String]);
         ++pDlg.editItem.pic_cnt;
     }
 
@@ -689,7 +577,7 @@
         
         if ([thumbnaildata writeToURL:pFlUrl atomically:YES] == NO)
         {
-            NSLog(@"Failed to write to thumbnail file %d thumburl %@\n", filno, pFlUrl);
+            NSLog(@"Failed to write to thumbnail file %ld thumburl %@\n", filno, pFlUrl);
             // --nAlNo;
             
         }
@@ -708,8 +596,8 @@
     
     struct timeval tv;
     gettimeofday(&tv, 0);
-    int filno = tv.tv_sec/2;
-    NSString *pFlName = [[NSNumber numberWithInt:filno] stringValue];
+    long filno = tv.tv_sec/2;
+    NSString *pFlName = [[NSNumber numberWithLong:filno] stringValue];
     
     pFlName = [pFlName stringByAppendingString:@".jpg"];
     
@@ -742,13 +630,13 @@
     NSData *data = UIImageJPEGRepresentation(image, 1.0);
     if ([data writeToURL:pFlUrl atomically:YES] == NO)
     {
-        NSLog(@"Failed to write to file %d %@\n", filno, pFlUrl);
+        NSLog(@"Failed to write to file %ld %@\n", filno, pFlUrl);
         // --nAlNo;
         
     }
     else
     {
-        printf("Save file %d in album %s\n", filno, [pDlg.editItem.album_name UTF8String]);
+        printf("Save file %ld in album %s\n", filno, [pDlg.editItem.album_name UTF8String]);
     }
     CGSize oImgSize;
     oImgSize.height = 71;
@@ -768,13 +656,13 @@
     pFlUrl = [pFlUrl URLByAppendingPathComponent:pFlName isDirectory:NO];
     if ([thumbnaildata writeToURL:pFlUrl atomically:YES] == NO)
     {
-        NSLog (@"Failed to write to thumbnail file %d %@\n", filno, pFlUrl);
+        NSLog (@"Failed to write to thumbnail file %ld %@\n", filno, pFlUrl);
         // --nAlNo;
         
     }
     else
     {
-        printf("Save thumbnail file %d in album %s\n", filno, [pDlg.editItem.album_name UTF8String]);
+        printf("Save thumbnail file %ld in album %s\n", filno, [pDlg.editItem.album_name UTF8String]);
         ++pDlg.editItem.pic_cnt;
     }
     
@@ -864,7 +752,7 @@
          {
              bSaveLastPic = false;
              bInShowCam = false;
-             [imagePickerController dismissModalViewControllerAnimated:NO];
+             [imagePickerController dismissViewControllerAnimated:NO completion:nil];
              return;
              
          }
@@ -876,7 +764,7 @@
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    printf("Clicked button at index %d\n", buttonIndex);
+    printf("Clicked button at index %ld\n", (long)buttonIndex);
     if (buttonIndex == 0)
     {
         AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -943,7 +831,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-    NSLog(@"Text field should change character %s %d\n", [textField.text UTF8String], textField.tag);
+    NSLog(@"Text field should change character %s %ld\n", [textField.text UTF8String], (long)textField.tag);
     
     switch (textField.tag)
     {
@@ -1085,7 +973,7 @@
 - (void)textChanged:(id)sender 
 {
     UITextField *textField = (UITextField *)sender;
-    NSLog(@"Text field changed editing %s %d\n", [textField.text UTF8String], textField.tag);
+    NSLog(@"Text field changed editing %s %ld\n", [textField.text UTF8String], (long)textField.tag);
     [self populateValues:textField];
     
         return;
@@ -1142,7 +1030,7 @@
         else
         {
             NSArray *pVws = [cell.contentView subviews];
-            int cnt = [pVws count];
+            NSUInteger cnt = [pVws count];
             for (NSUInteger i=0; i < cnt; ++i)
             {
                 [[pVws objectAtIndex:i] removeFromSuperview];
@@ -1156,7 +1044,7 @@
             
             UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
             CGRect textFrame;
-            label.textAlignment = UITextAlignmentLeft;
+            label.textAlignment = NSTextAlignmentLeft;
             label.font = [UIFont boldSystemFontOfSize:14];
             [cell.contentView addSubview:label];
             textFrame = CGRectMake(75, 12, 85, 25);
@@ -1170,7 +1058,7 @@
             UILabel* label1 = [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 75, 25)];
             NSString *secName = [secondFieldNames objectAtIndex:row];
             label1.text = secName;
-            label1.textAlignment = UITextAlignmentLeft;
+            label1.textAlignment = NSTextAlignmentLeft;
             label1.font = [UIFont boldSystemFontOfSize:14];
             [cell.contentView addSubview:label1];
             textFrame = CGRectMake(235, 12, 85, 25);

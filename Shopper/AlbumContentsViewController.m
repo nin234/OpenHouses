@@ -89,179 +89,6 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 #pragma mark View lifecycle
 
 
-- (NSMetadataQuery*) imagesQuery 
-{
-    NSMetadataQuery* aQuery = [[NSMetadataQuery alloc] init];
-    if (aQuery) 
-    {
-        // Search the Documents subdirectory only.
-        AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-       NSURL *albumurl = [pDlg.cloudDocsURL URLByAppendingPathComponent:@"albums" isDirectory:YES];
-        albumurl = [albumurl URLByAppendingPathComponent:pDlg.pAlName isDirectory:YES];
-//       [aQuery setSearchScopes:[NSArray
-  //                               arrayWithObject:albumurl]];
-       [aQuery setSearchScopes:[NSArray
-                               arrayWithObject:NSMetadataQueryUbiquitousDocumentsScope]];
-        
-        // Add a predicate for finding the documents.
-        NSArray *scope = [aQuery searchScopes];
-        NSUInteger cnt = [scope count];
-        for (int i=0; i < cnt; ++i)
-            NSLog(@"Search dir %@\n", [scope objectAtIndex:i]);
-       NSString* filePattern = @"*.jpg";
-        NSString* filePattern1 = @"*.MOV";
-       [aQuery setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE %@ OR %K LIKE %@",
-                             NSMetadataItemFSNameKey, filePattern, NSMetadataItemFSNameKey, filePattern1]];
-    }
-    
-    return aQuery;
-}
-
-- (void)processQueryResults:(NSNotification*)aNotification
-{
-    
-    if (!processQuery)
-        return;
-    [query disableUpdates];
-    NSArray *queryResults = [query results];
-   
-    NSMutableArray *thumbindexes = [[NSMutableArray alloc] initWithCapacity:[queryResults count]];
-    NSMutableArray *imgindexes = [[NSMutableArray alloc] initWithCapacity:[queryResults count]];
-     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    for (NSMetadataItem *result in queryResults) 
-    {
-        NSURL *fileURL = [result valueForAttribute:NSMetadataItemURLKey];
-        // NSLog(@"Processing item at URL %@ \n", fileURL);
-        if ([[result valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue] == NO)
-            continue;
-        NSNumber *aBool = nil;
-        [fileURL getResourceValue:&aBool forKey:NSURLIsRegularFileKey error:nil];
-       
-        if (aBool && [aBool boolValue])
-        {
-            NSString *str = [fileURL absoluteString];
-            NSRange found = [str rangeOfString:pDlg.pAlName options:NSBackwardsSearch];
-            if (found.location == NSNotFound)
-                continue;
-            
-            NSURL *pIsThumbnail = [fileURL URLByDeletingLastPathComponent];
-            NSString *last = [pIsThumbnail lastPathComponent];
-            if ([last isEqualToString:@"thumbnails"] == YES)
-            {
-                NSString *pFil = [fileURL lastPathComponent];
-                char szFileNo[64];
-                int size = strcspn([pFil UTF8String], ".");
-                if (size)
-                {
-                    strncpy(szFileNo, [pFil UTF8String], size);
-                    szFileNo[size] = '\0';
-                    int val = strtod(szFileNo, NULL);
-                    [thumbindexes addObject:[NSNumber numberWithInt:val]];
-                }
-
-            }
-            else 
-            {
-                NSString *pFil = [fileURL lastPathComponent];
-                char szFileNo[64];
-                int size = strcspn([pFil UTF8String], ".");
-                if (size)
-                {
-                    strncpy(szFileNo, [pFil UTF8String], size);
-                    szFileNo[size] = '\0';
-                    int val = strtod(szFileNo, NULL);
-                    [imgindexes addObject:[NSNumber numberWithInt:val]];
-                }
-            }
-        }
-    }
-    NSArray *iIndxes = [NSArray arrayWithArray:[imgindexes sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        
-        if ([obj1 integerValue] > [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        
-        if ([obj1 integerValue] < [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        return (NSComparisonResult)NSOrderedSame;
-    }]];
-    
-    NSArray *tIndxes = [NSArray arrayWithArray:[thumbindexes sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        
-        if ([obj1 integerValue] > [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        
-        if ([obj1 integerValue] < [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        return (NSComparisonResult)NSOrderedSame;
-    }]];
-    
-    NSUInteger icnt = [iIndxes count];
-    NSUInteger tcnt = [tIndxes count];
-    NSUInteger cnt = icnt > tcnt?icnt:tcnt;
-    NSUInteger iidx =0;
-    NSUInteger tidx = 0;
-    NSMutableArray *indexes = [[NSMutableArray alloc] initWithCapacity:cnt];
-    
-    for (NSUInteger i=0; i < cnt; ++i) 
-    {
-        if (tidx >= tcnt || iidx >= icnt)
-            break;
-        NSNumber *tno = [tIndxes objectAtIndex:tidx];
-        NSNumber *ino = [iIndxes objectAtIndex:iidx];
-        if ([ino intValue] == [tno intValue])
-        {
-            [indexes addObject:ino];
-            ++iidx;
-            ++tidx;
-        }
-        else if ([ino intValue] > [tno intValue])
-        {
-            ++tidx;
-        }
-        else 
-        {
-            ++iidx;
-        }
-    }
-    tnailsquery = [NSArray arrayWithArray:indexes];
-    nPicCnt = [thumbnails count];
-     NSLog(@"Processed iCloud query results no of items %d nPicCnt %d\n", [queryResults count], nPicCnt);
-    gotqueryres = true;
-    [self.tableView reloadData];
-    [query enableUpdates];
-    return;
-}
-
-- (void)setupAndStartQuery 
-{
-    // Create the query object if it does not exist.
-    if (!query)
-        query = [self imagesQuery];
-    
-    // Register for the metadata query notifications.
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidFinishGatheringNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidUpdateNotification
-                                               object:nil];
-    
-    // Start the query and let it run.
-    NSLog(@"In set up and  start query %@\n", query);
-    if (![query startQuery])
-        NSLog(@"Failed to start query %@\n", query);
-    if ([query isStarted])
-        NSLog(@"Started query %@\n", query);
-    if ([query isGathering])
-        NSLog(@" query Gathering %@\n", query);
-}
-
 -(void) noIcloudInit
 {
     char szFileNo[64];
@@ -283,7 +110,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
             if ([isReg boolValue] == YES)
             {
                 NSString *pFil = [fileurl lastPathComponent];
-                int size = strcspn([pFil UTF8String], ".");
+                int size = (int)strcspn([pFil UTF8String], ".");
                 if (size)
                 {
                     strncpy(szFileNo, [pFil UTF8String], size);
@@ -317,7 +144,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
         }]];
     }
     
-    printf("No of pictures %d\n", nPicCnt);
+    printf("No of pictures %lu\n", (unsigned long)nPicCnt);
     NSUInteger noOfIdxes = [thumbnails count];
     NSLog(@"Image index array ");
     for (NSUInteger i=0 ; i < noOfIdxes; ++i)
@@ -347,15 +174,6 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
         
         if (pAlMoc == nil)
             return self;
-        NSError *err;
-        NSURL *albumurl = [NSURL URLWithString:pAlMoc];
-        if (albumurl == nil || ![albumurl checkResourceIsReachableAndReturnError:&err])
-        {
-            //it should be ubiquitous
-            bIniCloud = true;
-            [self setupAndStartQuery];
-            return self;
-        }
         bIniCloud = false;
         [self noIcloudInit];
      }
@@ -485,7 +303,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
     NSUInteger lastPhotoInCell  = firstPhotoInCell + 4;
     
     if (nPicCnt <= firstPhotoInCell) {
-        NSLog(@"We are out of range, asking to start with photo %d but we only have %d", firstPhotoInCell, nPicCnt);
+        NSLog(@"We are out of range, asking to start with photo %lu but we only have %lu", (unsigned long)firstPhotoInCell, (unsigned long)nPicCnt);
         return nil;
     }
     
@@ -570,7 +388,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 -(void) deletedPhotoAtIndx:(NSUInteger)nIndx
 {
-    NSLog(@"Removing thumbnail at index %d\n", nIndx);
+    NSLog(@"Removing thumbnail at index %lu\n", (unsigned long)nIndx);
     NSMutableArray *tmp = [NSMutableArray arrayWithCapacity:[thumbnails count]];
     NSUInteger cnt = [thumbnails count];
     for (NSUInteger i=0 ; i < cnt; ++i)
@@ -579,7 +397,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
             [tmp addObject:[thumbnails objectAtIndex:i]];
     }
     thumbnails = [NSArray arrayWithArray:tmp];
-    NSLog(@"Removed thumbnail at index %d\n", nIndx);
+    NSLog(@"Removed thumbnail at index %lu\n", (unsigned long)nIndx);
      --nPicCnt;
     [self.tableView reloadData];
     return; 
@@ -617,7 +435,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
                 movUrl = [pFlUrl URLByAppendingPathComponent:pFlImgName isDirectory:NO];
             }
             
-            NSLog(@"Attaching object at index %d  image file %@ movie file %@ \n", i,  imgUrl, movUrl);
+            NSLog(@"Attaching object at index %lu  image file %@ movie file %@ \n", (unsigned long)i,  imgUrl, movUrl);
             if ([imgUrl checkResourceIsReachableAndReturnError:&err] == YES)
             {
                 [attchments addObject:imgUrl];
@@ -631,7 +449,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
         }
         
     }
-    NSLog(@"Attached %d urls photoSel count %d\n", [attchments count], [photoSel count]);
+    NSLog(@"Attached %lu urls photoSel count %lu\n", (unsigned long)[attchments count], (unsigned long)[photoSel count]);
     return;
 }
 #pragma mark -
@@ -678,7 +496,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
                 movUrl = [pFlUrl URLByAppendingPathComponent:pFlImgName isDirectory:NO];
             }
 		
-            NSLog(@"Attaching object at index %d  image file %@ movie file %@ \n", nAsstIndx,  imgUrl, movUrl);
+            NSLog(@"Attaching object at index %lu  image file %@ movie file %@ \n", (unsigned long)nAsstIndx,  imgUrl, movUrl);
             if ([imgUrl checkResourceIsReachableAndReturnError:&err] == YES)
             {
                 NSLog(@"Image Url so can be selected %@\n", imgUrl);
@@ -874,7 +692,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    printf("Clicked button at index %d\n", buttonIndex);
+    printf("Clicked button at index %ld\n", (long)buttonIndex);
     
     switch (buttonIndex)
     {

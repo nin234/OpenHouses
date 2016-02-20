@@ -60,8 +60,6 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 }
 
-- (void)processQueryResults:(NSNotification*)aNotification;
-
 -(void) deletedPhotoAtIndx : (NSUInteger) nIndx;
 -(void) getAttchmentsUrls;
 

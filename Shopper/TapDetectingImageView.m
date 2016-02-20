@@ -127,8 +127,8 @@ CGPoint midpointBetweenPoints(CGPoint a, CGPoint b);
     CGPoint currentTouchPosition = [touch locationInView:self];
     printf ("i got touchesMoved CB start.x=%f, start.y=%f current.x=%f current.y=%f\n", startTouchPosition.x, startTouchPosition.y, currentTouchPosition.x, currentTouchPosition.y);
     // To be a swipe, direction of touch must be horizontal and long enough.
-    if (fabsf(startTouchPosition.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN &&
-        fabsf(startTouchPosition.y - currentTouchPosition.y) <= VERT_SWIPE_DRAG_MAX)
+    if (fabs(startTouchPosition.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN &&
+        fabs(startTouchPosition.y - currentTouchPosition.y) <= VERT_SWIPE_DRAG_MAX)
     {
         // It appears to be a swipe.
         if (startTouchPosition.x < currentTouchPosition.x)
@@ -168,8 +168,8 @@ CGPoint midpointBetweenPoints(CGPoint a, CGPoint b);
         
         // case 1: this is the end of both touches at once 
         if ([touches count] == 2 && allTouchesEnded) {
-            int i = 0; 
-            int tapCounts[2] = {0};
+            NSUInteger i = 0;
+            NSUInteger tapCounts[2] = {0};
             CGPoint tapLocations[2];
             for (UITouch *touch in touches) {
                 tapCounts[i]    = [touch tapCount];

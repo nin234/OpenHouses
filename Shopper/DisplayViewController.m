@@ -22,119 +22,6 @@
 @synthesize nSmallest;
 @synthesize processQuery;
 
-- (NSMetadataQuery*) imagesQuery 
-{
-    NSMetadataQuery* aQuery = [[NSMetadataQuery alloc] init];
-    if (aQuery) 
-    {
-        // Search the Documents subdirectory only.
-        [aQuery setSearchScopes:[NSArray
-                                 arrayWithObject:NSMetadataQueryUbiquitousDocumentsScope]];
-
-        
-        // Add a predicate for finding the documents.
-        NSString* filePattern = @"*.jpg";
-        [aQuery setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE %@",
-                              NSMetadataItemFSNameKey, filePattern]];
-    }
-    
-    return aQuery;
-}
-
-- (void)processQueryResults:(NSNotification*)aNotification
-{
-    if(!processQuery)
-        return;
-    [query disableUpdates];
-     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSArray *queryResults = [query results];
-    NSLog(@"Processing iCloud query results no of items %d for album %@\n", [queryResults count], pDlg.pAlName);
-    NSMutableArray *thumbindexes = [[NSMutableArray alloc] initWithCapacity:[queryResults count]];
-    
-    for (NSMetadataItem *result in queryResults) 
-    {
-        NSURL *fileURL = [result valueForAttribute:NSMetadataItemURLKey];
-        NSLog(@"Processing item at URL %@ \n", fileURL);
-        if ([[result valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue] == NO)
-            continue;
-        
-        NSNumber *aBool = nil;
-        [fileURL getResourceValue:&aBool forKey:NSURLIsRegularFileKey error:nil];
-        if (aBool && [aBool boolValue])
-        {
-            NSString *str = [fileURL absoluteString];
-            NSRange found = [str rangeOfString:pDlg.pAlName options:NSBackwardsSearch];
-            if (found.location == NSNotFound)
-                continue;
-            NSURL *pIsThumbnail = [fileURL URLByDeletingLastPathComponent];
-            NSString *last = [pIsThumbnail lastPathComponent];
-            if ([last isEqualToString:@"thumbnails"] == YES)
-            {
-                NSString *pFil = [fileURL lastPathComponent];
-                char szFileNo[64];
-                int size = strcspn([pFil UTF8String], ".");
-                if (size)
-                {
-                    strncpy(szFileNo, [pFil UTF8String], size);
-                    szFileNo[size] = '\0';
-                    int val = strtod(szFileNo, NULL);
-                    [thumbindexes addObject:[NSNumber numberWithInt:val]];
-                }
-                
-            }
-        }
-    }
-    NSArray *tIndxes = [NSArray arrayWithArray:[thumbindexes sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        
-        if ([obj1 integerValue] > [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        
-        if ([obj1 integerValue] < [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        return (NSComparisonResult)NSOrderedSame;
-    }]];
-    
-    
-    NSUInteger tcnt = [tIndxes count];
-    if (tcnt)
-    {
-        nSmallest = [[tIndxes objectAtIndex:0] intValue];
-    }
-    
-    [self.tableView reloadData];
-    [query enableUpdates];
-    return;
-}
-
-- (void)setupAndStartQuery 
-{
-    // Create the query object if it does not exist.
-    if (!query)
-        query = [self imagesQuery];
-    
-    // Register for the metadata query notifications.
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidFinishGatheringNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processQueryResults:)
-                                                 name:NSMetadataQueryDidUpdateNotification
-                                               object:nil];
-    
-    // Start the query and let it run.
-    NSLog(@"In set up and  start query %@\n", query);
-    if (![query startQuery])
-        NSLog(@"Failed to start query %@\n", query);
-    if ([query isStarted])
-        NSLog(@"Started query %@\n", query);
-    if ([query isGathering])
-        NSLog(@" query Gathering %@\n", query);
-
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
    
@@ -151,30 +38,8 @@
             return self;
 	    
 	    NSURL *albumurl = [NSURL URLWithString:pAlMoc];
-        bool queryCloud = false;
-	    if (albumurl == nil)
-            queryCloud = true;
-        else
-        {
-            NSNumber *rsrc = nil;
-            NSError *error = nil;
-            [albumurl getResourceValue:&rsrc forKey:NSURLIsUbiquitousItemKey error:&error];
-            if (rsrc)
-            {
-                if ([rsrc boolValue] == YES)
-                {
-                    queryCloud = true;
-                }
-            }
-        }
         
-        if (queryCloud)
-        {
-            NSLog(@"Querying iCloud");
-            [self setupAndStartQuery];
-            return self;
-        }
-       if ([pDlg.pFlMgr fileExistsAtPath:[albumurl path]] == YES)
+        if ([pDlg.pFlMgr fileExistsAtPath:[albumurl path]] == YES)
        {
            NSLog(@"Album directory exists");
            
@@ -186,7 +51,7 @@
         NSArray *keys = [NSArray arrayWithObject:NSURLIsRegularFileKey];
         NSArray *files = [pDlg.pFlMgr contentsOfDirectoryAtURL:albumurl includingPropertiesForKeys:keys options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
         NSUInteger cnt = [files count];
-         NSLog(@"Getting locally stored file %d", cnt);
+         NSLog(@"Getting locally stored file %lu", (unsigned long)cnt);
         for (NSUInteger i = 0; i < cnt; ++i)
         {
             NSURL *fileurl = [files objectAtIndex:i];
@@ -197,7 +62,7 @@
                 if ([isReg boolValue] == YES)
                 {
                     NSString *pFil = [fileurl lastPathComponent];
-                    int size = strcspn([pFil UTF8String], ".");
+                    int size = (int) strcspn([pFil UTF8String], ".");
                     if (size)
                     {
                         strncpy(szFileNo, [pFil UTF8String], size);
@@ -362,7 +227,7 @@
     static NSString *CellIdentifier = @"itemdetail";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    printf("Drawing row %d\n", indexPath.row);
+    printf("Drawing row %ld\n", (long)indexPath.row);
     
     if(indexPath.section == 0) 
     {
@@ -374,7 +239,7 @@
         else
         {
             NSArray *pVws = [cell.contentView subviews];
-            int cnt = [pVws count];
+            NSUInteger cnt = [pVws count];
             for (NSUInteger i=0; i < cnt; ++i)
             {
                 [[pVws objectAtIndex:i] removeFromSuperview];
@@ -388,7 +253,7 @@
             
             UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
             CGRect textFrame;
-            label.textAlignment = UITextAlignmentLeft;
+            label.textAlignment = NSTextAlignmentLeft;
             label.font = [UIFont boldSystemFontOfSize:14];
             [cell.contentView addSubview:label];
             textFrame = CGRectMake(75, 12, 85, 25);
@@ -399,7 +264,7 @@
             UILabel* label1 = [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 75, 25)];
             NSString *secName = [secondFieldNames objectAtIndex:row];
             label1.text = secName;
-            label1.textAlignment = UITextAlignmentLeft;
+            label1.textAlignment = NSTextAlignmentLeft;
             label1.font = [UIFont boldSystemFontOfSize:14];
             [cell.contentView addSubview:label1];
             textFrame = CGRectMake(235, 12, 85, 25);
@@ -459,7 +324,7 @@
                 label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
             else
                 label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 105, 25)];
-            label.textAlignment = UITextAlignmentLeft;
+            label.textAlignment = NSTextAlignmentLeft;
             label.font = [UIFont boldSystemFontOfSize:14];
             if (row == 0)
             {
@@ -472,7 +337,7 @@
             else
                 textFrame = CGRectMake(110, 12, 170, 25);
             UILabel *textField = [[UILabel alloc] initWithFrame:textFrame];
-            textField.lineBreakMode = UILineBreakModeCharacterWrap;
+            textField.lineBreakMode = NSLineBreakByCharWrapping;
             switch (row) 
             {
                 case 0:
