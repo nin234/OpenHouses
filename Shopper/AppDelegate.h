@@ -18,6 +18,7 @@
 #import <CoreLocation/CLLocationManager.h>
 #import "KeychainItemWrapper.h"
 #import "InAppPurchase.h"
+#import "OpenHousesShareMgr.h"
 
 
 #define   PHOTOREQSOURCE_FB 1
@@ -38,6 +39,7 @@
     bool bUpgradeAlert;
     bool bUpgradeAction;
     bool bSystemAbrt;
+    bool bShrMgrStarted;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -45,6 +47,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+@property (nonatomic, retain) OpenHousesShareMgr *pShrMgr;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

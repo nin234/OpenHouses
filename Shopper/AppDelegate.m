@@ -82,6 +82,7 @@
 @synthesize inapp;
 @synthesize purchased;
 @synthesize tabBarController;
+@synthesize pShrMgr;
 
 -(void) populateOneMonth
 {
@@ -798,6 +799,13 @@
     [kvlocal setBool:YES forKey:@"Purchased"];
     if (kvstore)
         [kvstore setBool:YES forKey:@"Purchased"];
+    if (!bShrMgrStarted)
+    {
+        pShrMgr = [[OpenHousesShareMgr alloc] init];
+        [pShrMgr start];
+        bShrMgrStarted = true;
+    }
+
 }
 
 
@@ -1041,6 +1049,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    bShrMgrStarted = false;
     bFirstActive = true;
     pFlMgr = [[NSFileManager alloc] init];
     NSString *pHdir = NSHomeDirectory();
