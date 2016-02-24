@@ -15,7 +15,7 @@
 #import "SortOptionViewController.h"
 #import <sys/stat.h>
 
-const NSInteger SELECTION_INDICATOR_TAG = 54321;
+const NSInteger SELECTION_INDICATOR_TAG_SH = 54321;
 const NSInteger TEXT_LABEL_TAG = 54322;
 const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
 
@@ -515,7 +515,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
                 indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NotSelected.png"]];
                 NSLog(@"Setting image not selected\n");
             }
-            indicator.tag = SELECTION_INDICATOR_TAG;
+            indicator.tag = SELECTION_INDICATOR_TAG_SH;
             indicator.frame =
             CGRectMake(0, 0, IMAGE_SIZE, IMAGE_SIZE);
             [cell.contentView addSubview:indicator];
@@ -610,7 +610,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
     {
         UITableViewCell *cell =
         [tableView cellForRowAtIndexPath:indexPath];
-        UIImageView *indicator = (UIImageView *)[cell.contentView viewWithTag:SELECTION_INDICATOR_TAG];
+        UIImageView *indicator = (UIImageView *)[cell.contentView viewWithTag:SELECTION_INDICATOR_TAG_SH];
         NSNumber* numbr = [seletedItems objectAtIndex:indexPath.row-1];
         if ([numbr boolValue] == YES)
         {
@@ -635,7 +635,7 @@ const NSInteger EDITING_HORIZONTAL_OFFSET = 35;
                 {
                     UITableViewCell *othr_row_cell =
                     [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i+1 inSection:0]];
-                    UIImageView *othr_row_indicator = (UIImageView *)[othr_row_cell.contentView viewWithTag:SELECTION_INDICATOR_TAG];
+                    UIImageView *othr_row_indicator = (UIImageView *)[othr_row_cell.contentView viewWithTag:SELECTION_INDICATOR_TAG_SH];
                     othr_row_indicator.image = [UIImage imageNamed:@"NotSelected.png"];
                     NSLog(@"Changing image Not selected at index %lu\n", (unsigned long)i);
                     [seletedItems replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];

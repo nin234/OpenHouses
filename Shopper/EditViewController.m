@@ -15,7 +15,7 @@
 #import "MapViewController.h"
 #import <MapKit/MkMapView.h>
 #import <MapKit/MkTypes.h>
-#import "NotesViewController.h"
+#import "common/NotesViewController.h"
 #import <MapKit/MkMapView.h>
 #import <MapKit/MkTypes.h>
 #import "ImageIO/ImageIO.h"
@@ -1366,6 +1366,7 @@
         NSLog(@"Pushing Notes view controller %s %d\n" , __FILE__, __LINE__);
         //  albumContentsViewController.assetsGroup = group_;
         notesViewController.title = title;
+        notesViewController.notesTxt = pDlg.editItem.notes;
         [self.navigationController pushViewController:notesViewController animated:NO];   
     } 
     else if (indexPath.row == 4)

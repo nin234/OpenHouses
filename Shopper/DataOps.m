@@ -12,11 +12,11 @@
 #import <sys/stat.h>
 #import "MainViewController.h"
 #import "ShareItems.h"
-#import "FriendDetails.h"
+#import <sharing/FriendDetails.h>
 #import "AVFoundation/AVAssetImageGenerator.h"
 #import "AVFoundation/AVAsset.h"
 #import "AVFoundation/AVTime.h"
-#import "AddFriendViewController.h"
+#import <sharing/AddFriendViewController.h>
 
 @implementation DataOps
 @synthesize dontRefresh;

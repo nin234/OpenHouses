@@ -11,7 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "Foundation/NSOperation.h"
 #import <MapKit/MapKit.h>
-#import "MySlider.h"
+#import "common/MySlider.h"
 #include <sys/time.h>
 #import "LocalItem.h"
 

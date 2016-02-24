@@ -48,8 +48,8 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <UIKit/UIKit.h>
 
-#import "TapDetectingImageView.h"
-#import "Photo.h"
+#import "common/TapDetectingImageView.h"
+#import "common/Photo.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVAudioSession.h>
 #import <MessageUI/MFMailComposeViewController.h>

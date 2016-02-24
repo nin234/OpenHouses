@@ -8,8 +8,8 @@
 
 #import "SelectFriendViewController.h"
 #import "AppDelegate.h"
-#import "AddFriendViewController.h"
-#import "FriendDetails.h"
+#import <sharing/AddFriendViewController.h>
+#import <sharing/FriendDetails.h>
 
 const NSInteger SELECTION_INDICATOR_TAG_1 = 54321;
 const NSInteger TEXT_LABEL_TAG_1 = 54322;
@@ -144,16 +144,8 @@ const NSInteger EDITING_HORIZONTAL_OFFSET_1 = 35;
     
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     AddFriendViewController *addFrndVw = [AddFriendViewController alloc];
-    if (buttonIndex ==0)
-    {
-        addFrndVw.bInDeleteFrnd = true;
-    }
-    else
-    {
-        addFrndVw.bInDeleteFrnd = false;
-    }
     addFrndVw = [addFrndVw initWithNibName:nil bundle:nil];
-    addFrndVw.frndSelector = self;
+
     [pDlg.navViewController pushViewController:addFrndVw animated:YES];
     return;
      

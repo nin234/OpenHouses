@@ -46,7 +46,7 @@
  */
 
 #import "MapViewController.h"
-#import "AddressAnnotation.h"
+#import "common/AddressAnnotation.h"
 //#import "PlacemarkViewController.h"
 
 @implementation MapViewController

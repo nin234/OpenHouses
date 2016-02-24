@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FriendDetails.h"
+#import <sharing/FriendDetails.h>
 
 
 @interface SelectFriendViewController : UITableViewController<UIAlertViewDelegate, UIActionSheetDelegate>

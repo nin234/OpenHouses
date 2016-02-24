@@ -47,7 +47,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 #import <UIKit/UIKit.h>
 
-#import "ThumbnailImageView.h"
+#import "common/ThumbnailImageView.h"
 
 @class AlbumContentsTableViewCell;
 

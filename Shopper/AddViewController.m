@@ -12,7 +12,7 @@
 #import <MapKit/MkTypes.h>
 #import "AlbumContentsViewController.h"
 #import "MapViewController.h"
-#import "NotesViewController.h"
+#import "common/NotesViewController.h"
 
 #import <AssetsLibrary/ALAssetsGroup.h>
 #include <sys/types.h>
@@ -1486,7 +1486,7 @@ tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPat
     else if (indexPath.row == 5)
     {
         NotesViewController *notesViewController = [NotesViewController alloc];
-        notesViewController.pAddEditCntrl = self;
+        notesViewController.notesTxt = self.pNewItem.notes;
         notesViewController = [notesViewController initWithNibName:@"NotesViewController" bundle:nil];
         NSLog(@"Pushing Notes view controller %s %d\n" , __FILE__, __LINE__);
         //  albumContentsViewController.assetsGroup = group_;

@@ -47,7 +47,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 #import "PhotoDisplayViewController.h"
 #import "AppDelegate.h"
-#import "SlideScrollView.h"
+#import "common/SlideScrollView.h"
 #include <sys/stat.h>
 #include <unistd.h>
 #import <MediaPlayer/MediaPlayer.h>

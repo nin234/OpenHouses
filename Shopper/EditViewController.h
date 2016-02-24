@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MySlider.h"
+#import "common/MySlider.h"
 
 @interface EditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 {

@@ -11,12 +11,12 @@
 #import <Foundation/Foundation.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MapKit/MapKit.h>
-#import "MySlider.h"
+#import "common/MySlider.h"
 #import "AddViewController.h"
 #import "DataOps.h"
 #import "LocalItem.h"
 #import <CoreLocation/CLLocationManager.h>
-#import "KeychainItemWrapper.h"
+#import "common/KeychainItemWrapper.h"
 #import "InAppPurchase.h"
 #import "OpenHousesShareMgr.h"
 

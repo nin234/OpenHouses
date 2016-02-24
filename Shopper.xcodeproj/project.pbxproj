@@ -7,17 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB00E4D01C7AB2B900E898F7 /* libcommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB00E4CD1C7AB1BA00E898F7 /* libcommon.a */; };
 		DB02668E151342BE00A28458 /* IsSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = DB02668D151342BE00A28458 /* IsSelected.png */; };
 		DB026691151342E400A28458 /* NotSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = DB026690151342E400A28458 /* NotSelected.png */; };
 		DB0266971514211300A28458 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0266961514211300A28458 /* MessageUI.framework */; };
-		DB12150D178039EC00960FBB /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB12150C178039EC00960FBB /* KeychainItemWrapper.m */; };
-		DB12150E178039EC00960FBB /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB12150C178039EC00960FBB /* KeychainItemWrapper.m */; };
 		DB19B60615291378009B19A1 /* Record-Button-off.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B60515291378009B19A1 /* Record-Button-off.png */; };
 		DB19B6081529138D009B19A1 /* Record-Button-on.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B6071529138D009B19A1 /* Record-Button-on.png */; };
 		DB19B60B152D3125009B19A1 /* house1.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B60A152D3125009B19A1 /* house1.png */; };
 		DB19B60D152D3134009B19A1 /* house2.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B60C152D3134009B19A1 /* house2.png */; };
-		DB32A92B1782F8B100C9700B /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB32A9291782F8B100C9700B /* AddFriendViewController.m */; };
-		DB32A92C1782F8B100C9700B /* AddFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB32A92A1782F8B100C9700B /* AddFriendViewController.xib */; };
 		DB32A9301784C05C00C9700B /* SelectFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB32A92E1784C05C00C9700B /* SelectFriendViewController.m */; };
 		DB32A9311784C05C00C9700B /* SelectFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB32A92F1784C05C00C9700B /* SelectFriendViewController.xib */; };
 		DB4EC29E166B9FF200D9B1EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4EC29D166B9FF200D9B1EC /* Default.png */; };
@@ -30,11 +27,8 @@
 		DB7B77CC15099FA80020B581 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77CB15099FA80020B581 /* map.png */; };
 		DB7B77CF15099FDA0020B581 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77CE15099FDA0020B581 /* camera.png */; };
 		DB7B77D1150B5AA20020B581 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77D0150B5AA20020B581 /* note.png */; };
-		DB7B77D5150B6B610020B581 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7B77D3150B6B600020B581 /* NotesViewController.m */; };
-		DB7B77D6150B6B610020B581 /* NotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77D4150B6B610020B581 /* NotesViewController.xib */; };
 		DB7B77D8150CC5820020B581 /* camera1.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77D7150CC5820020B581 /* camera1.png */; };
 		DB7B77DA150CC5920020B581 /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77D9150CC5920020B581 /* video.png */; };
-		DB7B77DD150CE6F60020B581 /* MySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7B77DC150CE6F50020B581 /* MySlider.m */; };
 		DB7B77DF150D299E0020B581 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7B77DE150D299D0020B581 /* MobileCoreServices.framework */; };
 		DB7B77E3150D3B400020B581 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7B77E2150D3B3F0020B581 /* MediaPlayer.framework */; };
 		DB7DD0D414AF7FEB009EC45F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7DD0D314AF7FEB009EC45F /* UIKit.framework */; };
@@ -60,7 +54,6 @@
 		DB7DD11B14AF8692009EC45F /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD11914AF8692009EC45F /* MainListViewController.m */; };
 		DB7DD11C14AF8692009EC45F /* MainListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD11A14AF8692009EC45F /* MainListViewController.xib */; };
 		DB7DD11F14AF8B90009EC45F /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD11E14AF8B8F009EC45F /* Item.m */; };
-		DB8547D6178BB58400502AB6 /* FriendDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8547D5178BB58300502AB6 /* FriendDetails.m */; };
 		DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8547D8179005EA00502AB6 /* ShareItems.m */; };
 		DB91FA0016A580C300B4B7D1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91F9FF16A580C300B4B7D1 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */ = {isa = PBXBuildFile; fileRef = DB96A99C17695B6300CE6503 /* IphoneButton_White.png */; };
@@ -69,7 +62,6 @@
 		DB9934A114FADEBE00E77816 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB9934A014FADEBE00E77816 /* MapViewController.xib */; };
 		DB9934A314FAFBCC00E77816 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9934A214FAFBCC00E77816 /* MapKit.framework */; };
 		DB9934A714FD01CC00E77816 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9934A614FD01CB00E77816 /* CoreLocation.framework */; };
-		DB9934AC14FE4CC000E77816 /* AddressAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9934AB14FE4CBF00E77816 /* AddressAnnotation.m */; };
 		DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9934AE1502B25300E77816 /* SortOptionViewController.m */; };
 		DB9934B11502B25500E77816 /* SortOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB9934AF1502B25400E77816 /* SortOptionViewController.xib */; };
 		DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA22C7A14B23FDF00DAE4BF /* DisplayViewController.m */; };
@@ -79,15 +71,11 @@
 		DBA7F5BD14DF155900E5706A /* AlbumContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */; };
 		DBA7F5C014DF15C900E5706A /* AlbumContentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5BF14DF15C900E5706A /* AlbumContentsTableViewCell.m */; };
 		DBA7F5C314DF15FD00E5706A /* AlbumContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */; };
-		DBA7F5C614DF202100E5706A /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5C514DF202100E5706A /* TapDetectingImageView.m */; };
-		DBA7F5C914DF205E00E5706A /* ThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5C814DF205E00E5706A /* ThumbnailImageView.m */; };
 		DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */; };
 		DBA7F5CE14DF212C00E5706A /* PhotoDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */; };
-		DBA7F5D114E1313400E5706A /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5D014E1313400E5706A /* Photo.m */; };
 		DBA7F5D314EC412A00E5706A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D214EC412A00E5706A /* ImageIO.framework */; };
 		DBA7F5D714EC509300E5706A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D614EC509200E5706A /* CoreFoundation.framework */; };
 		DBA7F5D914EC50AA00E5706A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D814EC50AA00E5706A /* CoreFoundation.framework */; };
-		DBA7F5E414F3460800E5706A /* SlideScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5E314F3460700E5706A /* SlideScrollView.m */; };
 		DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA8685E1657D9E3008A781D /* LocalItem.m */; };
 		DBA868621658016E008A781D /* DataOps.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA868611658016E008A781D /* DataOps.m */; };
 		DBB36167150D8494007C9038 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = DBB36166150D8494007C9038 /* house.png */; };
@@ -117,6 +105,20 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		DB00E4CC1C7AB1BA00E898F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB00E4B11C7A9FF700E898F7;
+			remoteInfo = common;
+		};
+		DB00E4CE1C7AB28C00E898F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DB00E4B01C7A9FF700E898F7;
+			remoteInfo = common;
+		};
 		DB5F3EB11C70011E003DA1C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB5F3EAC1C70011E003DA1C3 /* sharing.xcodeproj */;
@@ -141,19 +143,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = common.xcodeproj; path = ../common/common.xcodeproj; sourceTree = "<group>"; };
 		DB02668D151342BE00A28458 /* IsSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IsSelected.png; path = ../Images/IsSelected.png; sourceTree = "<group>"; };
 		DB026690151342E400A28458 /* NotSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NotSelected.png; path = ../Images/NotSelected.png; sourceTree = "<group>"; };
 		DB0266961514211300A28458 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		DB12150B178039DD00960FBB /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		DB12150C178039EC00960FBB /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		DB19B60515291378009B19A1 /* Record-Button-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Record-Button-off.png"; path = "../Images/Record-Button-off.png"; sourceTree = "<group>"; };
 		DB19B6071529138D009B19A1 /* Record-Button-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Record-Button-on.png"; path = "../Images/Record-Button-on.png"; sourceTree = "<group>"; };
 		DB19B609152D0978009B19A1 /* NestQuest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NestQuest.entitlements; sourceTree = "<group>"; };
 		DB19B60A152D3125009B19A1 /* house1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house1.png; path = ../Images/house1.png; sourceTree = "<group>"; };
 		DB19B60C152D3134009B19A1 /* house2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house2.png; path = ../Images/house2.png; sourceTree = "<group>"; };
-		DB32A9281782F8B000C9700B /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
-		DB32A9291782F8B100C9700B /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
-		DB32A92A1782F8B100C9700B /* AddFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendViewController.xib; sourceTree = "<group>"; };
 		DB32A92D1784C05B00C9700B /* SelectFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectFriendViewController.h; sourceTree = "<group>"; };
 		DB32A92E1784C05C00C9700B /* SelectFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFriendViewController.m; sourceTree = "<group>"; };
 		DB32A92F1784C05C00C9700B /* SelectFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectFriendViewController.xib; sourceTree = "<group>"; };
@@ -174,13 +172,8 @@
 		DB7B77CB15099FA80020B581 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = ../Images/map.png; sourceTree = "<group>"; };
 		DB7B77CE15099FDA0020B581 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = ../Images/camera.png; sourceTree = "<group>"; };
 		DB7B77D0150B5AA20020B581 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note.png; path = ../Images/note.png; sourceTree = "<group>"; };
-		DB7B77D2150B6B600020B581 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
-		DB7B77D3150B6B600020B581 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
-		DB7B77D4150B6B610020B581 /* NotesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesViewController.xib; sourceTree = "<group>"; };
 		DB7B77D7150CC5820020B581 /* camera1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera1.png; path = ../Images/camera1.png; sourceTree = "<group>"; };
 		DB7B77D9150CC5920020B581 /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video.png; path = ../Images/video.png; sourceTree = "<group>"; };
-		DB7B77DB150CE6F30020B581 /* MySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySlider.h; sourceTree = "<group>"; };
-		DB7B77DC150CE6F50020B581 /* MySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySlider.m; sourceTree = "<group>"; };
 		DB7B77DE150D299D0020B581 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DB7B77E0150D29CA0020B581 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DB7B77E2150D3B3F0020B581 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -217,8 +210,6 @@
 		DB7DD11A14AF8692009EC45F /* MainListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListViewController.xib; sourceTree = "<group>"; };
 		DB7DD11D14AF8B8F009EC45F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		DB7DD11E14AF8B8F009EC45F /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		DB8547D4178BB58300502AB6 /* FriendDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetails.h; sourceTree = "<group>"; };
-		DB8547D5178BB58300502AB6 /* FriendDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetails.m; sourceTree = "<group>"; };
 		DB8547D7179005E800502AB6 /* ShareItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareItems.h; sourceTree = "<group>"; };
 		DB8547D8179005EA00502AB6 /* ShareItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareItems.m; sourceTree = "<group>"; };
 		DB91F9FF16A580C300B4B7D1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -231,8 +222,6 @@
 		DB9934A414FAFBE000E77816 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DB9934A614FD01CB00E77816 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DB9934A814FD01DD00E77816 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		DB9934AA14FE4CBF00E77816 /* AddressAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAnnotation.h; sourceTree = "<group>"; };
-		DB9934AB14FE4CBF00E77816 /* AddressAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAnnotation.m; sourceTree = "<group>"; };
 		DB9934AD1502B25200E77816 /* SortOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortOptionViewController.h; sourceTree = "<group>"; };
 		DB9934AE1502B25300E77816 /* SortOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortOptionViewController.m; sourceTree = "<group>"; };
 		DB9934AF1502B25400E77816 /* SortOptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortOptionViewController.xib; sourceTree = "<group>"; };
@@ -248,21 +237,13 @@
 		DBA7F5BF14DF15C900E5706A /* AlbumContentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsTableViewCell.m; sourceTree = "<group>"; };
 		DBA7F5C114DF15E300E5706A /* AlbumContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsViewController.m; sourceTree = "<group>"; };
-		DBA7F5C414DF200900E5706A /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
-		DBA7F5C514DF202100E5706A /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
-		DBA7F5C714DF204900E5706A /* ThumbnailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailImageView.h; sourceTree = "<group>"; };
-		DBA7F5C814DF205E00E5706A /* ThumbnailImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailImageView.m; sourceTree = "<group>"; };
 		DBA7F5CA14DF210200E5706A /* PhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDisplayViewController.h; sourceTree = "<group>"; };
 		DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDisplayViewController.m; sourceTree = "<group>"; };
 		DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDisplayViewController.xib; sourceTree = "<group>"; };
-		DBA7F5CF14E1313200E5706A /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		DBA7F5D014E1313400E5706A /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		DBA7F5D214EC412A00E5706A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DBA7F5D414EC414B00E5706A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DBA7F5D614EC509200E5706A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		DBA7F5D814EC50AA00E5706A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreFoundation.framework; sourceTree = "<group>"; };
-		DBA7F5E214F3460500E5706A /* SlideScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideScrollView.h; sourceTree = "<group>"; };
-		DBA7F5E314F3460700E5706A /* SlideScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideScrollView.m; sourceTree = "<group>"; };
 		DBA8685D1657D9E3008A781D /* LocalItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalItem.h; sourceTree = "<group>"; };
 		DBA8685E1657D9E3008A781D /* LocalItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalItem.m; sourceTree = "<group>"; };
 		DBA868601658016D008A781D /* DataOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOps.h; sourceTree = "<group>"; };
@@ -291,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB00E4D01C7AB2B900E898F7 /* libcommon.a in Frameworks */,
 				DB5F3EB31C70012D003DA1C3 /* libsharing.a in Frameworks */,
 				DBC096F91AA23B29009C8389 /* StoreKit.framework in Frameworks */,
 				DBBFAE571781B04300A07BA4 /* Security.framework in Frameworks */,
@@ -327,6 +309,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB00E4C81C7AB1BA00E898F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB00E4CD1C7AB1BA00E898F7 /* libcommon.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DB5F3EAD1C70011E003DA1C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +328,7 @@
 		DB7DD0C414AF7FEB009EC45F = {
 			isa = PBXGroup;
 			children = (
+				DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */,
 				DB5F3EAC1C70011E003DA1C3 /* sharing.xcodeproj */,
 				DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */,
 				DB7B77E2150D3B3F0020B581 /* MediaPlayer.framework */,
@@ -397,14 +388,6 @@
 				DB19B609152D0978009B19A1 /* NestQuest.entitlements */,
 				DB9934B615046F2800E77816 /* Shopper.entitlements */,
 				DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */,
-				DBA7F5E214F3460500E5706A /* SlideScrollView.h */,
-				DBA7F5E314F3460700E5706A /* SlideScrollView.m */,
-				DBA7F5CF14E1313200E5706A /* Photo.h */,
-				DBA7F5D014E1313400E5706A /* Photo.m */,
-				DBA7F5C814DF205E00E5706A /* ThumbnailImageView.m */,
-				DBA7F5C714DF204900E5706A /* ThumbnailImageView.h */,
-				DBA7F5C514DF202100E5706A /* TapDetectingImageView.m */,
-				DBA7F5C414DF200900E5706A /* TapDetectingImageView.h */,
 				DBA7F5BF14DF15C900E5706A /* AlbumContentsTableViewCell.m */,
 				DBA7F5BE14DF15AF00E5706A /* AlbumContentsTableViewCell.h */,
 				DBA7F5BA14DF151A00E5706A /* AlbumContentsTableViewCell.xib */,
@@ -412,29 +395,17 @@
 				DBA7F5CA14DF210200E5706A /* PhotoDisplayViewController.h */,
 				DB8547D7179005E800502AB6 /* ShareItems.h */,
 				DB8547D8179005EA00502AB6 /* ShareItems.m */,
-				DB8547D4178BB58300502AB6 /* FriendDetails.h */,
-				DB8547D5178BB58300502AB6 /* FriendDetails.m */,
 				DB32A92D1784C05B00C9700B /* SelectFriendViewController.h */,
 				DB32A92E1784C05C00C9700B /* SelectFriendViewController.m */,
 				DB32A92F1784C05C00C9700B /* SelectFriendViewController.xib */,
-				DB7B77D2150B6B600020B581 /* NotesViewController.h */,
-				DB7B77D3150B6B600020B581 /* NotesViewController.m */,
-				DB7B77D4150B6B610020B581 /* NotesViewController.xib */,
-				DB12150C178039EC00960FBB /* KeychainItemWrapper.m */,
-				DB12150B178039DD00960FBB /* KeychainItemWrapper.h */,
 				DBBFAE5A17823C8C00A07BA4 /* Constants.h */,
-				DB32A92A1782F8B100C9700B /* AddFriendViewController.xib */,
 				DBBFAE5B17823C8D00A07BA4 /* Constants.m */,
 				DB7DD11A14AF8692009EC45F /* MainListViewController.xib */,
 				DB9934AF1502B25400E77816 /* SortOptionViewController.xib */,
 				DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */,
 				DB7DD11514AF8427009EC45F /* EditViewController.xib */,
-				DB7B77DB150CE6F30020B581 /* MySlider.h */,
-				DB7B77DC150CE6F50020B581 /* MySlider.m */,
 				DB9934A014FADEBE00E77816 /* MapViewController.xib */,
 				DB99349E14FADEA600E77816 /* MapViewController.m */,
-				DB9934AA14FE4CBF00E77816 /* AddressAnnotation.h */,
-				DB9934AB14FE4CBF00E77816 /* AddressAnnotation.m */,
 				DB99349D14FADE9900E77816 /* MapViewController.h */,
 				DB7DD11014AF83D9009EC45F /* AddViewController.xib */,
 				DB7DD10A14AF80B1009EC45F /* MainViewController.xib */,
@@ -443,11 +414,9 @@
 				DB7DD11D14AF8B8F009EC45F /* Item.h */,
 				DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */,
 				DBA8685D1657D9E3008A781D /* LocalItem.h */,
-				DB32A9281782F8B000C9700B /* AddFriendViewController.h */,
 				DBA7F5C114DF15E300E5706A /* AlbumContentsViewController.h */,
 				DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */,
 				DB7DD11314AF8426009EC45F /* EditViewController.h */,
-				DB32A9291782F8B100C9700B /* AddFriendViewController.m */,
 				DBA22C7914B23FDF00DAE4BF /* DisplayViewController.h */,
 				DBA22C7A14B23FDF00DAE4BF /* DisplayViewController.m */,
 				DB7DD10E14AF83D9009EC45F /* AddViewController.h */,
@@ -555,6 +524,7 @@
 				DB4EC2A1166E280F00D9B1EC /* PBXBuildRule */,
 			);
 			dependencies = (
+				DB00E4CF1C7AB28C00E898F7 /* PBXTargetDependency */,
 				DB5F3EB51C700147003DA1C3 /* PBXTargetDependency */,
 			);
 			name = OpenHouses;
@@ -612,6 +582,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = DB00E4C81C7AB1BA00E898F7 /* Products */;
+					ProjectRef = DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */;
+				},
+				{
 					ProductGroup = DB5F3EAD1C70011E003DA1C3 /* Products */;
 					ProjectRef = DB5F3EAC1C70011E003DA1C3 /* sharing.xcodeproj */;
 				},
@@ -625,6 +599,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		DB00E4CD1C7AB1BA00E898F7 /* libcommon.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcommon.a;
+			remoteRef = DB00E4CC1C7AB1BA00E898F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		DB5F3EB21C70011E003DA1C3 /* libsharing.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -655,7 +636,6 @@
 				DB7B77CC15099FA80020B581 /* map.png in Resources */,
 				DB7B77CF15099FDA0020B581 /* camera.png in Resources */,
 				DB7B77D1150B5AA20020B581 /* note.png in Resources */,
-				DB7B77D6150B6B610020B581 /* NotesViewController.xib in Resources */,
 				DB7B77D8150CC5820020B581 /* camera1.png in Resources */,
 				DB7B77DA150CC5920020B581 /* video.png in Resources */,
 				DBB36167150D8494007C9038 /* house.png in Resources */,
@@ -670,7 +650,6 @@
 				DB598BCA167BE9DE0073CB2A /* Default-568h@2x.png in Resources */,
 				DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */,
 				DB96A99F17695B7800CE6503 /* IphoneButton_Green.png in Resources */,
-				DB32A92C1782F8B100C9700B /* AddFriendViewController.xib in Resources */,
 				DB32A9311784C05C00C9700B /* SelectFriendViewController.xib in Resources */,
 				DBFF131117CB82510096DB2B /* Icon.png in Resources */,
 				DBFF131317CB82630096DB2B /* Icon@2x.png in Resources */,
@@ -721,26 +700,16 @@
 				DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */,
 				DBA7F5C014DF15C900E5706A /* AlbumContentsTableViewCell.m in Sources */,
 				DBA7F5C314DF15FD00E5706A /* AlbumContentsViewController.m in Sources */,
-				DBA7F5C614DF202100E5706A /* TapDetectingImageView.m in Sources */,
-				DBA7F5C914DF205E00E5706A /* ThumbnailImageView.m in Sources */,
 				DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */,
-				DBA7F5D114E1313400E5706A /* Photo.m in Sources */,
-				DBA7F5E414F3460800E5706A /* SlideScrollView.m in Sources */,
 				DB99349F14FADEA600E77816 /* MapViewController.m in Sources */,
-				DB9934AC14FE4CC000E77816 /* AddressAnnotation.m in Sources */,
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
-				DB7B77D5150B6B610020B581 /* NotesViewController.m in Sources */,
-				DB7B77DD150CE6F60020B581 /* MySlider.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
 				DB5F3ED51C720E19003DA1C3 /* HomeViewController.m in Sources */,
 				DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */,
 				DBA868621658016E008A781D /* DataOps.m in Sources */,
-				DB12150D178039EC00960FBB /* KeychainItemWrapper.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
-				DB32A92B1782F8B100C9700B /* AddFriendViewController.m in Sources */,
 				DB32A9301784C05C00C9700B /* SelectFriendViewController.m in Sources */,
 				DBC097031AA2C2D6009C8389 /* InAppPurchase.m in Sources */,
-				DB8547D6178BB58400502AB6 /* FriendDetails.m in Sources */,
 				DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,13 +719,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7DD0FF14AF7FEC009EC45F /* ShopperTests.m in Sources */,
-				DB12150E178039EC00960FBB /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DB00E4CF1C7AB28C00E898F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = common;
+			targetProxy = DB00E4CE1C7AB28C00E898F7 /* PBXContainerItemProxy */;
+		};
 		DB5F3EB51C700147003DA1C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = sharing;
@@ -894,11 +867,13 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rekhaninan.${PRODUCT_NAME}";
 				PRODUCT_NAME = OpenHouses;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = /Users/nin234/projects/common;
 				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;
 			};
@@ -919,7 +894,7 @@
 				GCC_PREFIX_HEADER = "Shopper/Shopper-Prefix.pch";
 				GCC_SHORT_ENUMS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				"HEADER_SEARCH_PATHS[arch=*]" = /Users/nin234/projects/sharing;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				"INFOPLIST_PREPROCESSOR_DEFINITIONS[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
