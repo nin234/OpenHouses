@@ -20,7 +20,6 @@
 		DB4EC29E166B9FF200D9B1EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4EC29D166B9FF200D9B1EC /* Default.png */; };
 		DB598BCA167BE9DE0073CB2A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB598BC9167BE9DE0073CB2A /* Default-568h@2x.png */; };
 		DB5F3EB31C70012D003DA1C3 /* libsharing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5F3EB21C70011E003DA1C3 /* libsharing.a */; };
-		DB5F3ED51C720E19003DA1C3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5F3ED41C720E19003DA1C3 /* HomeViewController.m */; };
 		DB5F3EF81C74A239003DA1C3 /* OpenHousesDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */; };
 		DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5F3EFB1C74A734003DA1C3 /* OpenHousesShareMgr.m */; };
 		DB62BF1715E71CD000799582 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB62BF1615E71CD000799582 /* Default@2x.png */; };
@@ -153,8 +152,6 @@
 		DB4EC29D166B9FF200D9B1EC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Images/Default.png; sourceTree = "<group>"; };
 		DB598BC9167BE9DE0073CB2A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB5F3EAC1C70011E003DA1C3 /* sharing.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sharing.xcodeproj; path = ../sharing/sharing.xcodeproj; sourceTree = "<group>"; };
-		DB5F3ED31C720E19003DA1C3 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		DB5F3ED41C720E19003DA1C3 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenHousesDecoder.h; sourceTree = "<group>"; };
 		DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenHousesDecoder.m; sourceTree = "<group>"; };
 		DB5F3EFA1C74A734003DA1C3 /* OpenHousesShareMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenHousesShareMgr.h; sourceTree = "<group>"; };
@@ -406,8 +403,6 @@
 				DB7DD11814AF8692009EC45F /* MainListViewController.h */,
 				DB9934AE1502B25300E77816 /* SortOptionViewController.m */,
 				DB7DD0E414AF7FEB009EC45F /* AppDelegate.h */,
-				DB5F3ED31C720E19003DA1C3 /* HomeViewController.h */,
-				DB5F3ED41C720E19003DA1C3 /* HomeViewController.m */,
 				DB7DD0E514AF7FEB009EC45F /* AppDelegate.m */,
 				DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */,
 				DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */,
@@ -677,7 +672,6 @@
 				DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */,
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
-				DB5F3ED51C720E19003DA1C3 /* HomeViewController.m in Sources */,
 				DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */,
 				DBA868621658016E008A781D /* DataOps.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
