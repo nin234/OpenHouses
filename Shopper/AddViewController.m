@@ -11,7 +11,7 @@
 #import <MapKit/MkMapView.h>
 #import <MapKit/MkTypes.h>
 #import "AlbumContentsViewController.h"
-#import "MapViewController.h"
+#import "common/MapViewController.h"
 #import "common/NotesViewController.h"
 
 #import <AssetsLibrary/ALAssetsGroup.h>
@@ -28,7 +28,7 @@
 #import "AVFoundation/AVTime.h"
 #import "CoreMedia/CMTime.h"
 #import "MainViewController.h"
-#import "textdefs.h"
+#import "common/textdefs.h"
 
 
 

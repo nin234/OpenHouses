@@ -10,7 +10,7 @@
 #import "AlbumContentsViewController.h"
 #import "DisplayViewController.h"
 #import "AppDelegate.h"
-#import "MapViewController.h"
+#import "common/MapViewController.h"
 #include <sys/types.h>
 #include <dirent.h>
 #include "string.h"

@@ -12,7 +12,7 @@
 #import "MainViewController.h"
 #include <sys/types.h>
 #include <dirent.h>
-#import "MapViewController.h"
+#import "common/MapViewController.h"
 #import <MapKit/MkMapView.h>
 #import <MapKit/MkTypes.h>
 #import "common/NotesViewController.h"
@@ -28,7 +28,7 @@
 #import "AVFoundation/AVAsset.h"
 #import "AVFoundation/AVTime.h"
 #import "CoreMedia/CMTime.h"
-#import "textdefs.h"
+#import "common/textdefs.h"
 
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)

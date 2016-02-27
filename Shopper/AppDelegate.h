@@ -17,7 +17,7 @@
 #import "LocalItem.h"
 #import <CoreLocation/CLLocationManager.h>
 #import "common/KeychainItemWrapper.h"
-#import "InAppPurchase.h"
+#import "common/InAppPurchase.h"
 #import "OpenHousesShareMgr.h"
 
 
@@ -26,7 +26,7 @@
 #define PHOTOREQSOURCE_SHARE 2
 #define AWS_OPENHOUSES_APPID 2
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate, InAppPurchaseDelegate>
 {
     NSMetadataQuery *query;
     MKMapView    *mapView;

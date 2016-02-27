@@ -58,8 +58,6 @@
 		DB91FA0016A580C300B4B7D1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91F9FF16A580C300B4B7D1 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */ = {isa = PBXBuildFile; fileRef = DB96A99C17695B6300CE6503 /* IphoneButton_White.png */; };
 		DB96A99F17695B7800CE6503 /* IphoneButton_Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DB96A99E17695B7800CE6503 /* IphoneButton_Green.png */; };
-		DB99349F14FADEA600E77816 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB99349E14FADEA600E77816 /* MapViewController.m */; };
-		DB9934A114FADEBE00E77816 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB9934A014FADEBE00E77816 /* MapViewController.xib */; };
 		DB9934A314FAFBCC00E77816 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9934A214FAFBCC00E77816 /* MapKit.framework */; };
 		DB9934A714FD01CC00E77816 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9934A614FD01CB00E77816 /* CoreLocation.framework */; };
 		DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9934AE1502B25300E77816 /* SortOptionViewController.m */; };
@@ -67,9 +65,7 @@
 		DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA22C7A14B23FDF00DAE4BF /* DisplayViewController.m */; };
 		DBA22C7D14B23FDF00DAE4BF /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */; };
 		DBA7F5A714D181F800E5706A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5A614D181F800E5706A /* AssetsLibrary.framework */; };
-		DBA7F5BB14DF151A00E5706A /* AlbumContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5BA14DF151A00E5706A /* AlbumContentsTableViewCell.xib */; };
 		DBA7F5BD14DF155900E5706A /* AlbumContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */; };
-		DBA7F5C014DF15C900E5706A /* AlbumContentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5BF14DF15C900E5706A /* AlbumContentsTableViewCell.m */; };
 		DBA7F5C314DF15FD00E5706A /* AlbumContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */; };
 		DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */; };
 		DBA7F5CE14DF212C00E5706A /* PhotoDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */; };
@@ -83,7 +79,6 @@
 		DBBFAE571781B04300A07BA4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBFAE561781B04300A07BA4 /* Security.framework */; };
 		DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBFAE5B17823C8D00A07BA4 /* Constants.m */; };
 		DBC096F91AA23B29009C8389 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC096F81AA23B29009C8389 /* StoreKit.framework */; };
-		DBC097031AA2C2D6009C8389 /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC097021AA2C2D6009C8389 /* InAppPurchase.m */; };
 		DBD2CD0514B965CD00CF26C2 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = DBD2CD0414B965CD00CF26C2 /* Images */; };
 		DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2CD0614B96B1800CF26C2 /* delete_button.png */; };
 		DBED47FC1537C8BD00BCBFB9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */; };
@@ -215,9 +210,6 @@
 		DB91F9FF16A580C300B4B7D1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		DB96A99C17695B6300CE6503 /* IphoneButton_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IphoneButton_White.png; sourceTree = "<group>"; };
 		DB96A99E17695B7800CE6503 /* IphoneButton_Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IphoneButton_Green.png; sourceTree = "<group>"; };
-		DB99349D14FADE9900E77816 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		DB99349E14FADEA600E77816 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		DB9934A014FADEBE00E77816 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		DB9934A214FAFBCC00E77816 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DB9934A414FAFBE000E77816 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DB9934A614FD01CB00E77816 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -231,10 +223,7 @@
 		DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
 		DBA7F5A614D181F800E5706A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		DBA7F5A914D1820600E5706A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		DBA7F5BA14DF151A00E5706A /* AlbumContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsTableViewCell.xib; sourceTree = "<group>"; };
 		DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsViewController.xib; sourceTree = "<group>"; };
-		DBA7F5BE14DF15AF00E5706A /* AlbumContentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentsTableViewCell.h; sourceTree = "<group>"; };
-		DBA7F5BF14DF15C900E5706A /* AlbumContentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsTableViewCell.m; sourceTree = "<group>"; };
 		DBA7F5C114DF15E300E5706A /* AlbumContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsViewController.m; sourceTree = "<group>"; };
 		DBA7F5CA14DF210200E5706A /* PhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDisplayViewController.h; sourceTree = "<group>"; };
@@ -254,11 +243,8 @@
 		DBBFAE5A17823C8C00A07BA4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DBBFAE5B17823C8D00A07BA4 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DBC096F81AA23B29009C8389 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		DBC097011AA2C2D6009C8389 /* InAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchase.h; sourceTree = "<group>"; };
-		DBC097021AA2C2D6009C8389 /* InAppPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchase.m; sourceTree = "<group>"; };
 		DBD2CD0414B965CD00CF26C2 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		DBD2CD0614B96B1800CF26C2 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_button.png; path = ../Images/delete_button.png; sourceTree = "<group>"; };
-		DBE930B31A9F7FF300496161 /* textdefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textdefs.h; sourceTree = "<group>"; };
 		DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DBED47FD1537C8DF00BCBFB9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DBFF131017CB824E0096DB2B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -388,9 +374,6 @@
 				DB19B609152D0978009B19A1 /* NestQuest.entitlements */,
 				DB9934B615046F2800E77816 /* Shopper.entitlements */,
 				DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */,
-				DBA7F5BF14DF15C900E5706A /* AlbumContentsTableViewCell.m */,
-				DBA7F5BE14DF15AF00E5706A /* AlbumContentsTableViewCell.h */,
-				DBA7F5BA14DF151A00E5706A /* AlbumContentsTableViewCell.xib */,
 				DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */,
 				DBA7F5CA14DF210200E5706A /* PhotoDisplayViewController.h */,
 				DB8547D7179005E800502AB6 /* ShareItems.h */,
@@ -404,9 +387,6 @@
 				DB9934AF1502B25400E77816 /* SortOptionViewController.xib */,
 				DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */,
 				DB7DD11514AF8427009EC45F /* EditViewController.xib */,
-				DB9934A014FADEBE00E77816 /* MapViewController.xib */,
-				DB99349E14FADEA600E77816 /* MapViewController.m */,
-				DB99349D14FADE9900E77816 /* MapViewController.h */,
 				DB7DD11014AF83D9009EC45F /* AddViewController.xib */,
 				DB7DD10A14AF80B1009EC45F /* MainViewController.xib */,
 				DB9934AD1502B25200E77816 /* SortOptionViewController.h */,
@@ -431,10 +411,7 @@
 				DB7DD0E514AF7FEB009EC45F /* AppDelegate.m */,
 				DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */,
 				DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */,
-				DBC097011AA2C2D6009C8389 /* InAppPurchase.h */,
-				DBC097021AA2C2D6009C8389 /* InAppPurchase.m */,
 				DB7DD11914AF8692009EC45F /* MainListViewController.m */,
-				DBE930B31A9F7FF300496161 /* textdefs.h */,
 				DB7DD10814AF80B1009EC45F /* MainViewController.h */,
 				DB7DD10914AF80B1009EC45F /* MainViewController.m */,
 				DBA868601658016D008A781D /* DataOps.h */,
@@ -628,10 +605,8 @@
 				DBA22C7D14B23FDF00DAE4BF /* DisplayViewController.xib in Resources */,
 				DBD2CD0514B965CD00CF26C2 /* Images in Resources */,
 				DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */,
-				DBA7F5BB14DF151A00E5706A /* AlbumContentsTableViewCell.xib in Resources */,
 				DBA7F5BD14DF155900E5706A /* AlbumContentsViewController.xib in Resources */,
 				DBA7F5CE14DF212C00E5706A /* PhotoDisplayViewController.xib in Resources */,
-				DB9934A114FADEBE00E77816 /* MapViewController.xib in Resources */,
 				DB9934B11502B25500E77816 /* SortOptionViewController.xib in Resources */,
 				DB7B77CC15099FA80020B581 /* map.png in Resources */,
 				DB7B77CF15099FDA0020B581 /* camera.png in Resources */,
@@ -698,10 +673,8 @@
 				E9ECCBB51C667E75004D68E9 /* OpenHousesTranslator.m in Sources */,
 				DB7DD11F14AF8B90009EC45F /* Item.m in Sources */,
 				DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */,
-				DBA7F5C014DF15C900E5706A /* AlbumContentsTableViewCell.m in Sources */,
 				DBA7F5C314DF15FD00E5706A /* AlbumContentsViewController.m in Sources */,
 				DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */,
-				DB99349F14FADEA600E77816 /* MapViewController.m in Sources */,
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
 				DB5F3ED51C720E19003DA1C3 /* HomeViewController.m in Sources */,
@@ -709,7 +682,6 @@
 				DBA868621658016E008A781D /* DataOps.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
 				DB32A9301784C05C00C9700B /* SelectFriendViewController.m in Sources */,
-				DBC097031AA2C2D6009C8389 /* InAppPurchase.m in Sources */,
 				DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

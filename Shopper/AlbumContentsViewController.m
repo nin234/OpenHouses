@@ -47,7 +47,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 #import "AlbumContentsViewController.h"
 
-#import "AlbumContentsTableViewCell.h"
+#import "common/AlbumContentsTableViewCell.h"
 #import "PhotoDisplayViewController.h"
 #import "AppDelegate.h"
 #include <sys/types.h>

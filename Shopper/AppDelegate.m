@@ -1077,6 +1077,7 @@
     bSystemAbrt = false;
     NSLog(@"Launching openhouses");
     inapp = [[InAppPurchase alloc] init];
+    [inapp setDelegate:self];
     [[SKPaymentQueue defaultQueue] addTransactionObserver:inapp];
     NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
     [self populateOneMonth];

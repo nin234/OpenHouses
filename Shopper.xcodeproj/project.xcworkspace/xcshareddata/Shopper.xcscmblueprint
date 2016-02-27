@@ -5,12 +5,14 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "6745BCB6DFBE8102F9E5BFA16A2702BA8F8B897D" : 0,
-    "9657CDFAF5560EDBEC5BD15EACCA678C80183690" : 0
+    "9657CDFAF5560EDBEC5BD15EACCA678C80183690" : 0,
+    "BCF880535D59163224321F78BEAAABB568CD1E59" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FB23F72E-3329-468D-80B5-B54BBFCEB581",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "6745BCB6DFBE8102F9E5BFA16A2702BA8F8B897D" : "Shopper\/",
-    "9657CDFAF5560EDBEC5BD15EACCA678C80183690" : "sharing\/"
+    "9657CDFAF5560EDBEC5BD15EACCA678C80183690" : "sharing\/",
+    "BCF880535D59163224321F78BEAAABB568CD1E59" : "common\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Shopper",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -25,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/nin234\/Dropbox\/git\/sharing",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9657CDFAF5560EDBEC5BD15EACCA678C80183690"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/nin234\/Dropbox\/git\/common\/",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BCF880535D59163224321F78BEAAABB568CD1E59"
     }
   ]
 }

@@ -48,7 +48,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <UIKit/UIKit.h>
 
-#import "AlbumContentsTableViewCell.h"
+#import "common/AlbumContentsTableViewCell.h"
 
 @interface AlbumContentsViewController : UITableViewController <AlbumContentsTableViewCellSelectionDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
 //    ALAssetsGroup *assetsGroup;
