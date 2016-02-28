@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "common/MySlider.h"
+#import "common/AlbumContentsViewController.h"
 
-@interface EditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface EditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, AlbumContentsViewControllerDelegate>
 {
     bool bInPicCapture;
     NSMetadataQuery *query;

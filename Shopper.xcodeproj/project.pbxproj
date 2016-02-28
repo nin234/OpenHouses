@@ -15,8 +15,6 @@
 		DB19B6081529138D009B19A1 /* Record-Button-on.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B6071529138D009B19A1 /* Record-Button-on.png */; };
 		DB19B60B152D3125009B19A1 /* house1.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B60A152D3125009B19A1 /* house1.png */; };
 		DB19B60D152D3134009B19A1 /* house2.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B60C152D3134009B19A1 /* house2.png */; };
-		DB32A9301784C05C00C9700B /* SelectFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB32A92E1784C05C00C9700B /* SelectFriendViewController.m */; };
-		DB32A9311784C05C00C9700B /* SelectFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB32A92F1784C05C00C9700B /* SelectFriendViewController.xib */; };
 		DB4EC29E166B9FF200D9B1EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4EC29D166B9FF200D9B1EC /* Default.png */; };
 		DB598BCA167BE9DE0073CB2A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB598BC9167BE9DE0073CB2A /* Default-568h@2x.png */; };
 		DB5F3EB31C70012D003DA1C3 /* libsharing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5F3EB21C70011E003DA1C3 /* libsharing.a */; };
@@ -64,10 +62,6 @@
 		DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA22C7A14B23FDF00DAE4BF /* DisplayViewController.m */; };
 		DBA22C7D14B23FDF00DAE4BF /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */; };
 		DBA7F5A714D181F800E5706A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5A614D181F800E5706A /* AssetsLibrary.framework */; };
-		DBA7F5BD14DF155900E5706A /* AlbumContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */; };
-		DBA7F5C314DF15FD00E5706A /* AlbumContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */; };
-		DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */; };
-		DBA7F5CE14DF212C00E5706A /* PhotoDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */; };
 		DBA7F5D314EC412A00E5706A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D214EC412A00E5706A /* ImageIO.framework */; };
 		DBA7F5D714EC509300E5706A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D614EC509200E5706A /* CoreFoundation.framework */; };
 		DBA7F5D914EC50AA00E5706A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D814EC50AA00E5706A /* CoreFoundation.framework */; };
@@ -146,9 +140,6 @@
 		DB19B609152D0978009B19A1 /* NestQuest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NestQuest.entitlements; sourceTree = "<group>"; };
 		DB19B60A152D3125009B19A1 /* house1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house1.png; path = ../Images/house1.png; sourceTree = "<group>"; };
 		DB19B60C152D3134009B19A1 /* house2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house2.png; path = ../Images/house2.png; sourceTree = "<group>"; };
-		DB32A92D1784C05B00C9700B /* SelectFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectFriendViewController.h; sourceTree = "<group>"; };
-		DB32A92E1784C05C00C9700B /* SelectFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFriendViewController.m; sourceTree = "<group>"; };
-		DB32A92F1784C05C00C9700B /* SelectFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectFriendViewController.xib; sourceTree = "<group>"; };
 		DB4EC29D166B9FF200D9B1EC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Images/Default.png; sourceTree = "<group>"; };
 		DB598BC9167BE9DE0073CB2A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB5F3EAC1C70011E003DA1C3 /* sharing.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sharing.xcodeproj; path = ../sharing/sharing.xcodeproj; sourceTree = "<group>"; };
@@ -220,12 +211,6 @@
 		DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
 		DBA7F5A614D181F800E5706A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		DBA7F5A914D1820600E5706A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsViewController.xib; sourceTree = "<group>"; };
-		DBA7F5C114DF15E300E5706A /* AlbumContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsViewController.m; sourceTree = "<group>"; };
-		DBA7F5CA14DF210200E5706A /* PhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDisplayViewController.h; sourceTree = "<group>"; };
-		DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDisplayViewController.m; sourceTree = "<group>"; };
-		DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDisplayViewController.xib; sourceTree = "<group>"; };
 		DBA7F5D214EC412A00E5706A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DBA7F5D414EC414B00E5706A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DBA7F5D614EC509200E5706A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -370,14 +355,8 @@
 				DB62BF1015E05BB600799582 /* OpenHouse.entitlements */,
 				DB19B609152D0978009B19A1 /* NestQuest.entitlements */,
 				DB9934B615046F2800E77816 /* Shopper.entitlements */,
-				DBA7F5CD14DF212C00E5706A /* PhotoDisplayViewController.xib */,
-				DBA7F5BC14DF155800E5706A /* AlbumContentsViewController.xib */,
-				DBA7F5CA14DF210200E5706A /* PhotoDisplayViewController.h */,
 				DB8547D7179005E800502AB6 /* ShareItems.h */,
 				DB8547D8179005EA00502AB6 /* ShareItems.m */,
-				DB32A92D1784C05B00C9700B /* SelectFriendViewController.h */,
-				DB32A92E1784C05C00C9700B /* SelectFriendViewController.m */,
-				DB32A92F1784C05C00C9700B /* SelectFriendViewController.xib */,
 				DBBFAE5A17823C8C00A07BA4 /* Constants.h */,
 				DBBFAE5B17823C8D00A07BA4 /* Constants.m */,
 				DB7DD11A14AF8692009EC45F /* MainListViewController.xib */,
@@ -389,10 +368,7 @@
 				DB9934AD1502B25200E77816 /* SortOptionViewController.h */,
 				DB7DD0E714AF7FEB009EC45F /* Shopper.xcdatamodeld */,
 				DB7DD11D14AF8B8F009EC45F /* Item.h */,
-				DBA7F5CB14DF211E00E5706A /* PhotoDisplayViewController.m */,
 				DBA8685D1657D9E3008A781D /* LocalItem.h */,
-				DBA7F5C114DF15E300E5706A /* AlbumContentsViewController.h */,
-				DBA7F5C214DF15FD00E5706A /* AlbumContentsViewController.m */,
 				DB7DD11314AF8426009EC45F /* EditViewController.h */,
 				DBA22C7914B23FDF00DAE4BF /* DisplayViewController.h */,
 				DBA22C7A14B23FDF00DAE4BF /* DisplayViewController.m */,
@@ -600,8 +576,6 @@
 				DBA22C7D14B23FDF00DAE4BF /* DisplayViewController.xib in Resources */,
 				DBD2CD0514B965CD00CF26C2 /* Images in Resources */,
 				DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */,
-				DBA7F5BD14DF155900E5706A /* AlbumContentsViewController.xib in Resources */,
-				DBA7F5CE14DF212C00E5706A /* PhotoDisplayViewController.xib in Resources */,
 				DB9934B11502B25500E77816 /* SortOptionViewController.xib in Resources */,
 				DB7B77CC15099FA80020B581 /* map.png in Resources */,
 				DB7B77CF15099FDA0020B581 /* camera.png in Resources */,
@@ -620,7 +594,6 @@
 				DB598BCA167BE9DE0073CB2A /* Default-568h@2x.png in Resources */,
 				DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */,
 				DB96A99F17695B7800CE6503 /* IphoneButton_Green.png in Resources */,
-				DB32A9311784C05C00C9700B /* SelectFriendViewController.xib in Resources */,
 				DBFF131117CB82510096DB2B /* Icon.png in Resources */,
 				DBFF131317CB82630096DB2B /* Icon@2x.png in Resources */,
 			);
@@ -668,14 +641,11 @@
 				E9ECCBB51C667E75004D68E9 /* OpenHousesTranslator.m in Sources */,
 				DB7DD11F14AF8B90009EC45F /* Item.m in Sources */,
 				DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */,
-				DBA7F5C314DF15FD00E5706A /* AlbumContentsViewController.m in Sources */,
-				DBA7F5CC14DF211F00E5706A /* PhotoDisplayViewController.m in Sources */,
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
 				DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */,
 				DBA868621658016E008A781D /* DataOps.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
-				DB32A9301784C05C00C9700B /* SelectFriendViewController.m in Sources */,
 				DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

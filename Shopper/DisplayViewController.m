@@ -7,7 +7,7 @@
 //
 
 
-#import "AlbumContentsViewController.h"
+#import "common/AlbumContentsViewController.h"
 #import "DisplayViewController.h"
 #import "AppDelegate.h"
 #import "common/MapViewController.h"
@@ -514,6 +514,9 @@
       //  albumContentsViewController.assetsGroup = group_;
         
         [albumContentsViewController setDelphoto:false];
+        [albumContentsViewController setPFlMgr:pDlg.pFlMgr];
+        [albumContentsViewController setPAlName:pDlg.pAlName];
+        [albumContentsViewController setNavViewController:pDlg.navViewController];
         [self.navigationController pushViewController:albumContentsViewController animated:NO];
         
         [albumContentsViewController  setTitle:title];

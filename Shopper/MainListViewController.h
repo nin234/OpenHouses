@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlbumContentsViewController.h"
+#import "common/AlbumContentsViewController.h"
 #import "LocalItem.h"
 
-@interface MainListViewController : UITableViewController
+@interface MainListViewController : UITableViewController<AlbumContentsViewControllerDelegate>
 {
     NSThread *updateThread;
     int photoreqsource;

@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import <MapKit/MkMapView.h>
 #import <MapKit/MkTypes.h>
-#import "AlbumContentsViewController.h"
+#import "common/AlbumContentsViewController.h"
 #import "common/MapViewController.h"
 #import "common/NotesViewController.h"
 
@@ -1457,14 +1457,16 @@ tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPat
         NSLog(@"Pushing AlbumContents view controller %s %d\n" , __FILE__, __LINE__);
         //  albumContentsViewController.assetsGroup = group_;
         [albumContentsViewController setDelphoto:true];
-        
+        [albumContentsViewController setPFlMgr:pDlg.pFlMgr];
+        [albumContentsViewController setPAlName:pDlg.pAlName];
+        [albumContentsViewController setNavViewController:pDlg.navViewController];
         [self.navigationController pushViewController:albumContentsViewController animated:NO];
      
         [albumContentsViewController  setTitle:title];
         pDlg.navViewController.navigationBar.topItem.title = [NSString stringWithString:title];
         UIBarButtonItem *pBarItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:albumContentsViewController action:@selector(camerarollAction) ];
         pDlg.navViewController.navigationBar.topItem.rightBarButtonItem = pBarItem1;
-        albumContentsViewController.pAddEditCntrl = self;
+        
     }
     else if (indexPath.row == 7)
     {

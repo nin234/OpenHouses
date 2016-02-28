@@ -7,7 +7,6 @@
 //
 
 #import "EditViewController.h"
-#import "AlbumContentsViewController.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #include <sys/types.h>
@@ -1339,9 +1338,12 @@
         NSLog(@"Pushing AlbumContents view controller %s %d\n" , __FILE__, __LINE__);
         //  albumContentsViewController.assetsGroup = group_;
         [albumContentsViewController setDelphoto:true];
+        [albumContentsViewController setPFlMgr:pDlg.pFlMgr];
+        [albumContentsViewController setPAlName:pDlg.pAlName];
+        [albumContentsViewController setNavViewController:pDlg.navViewController];
         [self.navigationController pushViewController:albumContentsViewController animated:NO];
         [albumContentsViewController  setTitle:title];
-        albumContentsViewController.pAddEditCntrl = self;
+        
     }
     else if (indexPath.row == 7)
     {

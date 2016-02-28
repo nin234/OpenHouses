@@ -14,8 +14,9 @@
 #import "common/MySlider.h"
 #include <sys/time.h>
 #import "LocalItem.h"
+#import "common/AlbumContentsViewController.h"
 
-@interface AddViewController : UITableViewController <UIImagePickerControllerDelegate, UITextFieldDelegate, UITableViewDelegate, MKMapViewDelegate>
+@interface AddViewController : UITableViewController <UIImagePickerControllerDelegate, UITextFieldDelegate, UITableViewDelegate, MKMapViewDelegate, AlbumContentsViewControllerDelegate>
 {
  //   ALAssetsLibrary *assetsLibrary;
     

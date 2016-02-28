@@ -16,7 +16,6 @@
 #import <Social/SLComposeViewController.h>
 #import <Social/SLServiceTypes.h>
 #import <sharing/FriendDetails.h>
-#import "SelectFriendViewController.h"
 #import <sharing/AddFriendViewController.h>
 
 
@@ -415,67 +414,12 @@
 
 -(void) shareRightNow
 {
-     SelectFriendViewController *SelFrndView = (SelectFriendViewController *)[self.navViewController popViewControllerAnimated:NO];
-    NSArray *selFrnds = [SelFrndView getSelectedFriends];
-    if (![selFrnds count])
-    {
-        NSLog(@"No friend selected to share with");
-         [self iCloudEmailCancel];
-         return;
-    }
-    else
-    {
-        NSLog(@"%lu friends selected to share with", (unsigned long)[selFrnds count]);
-    }
-    MainViewController *pMainVwCntrl = [self.navViewController.viewControllers objectAtIndex:0];
-    if(![pMainVwCntrl.pAllItms itemsSelected])
-    {
-        [self iCloudEmailCancel];
-        return;
-    }
-    LocalItem *item = [pMainVwCntrl.pAllItms getSelectedItem];
-    if (item == nil)
-    {
-        [self iCloudEmailCancel];
-        return;
-    }
-   
-    [self.dataSync shareItem:item pictures:pMainVwCntrl.pAllItms.attchments friends:selFrnds];
-    [self iCloudEmailCancel];
-       
      return;
 }
 
 -(void) shareSelFrnds
 {
-    kchain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:@"3JEQ693MKL.com.rekhaninan.sinacama"];
-    friendList = [kchain objectForKey:(__bridge id)kSecAttrComment];
-    NSLog(@"Friendlist %@", friendList);
     
-    NSMutableDictionary *frndDic = [[NSMutableDictionary alloc] init];
-    
-    if (friendList != nil && [friendList length] > 0)
-    {
-        NSArray *friends = [friendList componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";"]];
-        NSUInteger cnt = [friends count];
-        if(cnt >1)
-        {
-            for (NSUInteger i=0; i < cnt-1; ++i)
-            {
-                NSString *frndStr = [friends objectAtIndex:i];
-                if (frndStr != nil && [frndStr length] > 0)
-                {
-                    FriendDetails *frnd = [[FriendDetails alloc] initWithString:frndStr];
-                    [frndDic setObject:frnd forKey:frnd.name];
-                }
-        
-            }
-        }
-    }
-    SelectFriendViewController *selctFrnd = [SelectFriendViewController alloc];
-    selctFrnd.frndDic = frndDic;
-    selctFrnd = [selctFrnd initWithNibName:nil bundle:nil];
-    [self.navViewController pushViewController:selctFrnd animated:NO];
     return;
 }
 

@@ -8,7 +8,7 @@
 
 #import "MainListViewController.h"
 #import "MainViewController.h"
-#import "AlbumContentsViewController.h"
+#import "common/AlbumContentsViewController.h"
 #import "AppDelegate.h"
 #import "LocalItem.h"
 #import "DisplayViewController.h"
