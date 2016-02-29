@@ -22,7 +22,6 @@
 - (NSString *) getMessage:(int) source;
 -(LocalItem *) getSelectedItem;
 - (void) getPhotos:(int)startIndx  source:(int)source;
-- (void) syncSelectedtoiCloud;
 - (void) shareSelectedtoOH;
 -(void)resetSelectedItems;
 -(void)photoSelDone;
