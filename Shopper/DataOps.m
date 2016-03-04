@@ -10,7 +10,7 @@
 #import "Item.h"
 #import "AppDelegate.h"
 #import <sys/stat.h>
-#import "MainViewController.h"
+#import "common/MainViewController.h"
 #import "ShareItems.h"
 #import <sharing/FriendDetails.h>
 #import "AVFoundation/AVAssetImageGenerator.h"
@@ -132,11 +132,6 @@
             continue;
         }
         
-        if(loginNow)
-        {
-            NSLog(@"Attempting to login to aws\n");
-            [self login];
-        }
         
         if (itemsToAdd)
         {
@@ -206,49 +201,6 @@
         }
         
     }
-    
-    return;
-}
-
--(void) downloadSharedItemsOnStartUp
-{
-   
-   
-    return;
-}
-
--(void) loginAction
-{
-    
-    return;
-}
-
--(void) login
-{
-    loginNow = false;
-    dispatch_async(shareQ,
-    ^{
-        loginTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:
-        ^{
-                [[UIApplication sharedApplication] endBackgroundTask:loginTaskId];
-                loginTaskId = UIBackgroundTaskInvalid;
-        }];
-        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-        AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        pDlg.beingLoggedIn = true;
-        [self loginAction];
-        pDlg.beingLoggedIn = false;
-        [[UIApplication sharedApplication] endBackgroundTask:loginTaskId];
-        loginTaskId = UIBackgroundTaskInvalid;
-        if (loginTaskId == UIBackgroundTaskInvalid)
-        {
-            [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-        }
-        
-        
-                       
-      });
-
     
     return;
 }

@@ -42,14 +42,10 @@
 		DB7DD0F414AF7FEB009EC45F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7DD0D914AF7FEB009EC45F /* CoreData.framework */; };
 		DB7DD0FC14AF7FEC009EC45F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD0FA14AF7FEC009EC45F /* InfoPlist.strings */; };
 		DB7DD0FF14AF7FEC009EC45F /* ShopperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD0FE14AF7FEC009EC45F /* ShopperTests.m */; };
-		DB7DD10B14AF80B1009EC45F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD10914AF80B1009EC45F /* MainViewController.m */; };
-		DB7DD10C14AF80B1009EC45F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD10A14AF80B1009EC45F /* MainViewController.xib */; };
 		DB7DD11114AF83DA009EC45F /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD10F14AF83D9009EC45F /* AddViewController.m */; };
 		DB7DD11214AF83DA009EC45F /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD11014AF83D9009EC45F /* AddViewController.xib */; };
 		DB7DD11614AF8427009EC45F /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD11414AF8427009EC45F /* EditViewController.m */; };
 		DB7DD11714AF8427009EC45F /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD11514AF8427009EC45F /* EditViewController.xib */; };
-		DB7DD11B14AF8692009EC45F /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD11914AF8692009EC45F /* MainListViewController.m */; };
-		DB7DD11C14AF8692009EC45F /* MainListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD11A14AF8692009EC45F /* MainListViewController.xib */; };
 		DB7DD11F14AF8B90009EC45F /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD11E14AF8B8F009EC45F /* Item.m */; };
 		DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8547D8179005EA00502AB6 /* ShareItems.m */; };
 		DB91FA0016A580C300B4B7D1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91F9FF16A580C300B4B7D1 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -179,18 +175,12 @@
 		DB7DD0FB14AF7FEC009EC45F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB7DD0FD14AF7FEC009EC45F /* ShopperTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopperTests.h; sourceTree = "<group>"; };
 		DB7DD0FE14AF7FEC009EC45F /* ShopperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopperTests.m; sourceTree = "<group>"; };
-		DB7DD10814AF80B1009EC45F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		DB7DD10914AF80B1009EC45F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		DB7DD10A14AF80B1009EC45F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		DB7DD10E14AF83D9009EC45F /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		DB7DD10F14AF83D9009EC45F /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		DB7DD11014AF83D9009EC45F /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		DB7DD11314AF8426009EC45F /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		DB7DD11414AF8427009EC45F /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		DB7DD11514AF8427009EC45F /* EditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
-		DB7DD11814AF8692009EC45F /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainListViewController.h; sourceTree = "<group>"; };
-		DB7DD11914AF8692009EC45F /* MainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListViewController.m; sourceTree = "<group>"; };
-		DB7DD11A14AF8692009EC45F /* MainListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListViewController.xib; sourceTree = "<group>"; };
 		DB7DD11D14AF8B8F009EC45F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		DB7DD11E14AF8B8F009EC45F /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		DB8547D7179005E800502AB6 /* ShareItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareItems.h; sourceTree = "<group>"; };
@@ -359,12 +349,10 @@
 				DB8547D8179005EA00502AB6 /* ShareItems.m */,
 				DBBFAE5A17823C8C00A07BA4 /* Constants.h */,
 				DBBFAE5B17823C8D00A07BA4 /* Constants.m */,
-				DB7DD11A14AF8692009EC45F /* MainListViewController.xib */,
 				DB9934AF1502B25400E77816 /* SortOptionViewController.xib */,
 				DBA22C7B14B23FDF00DAE4BF /* DisplayViewController.xib */,
 				DB7DD11514AF8427009EC45F /* EditViewController.xib */,
 				DB7DD11014AF83D9009EC45F /* AddViewController.xib */,
-				DB7DD10A14AF80B1009EC45F /* MainViewController.xib */,
 				DB9934AD1502B25200E77816 /* SortOptionViewController.h */,
 				DB7DD0E714AF7FEB009EC45F /* Shopper.xcdatamodeld */,
 				DB7DD11D14AF8B8F009EC45F /* Item.h */,
@@ -376,15 +364,11 @@
 				DB7DD11414AF8427009EC45F /* EditViewController.m */,
 				DB7DD10F14AF83D9009EC45F /* AddViewController.m */,
 				DBA8685E1657D9E3008A781D /* LocalItem.m */,
-				DB7DD11814AF8692009EC45F /* MainListViewController.h */,
 				DB9934AE1502B25300E77816 /* SortOptionViewController.m */,
 				DB7DD0E414AF7FEB009EC45F /* AppDelegate.h */,
 				DB7DD0E514AF7FEB009EC45F /* AppDelegate.m */,
 				DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */,
 				DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */,
-				DB7DD11914AF8692009EC45F /* MainListViewController.m */,
-				DB7DD10814AF80B1009EC45F /* MainViewController.h */,
-				DB7DD10914AF80B1009EC45F /* MainViewController.m */,
 				DBA868601658016D008A781D /* DataOps.h */,
 				DBA868611658016E008A781D /* DataOps.m */,
 				DB7DD11E14AF8B8F009EC45F /* Item.m */,
@@ -569,10 +553,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7DD0E014AF7FEB009EC45F /* InfoPlist.strings in Resources */,
-				DB7DD10C14AF80B1009EC45F /* MainViewController.xib in Resources */,
 				DB7DD11214AF83DA009EC45F /* AddViewController.xib in Resources */,
 				DB7DD11714AF8427009EC45F /* EditViewController.xib in Resources */,
-				DB7DD11C14AF8692009EC45F /* MainListViewController.xib in Resources */,
 				DBA22C7D14B23FDF00DAE4BF /* DisplayViewController.xib in Resources */,
 				DBD2CD0514B965CD00CF26C2 /* Images in Resources */,
 				DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */,
@@ -634,10 +616,8 @@
 				DB7DD0E614AF7FEB009EC45F /* AppDelegate.m in Sources */,
 				DB7DD0E914AF7FEB009EC45F /* Shopper.xcdatamodeld in Sources */,
 				DB5F3EF81C74A239003DA1C3 /* OpenHousesDecoder.m in Sources */,
-				DB7DD10B14AF80B1009EC45F /* MainViewController.m in Sources */,
 				DB7DD11114AF83DA009EC45F /* AddViewController.m in Sources */,
 				DB7DD11614AF8427009EC45F /* EditViewController.m in Sources */,
-				DB7DD11B14AF8692009EC45F /* MainListViewController.m in Sources */,
 				E9ECCBB51C667E75004D68E9 /* OpenHousesTranslator.m in Sources */,
 				DB7DD11F14AF8B90009EC45F /* Item.m in Sources */,
 				DBA22C7C14B23FDF00DAE4BF /* DisplayViewController.m in Sources */,

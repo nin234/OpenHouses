@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "common/MainViewController.h"
 #import "AddViewController.h"
 #import "EditViewController.h"
 #import "DisplayViewController.h"
@@ -17,10 +17,7 @@
 #import <Social/SLServiceTypes.h>
 #import <sharing/FriendDetails.h>
 #import <sharing/AddFriendViewController.h>
-
-
-
-
+#import "SortOptionViewController.h"
 
 @implementation AppDelegate
 
@@ -82,6 +79,134 @@
 @synthesize purchased;
 @synthesize tabBarController;
 @synthesize pShrMgr;
+- (NSString *) getAlbumDir: (NSString *) album_name
+{
+    NSString *pHdir = NSHomeDirectory();
+    NSString *pAlbums = @"/Documents/albums";
+    NSString *pAlbumsDir = [pHdir stringByAppendingString:pAlbums];
+    pAlbumsDir = [pAlbumsDir stringByAppendingString:@"/"];
+    NSString *pNewAlbum = [pAlbumsDir stringByAppendingString:album_name];
+    NSURL *url = [NSURL fileURLWithPath:pNewAlbum isDirectory:YES];
+    return [url absoluteString];
+}
+
+-(void) setAlbumName:(id) item albumcntrl:(AlbumContentsViewController *) cntrl
+{
+    LocalItem *itm = item;
+    if (selectedItem.icloudsync == YES)
+        pAlName = itm.album_name;
+    else
+        pAlName  = [self getAlbumDir:itm.album_name];
+    [cntrl setPFlMgr:pFlMgr];
+    [cntrl setPAlName:pAlName];
+    [cntrl setName:itm.name];
+    if (itm.street != nil)
+        [cntrl setStreet:itm.street];
+    return;
+}
+
+-(void) photoActions:(int) source
+{
+    switch (source)
+    {
+        case PHOTOREQSOURCE_EMAIL:
+            [self emailRightNow];
+            break;
+            
+        case PHOTOREQSOURCE_SHARE:
+            [self shareSelFrnds];
+            break;
+            
+        case PHOTOREQSOURCE_FB:
+            [self fbshareRightNow];
+            break;
+            
+        default:
+            break;
+    }
+    
+
+    return;
+}
+
+-(void) initRefresh
+{
+    if (bInitRefresh)
+    {
+        bInitRefresh = false;
+        NSLog(@"AppDelegate.bInitRefresh set to false");
+    }
+    else
+    {
+        dataSync.refreshNow = true;
+        NSLog(@"Setting AppDelegate.dataSync.refreshNow to true");
+    }
+    return;
+}
+
+-(void) searchStrSet:(NSString *)text
+{
+    pSearchStr = text;
+    dataSync.refreshNow = true;
+    return;
+}
+
+-(void) searchStrReset
+{
+    pSearchStr = nil;
+    dataSync.refreshNow = true;
+    return;
+}
+
+-(NSString *) getLabelTxt:(id) itm
+{
+    LocalItem *item = itm;
+    NSString *labtxt = item.name;
+    labtxt = [labtxt stringByAppendingString:@" - "];
+    if (item.street != nil)
+        labtxt = [labtxt stringByAppendingString:item.street];
+    
+    return labtxt;
+}
+
+-(void) pushSortOptionViewController
+{
+    SortOptionViewController *aViewController = [[SortOptionViewController alloc]
+                                                 initWithNibName:nil bundle:nil];
+    [self.navViewController pushViewController:aViewController animated:YES];
+
+    return;
+}
+
+-(void) pushDisplayViewController:(id) itm indx:(int)Indx
+{
+    LocalItem *item = itm;
+    selectedItem = item;
+    editItem = item;
+    selectIndx = Indx;
+    editIndx = Indx;
+    if (selectedItem.icloudsync == YES)
+        pAlName = selectedItem.album_name;
+    else
+        pAlName = [self getAlbumDir:selectedItem.album_name];
+    NSLog(@"Setting pDlg.pAlName=%@", pAlName);
+    
+    DisplayViewController *aViewController = [[DisplayViewController alloc]
+                                              initWithNibName:nil bundle:nil];
+    [self.navViewController pushViewController:aViewController animated:YES];
+    return;
+}
+
+-(NSString *) getEmailFbMsg:(LocalItem *)item
+{
+    NSString *message = @"";
+    NSString *msg =[message stringByAppendingFormat:@"Name:%@\nPrice: %.2f\nArea: %.2f  Year: %d\nBeds: %.2f  Baths: %.2f\n Notes: %@\nStreet: %@\nCity: %@\nState: %@\nCountry: %@\n Postal Code: %@\n\n\n",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+           [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
+           item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0? 0.0: [item.beds floatValue], [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
+           item.city, item.state, item.country, item.zip];
+    return msg;
+    
+}
 
 -(void) populateOneMonth
 {
@@ -229,6 +354,8 @@
     pSearchStr = nil;
     pMainVwCntrl.pSearchBar.text = nil;
     [pMainVwCntrl.pSearchBar resignFirstResponder];
+    [pMainVwCntrl setDelegate:self];
+    [pMainVwCntrl setDelegate_1:self];
     AddViewController *aViewController = [[AddViewController alloc]
                                           initWithNibName:nil bundle:nil];
     aVw = aViewController;
@@ -272,9 +399,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"Clicked button at index %ld", (long)buttonIndex);
-    if(bSystemAbrt)
+    if (bSystemAbrt)
     {
-        bSystemAbrt = true;
+        bSystemAbrt = false;
         return;
     }
     if (bUpgradeAlert)
@@ -376,7 +503,10 @@
      MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
      controller.mailComposeDelegate = self;
      [controller setSubject:@"House details"];
-    [controller setMessageBody:[pMainVwCntrl.pAllItms getMessage:PHOTOREQSOURCE_EMAIL] isHTML:NO];
+    
+    LocalItem *item =[pMainVwCntrl.pAllItms getMessage:PHOTOREQSOURCE_EMAIL];
+    
+    [controller setMessageBody:[self getEmailFbMsg:item] isHTML:NO];
      
     NSUInteger cnt = [pMainVwCntrl.pAllItms.attchments count];
     NSLog (@"Attaching %lu images\n",(unsigned long)cnt);
@@ -437,7 +567,8 @@
     SLComposeViewController *fbVwCntrl = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     if (fbVwCntrl != nil)
     {
-        [fbVwCntrl setInitialText:[pMainVwCntrl.pAllItms getMessage:PHOTOREQSOURCE_FB]];
+        LocalItem *item =[pMainVwCntrl.pAllItms getMessage:PHOTOREQSOURCE_FB];
+        [fbVwCntrl setInitialText:[self getEmailFbMsg:item]];
         NSUInteger cnt = [pMainVwCntrl.pAllItms.attchments count];
         NSLog (@"Attaching %lu images\n",(unsigned long)cnt);
         for (NSUInteger i=0; i < cnt; ++i)
@@ -1054,6 +1185,8 @@
     aViewController.pAllItms.bInICloudSync = false;
     aViewController.pAllItms.bInEmail = false;
     aViewController.pAllItms.bAttchmentsInit = false;
+    aViewController.delegate = self;
+    aViewController.delegate_1  = self;
     
     fetchQueue = dispatch_queue_create("com.rekhaninan.fetchQueue", NULL);
         userName = [kchain objectForKey:(__bridge id)kSecAttrAccount];
@@ -1318,28 +1451,6 @@
     [[NSNotificationCenter defaultCenter] postNotification:refreshNotification];
 }
 
-/**
- Returns the managed object context for the application.
- If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
- */
-/*
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (__managedObjectContext != nil)
-    {
-        return __managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil)
-    {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [__managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    return __managedObjectContext;
-}
-
- */
 
 - (NSManagedObjectContext *)managedObjectContext {
 	

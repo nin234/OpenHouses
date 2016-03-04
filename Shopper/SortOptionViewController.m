@@ -8,7 +8,6 @@
 
 #import "SortOptionViewController.h"
 #import "AppDelegate.h"
-#import "MainViewController.h"
 
 @implementation SortOptionViewController
 
