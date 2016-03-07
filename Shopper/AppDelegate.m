@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "common/MainViewController.h"
-#import "AddViewController.h"
+#import "common/AddViewController.h"
 #import "EditViewController.h"
 #import "DisplayViewController.h"
 #import "Item.h"
@@ -18,6 +18,7 @@
 #import <sharing/FriendDetails.h>
 #import <sharing/AddFriendViewController.h>
 #import "SortOptionViewController.h"
+#import "AddEditDispDelegate.h"
 
 @implementation AppDelegate
 
@@ -303,12 +304,13 @@
     [locmgr stopUpdatingLocation];
     aVw = nil;
           
-    AddViewController *pAddView = (AddViewController *)[self.navViewController popViewControllerAnimated:NO];
+    AddViewController *pAddViewCntrl = (AddViewController *)[self.navViewController popViewControllerAnimated:NO];
     struct timeval tv;
     gettimeofday(&tv, 0);
     long long sec = ((long long)tv.tv_sec)*1000000;
     long long usec =tv.tv_usec;
-
+    AddEditDispDelegate *pAddView = pAddViewCntrl.delegate;
+    
 	pAddView.pNewItem.val1 = sec + usec;
 
     [dataSync addItem:pAddView.pNewItem];
@@ -358,6 +360,9 @@
     [pMainVwCntrl setDelegate_1:self];
     AddViewController *aViewController = [[AddViewController alloc]
                                           initWithNibName:nil bundle:nil];
+    [aViewController setPFlMgr:pFlMgr];
+    [aViewController setNavViewController:self.navViewController];
+    [aViewController setDelegate:[[AddEditDispDelegate alloc]init]];
     aVw = aViewController;
     mapView.showsUserLocation = YES;
     [self.navViewController pushViewController:aViewController animated:YES];

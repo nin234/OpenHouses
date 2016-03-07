@@ -12,7 +12,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MapKit/MapKit.h>
 #import "common/MySlider.h"
-#import "AddViewController.h"
+#import "common/AddViewController.h"
 #import "DataOps.h"
 #import "LocalItem.h"
 #import <CoreLocation/CLLocationManager.h>

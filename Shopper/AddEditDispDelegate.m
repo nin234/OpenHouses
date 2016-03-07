@@ -1,0 +1,352 @@
+//
+//  AddEditDispDelegate.m
+//  Shopper
+//
+//  Created by Ninan Thomas on 3/5/16.
+//
+//
+
+#import "AddEditDispDelegate.h"
+#import "AppDelegate.h"
+#import "common/textdefs.h"
+
+@implementation AddEditDispDelegate
+
+@synthesize pNewItem;
+
+-(void) initializeNewItem
+{
+    
+    pNewItem.year = 3000;
+    pNewItem.price = [NSNumber numberWithDouble:-2.0];
+    pNewItem.area = [NSNumber numberWithDouble:-2.0];
+    pNewItem.beds = [NSNumber numberWithDouble:-2.0];
+    pNewItem.baths = [NSNumber numberWithDouble:-2.0];
+    return;
+}
+
+-(void) setAlbumNames:(NSString *)noStr fullName:(NSString *)urlStr
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    pNewItem.album_name = noStr;
+    pDlg.pAlName = urlStr;
+    return;
+}
+
+-(void) setLocation:(double) lat longitude:(double) longtde
+{
+    pNewItem.latitude = lat;
+    pNewItem.longitude = longtde;
+    NSLog(@"Setting new item longitude=%f and latitude=%f\n", longtde, lat);
+    return;
+}
+
+-(void) stopLocUpdate
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg stopLocUpdate];
+    return;
+}
+
+-(bool) updateAddress:(NSString *)street city:(NSString *)city state:(NSString *) state country:(NSString * )country zip:(NSString *)zip
+{
+    if ([pNewItem.street isEqualToString:street] && [pNewItem.city isEqualToString:city] && [pNewItem.state isEqualToString:state] &&[pNewItem.country isEqualToString:country] && [pNewItem.zip isEqualToString:zip])
+    {
+        NSLog (@"Addres did not change in updatePlaceMark not updating\n");
+        return  false;
+    }
+    else
+    {
+        pNewItem.street = street;
+        pNewItem.country =country;
+        pNewItem.state = state;
+        pNewItem.city = city;
+        pNewItem.zip = zip;
+    }
+    return true;
+}
+
+-(void) incrementPicCnt
+{
+    ++pNewItem.pic_cnt;
+    return;
+}
+
+-(void) saveQAdd:(NSInvocationOperation*) theOp
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg.saveQ addOperation:theOp];
+}
+
+- (void) populateValues:(UITextField *)textField
+{
+    
+    switch (textField.tag)
+    {
+        case HOUSE_NAME:
+            pNewItem.name = textField.text;
+            break;
+            
+        case HOUSE_PRICE:
+        {
+            
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pNewItem.price = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+            
+        }
+            break;
+            
+            
+        case HOUSE_AREA:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pNewItem.area = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+        }
+            break;
+            
+        case HOUSE_YEAR:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]];
+            pNewItem.year = atoi([pr UTF8String]);
+        }
+            break;
+            
+        case HOUSE_BEDS:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pNewItem.beds = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+        }
+            break;
+            
+        case HOUSE_BATHS:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pNewItem.baths = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+        }
+            break;
+            
+        case HOUSE_STREET:
+            pNewItem.street = textField.text;
+            break;
+            
+        case HOUSE_CITY:
+            pNewItem.city = textField.text;
+            break;
+            
+        case HOUSE_STATE:
+            pNewItem.state = textField.text;
+            break;
+            
+        case HOUSE_COUNTRY:
+            pNewItem.country = textField.text;
+            break;
+            
+        case HOUSE_ZIP:
+            pNewItem.zip = textField.text;
+            break;
+            
+        default:
+            break;
+            
+    }
+}
+
+-(void) populateTextFields:(UITextField *) textField textField1:(UITextField *) textField1 row:(NSUInteger)row
+{
+    switch (row)
+    {
+        case 2:
+        {
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            if ([pNewItem.area floatValue] >= 0.0)
+            {
+                char area1[64];
+                sprintf(area1, "%.2f", [pNewItem.area floatValue]);
+                textField.text = [NSString stringWithUTF8String:area1];
+            }
+            textField.tag = HOUSE_AREA;
+            
+            if (pNewItem.year != 3000)
+            {
+                char year1[64];
+                sprintf(year1, "%d", pNewItem.year);
+                textField1.text = [NSString stringWithUTF8String:year1];
+            }
+            textField1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            textField1.tag = HOUSE_YEAR;
+            
+        }
+            break;
+            
+        case 3:
+        {
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            if ([pNewItem.beds doubleValue] >= 0.0 )
+            {
+                char beds1[64];
+                sprintf(beds1, "%.2f", [pNewItem.beds floatValue]);
+                textField.text = [NSString stringWithUTF8String:beds1];
+            }
+            textField.tag = HOUSE_BEDS;
+            
+            if ([pNewItem.baths doubleValue] >= 0.0 )
+            {
+                char baths1[64];
+                sprintf(baths1, "%.2f", [pNewItem.baths floatValue]);
+                textField1.text = [NSString stringWithUTF8String:baths1];
+            }
+            textField1.tag = HOUSE_BATHS;
+            
+            textField1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        }
+            break;
+        case 0:
+        {
+            AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            if (pNewItem.name == nil)
+            {
+                NSString *pHseName = @"House";
+                NSString *intStr = [[NSNumber numberWithLongLong:pDlg.COUNT+1] stringValue];
+                pHseName = [pHseName stringByAppendingString:intStr];
+                textField.text = pHseName;
+                pNewItem.name = pHseName;
+            }
+            else
+            {
+                textField.text = pNewItem.name;
+            }
+            textField.tag = HOUSE_NAME;
+            
+        }
+        break;
+            
+        case 1:
+        {
+            if ([pNewItem.price doubleValue] >= 0.0)
+            {
+                char price1[64];
+                sprintf(price1, "%.2f", [pNewItem.price floatValue]);
+                textField.text = [NSString stringWithUTF8String:price1];
+                
+            }
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            textField.tag = HOUSE_PRICE;
+        }
+            break;
+            
+        case 8:
+            textField.text = pNewItem.street;
+            textField.tag = HOUSE_STREET ;
+            break;
+            
+        case 9:
+        {
+            textField.text = pNewItem.city;
+            textField.tag = HOUSE_CITY ;
+            NSLog(@"Setting city to %@\n", pNewItem.city);
+        }
+            break;
+            
+        case 10:
+            textField.text = pNewItem.state;
+            textField.tag = HOUSE_STATE ;
+            break;
+        case 11:
+            textField.text = pNewItem.country;
+            textField.tag = HOUSE_COUNTRY ;
+            break;
+        case 12:
+            textField.text = pNewItem.zip;
+            textField.tag = HOUSE_ZIP ;
+            break;
+            
+
+
+            
+        default:
+            break;
+    }
+
+
+    return;
+}
+
+-(NSArray *) getFieldNames
+{
+    return [NSArray arrayWithObjects:@"Name", @"Price", @"Area", @"Beds", @"Camera", @"Notes", @"Pictures", @"Map", @"Street", @"City", @"State", @"Country", @"Postal Code", nil];
+}
+
+-(NSArray *) getSecondFieldNames
+{
+    return  [NSArray arrayWithObjects:@"Blank", @"Blank", @"Year", @"Baths", nil];
+}
+
+-(bool) isTwoFieldRow:(NSUInteger) row
+{
+    if (row ==2 || row == 3)
+        return true;
+    return false;
+}
+
+-(CGRect) getTextFrame
+{
+    return CGRectMake(75, 12, 85, 25);
+}
+
+-(UILabel *) getLabel
+{
+    return [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 75, 25)];
+}
+
+-(bool) isSingleFieldRow:(NSUInteger) row
+{
+     if (row < 2 || row > 7)
+      return true;
+    return false;
+}
+
+-(void) itemAddCancel
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg itemAddCancel];
+}
+
+-(void) itemAddDone
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg itemAddDone];
+}
+
+-(NSString *) setTitle
+{
+    NSString *title = @"House Info";
+    return  title;
+}
+
+-(NSString *) getAlbumTitle;
+{
+    NSString *title ;
+    if (pNewItem.street != nil)
+        title = pNewItem.street;
+    else
+        title = @" ";
+    return title;
+}
+
+-(NSString *) getNotes
+{
+    return pNewItem.notes;
+}
+
+-(double) getLongitude
+{
+    return pNewItem.longitude;
+}
+
+-(double) getLatitude
+{
+    return pNewItem.latitude;
+}
+
+@end
