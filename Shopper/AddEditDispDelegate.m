@@ -33,6 +33,20 @@
     return;
 }
 
+-(void) deleteEditItem
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg.dataSync deletedItem:pDlg.editItem];
+}
+
+-(void) setEditAlbumNames:(NSString *)noStr fullName:(NSString *)urlStr
+{
+     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    pDlg.editItem.album_name = noStr;
+    pDlg.pAlName = urlStr;
+
+}
+
 -(void) setLocation:(double) lat longitude:(double) longtde
 {
     pNewItem.latitude = lat;
@@ -149,6 +163,112 @@
             break;
             
     }
+}
+
+-(NSString *) deleteButtonTitle
+{
+    return @"Delete House";
+}
+
+-(void) populateEditTextFields:(UITextField *) textField textField1:(UITextField *) textField1 row:(NSUInteger)row
+{
+     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    switch (row)
+    {
+        case 2:
+        {
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            if ([pDlg.editItem.area  doubleValue] >= 0.0 )
+            {
+                char area1[64];
+                sprintf(area1, "%.0f", [pDlg.editItem.area floatValue]);
+                textField.text = [NSString stringWithUTF8String:area1];
+            }
+            textField.tag = HOUSE_AREA;
+            
+            if (pDlg.editItem.year != 3000)
+            {
+                char year1[64];
+                sprintf(year1, "%d", pDlg.editItem.year);
+                textField1.text = [NSString stringWithUTF8String:year1];
+            }
+            textField1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            textField1.tag = HOUSE_YEAR;
+            
+        }
+            break;
+            
+        case 3:
+        {
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            if ([pDlg.editItem.beds  doubleValue] >= 0.0 )
+            {
+                char beds1[64];
+                sprintf(beds1, "%.0f", [pDlg.editItem.beds floatValue]);
+                textField.text = [NSString stringWithUTF8String:beds1];
+            }
+            textField.tag = HOUSE_BEDS;
+            
+            if ([pDlg.editItem.baths  doubleValue] >= 0.0 )
+            {
+                char baths1[64];
+                sprintf(baths1, "%.1f", [pDlg.editItem.baths floatValue]);
+                textField1.text = [NSString stringWithUTF8String:baths1];
+            }
+            textField1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            textField1.tag = HOUSE_BATHS;
+        }
+            break;
+            
+        case 0:
+            textField.text = pDlg.editItem.name;
+            textField.tag = HOUSE_NAME;
+            break;
+            
+        case 1:
+        {
+            if ([pDlg.editItem.price  doubleValue] >= 0.0 )
+            {
+                char price1[64];
+                sprintf(price1, "%.2f", [pDlg.editItem.price floatValue]);
+                textField.text = [NSString stringWithUTF8String:price1];
+            }
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            textField.tag = HOUSE_PRICE;
+        }
+            break;
+            
+        case 8:
+            textField.text = pDlg.editItem.street;
+            textField.tag = HOUSE_STREET;
+            break;
+            
+        case 9:
+        {
+            textField.text = pDlg.editItem.city;
+            textField.tag = HOUSE_CITY;
+        }
+            break;
+            
+        case 10:
+            textField.text = pDlg.editItem.state;
+            textField.tag = HOUSE_STATE;
+            break;
+        case 11:
+            textField.text = pDlg.editItem.country;
+            textField.tag = HOUSE_COUNTRY;
+            break;
+        case 12:
+            textField.text = pDlg.editItem.zip;
+            textField.tag = HOUSE_ZIP;
+            break;
+            
+
+        default:
+            break;
+    }
+
+    return;
 }
 
 -(void) populateTextFields:(UITextField *) textField textField1:(UITextField *) textField1 row:(NSUInteger)row
@@ -299,11 +419,25 @@
     return [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 75, 25)];
 }
 
+-(bool) isSingleFieldEditRow:(NSUInteger) row
+{
+    if(row < 2 || (row > 7 && row < 13))
+        return true;
+    return false;
+}
+
 -(bool) isSingleFieldRow:(NSUInteger) row
 {
      if (row < 2 || row > 7)
       return true;
     return false;
+}
+
+-(void) incrementEditPicCnt
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ++pDlg.editItem.pic_cnt;
+    return;
 }
 
 -(void) itemAddCancel
@@ -318,10 +452,35 @@
     [pDlg itemAddDone];
 }
 
+-(void) itemEditCancel
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg itemEditCancel];
+    return;
+}
+
+-(void) itemEditDone
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg itemEditDone];
+    return;
+}
+
 -(NSString *) setTitle
 {
     NSString *title = @"House Info";
     return  title;
+}
+
+-(NSString *) getEditItemTitle
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *title ;
+    if (pDlg.editItem.street != nil)
+        title = pDlg.editItem.street;
+    else
+        title = @" ";
+    return title;
 }
 
 -(NSString *) getAlbumTitle;
@@ -339,14 +498,142 @@
     return pNewItem.notes;
 }
 
+-(NSString *) getEditNotes
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.editItem.notes;
+}
+
+-(bool) changeCharacters:(NSInteger) tag
+{
+    switch (tag)
+    {
+        case HOUSE_PRICE:
+        case HOUSE_AREA:
+        case HOUSE_BATHS:
+        case HOUSE_BEDS:
+        case HOUSE_YEAR:
+            return false;
+            break;
+            
+        default:
+            return true;
+        break;
+    }
+
+    return true;
+}
+
+-(bool) rangeFourTag:(NSInteger) tag
+{
+    if (tag == HOUSE_YEAR)
+        return true;
+    return false;
+}
+
+-(bool) numbersTag:(NSInteger) tag;
+{
+    if (tag == HOUSE_YEAR)
+        return true;
+    return false;
+}
+
 -(double) getLongitude
 {
     return pNewItem.longitude;
 }
 
+-(double) getEditLongitude
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.editItem.longitude;
+}
+
+-(double) getEditLatitude
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.editItem.latitude;
+}
+
+
 -(double) getLatitude
 {
     return pNewItem.latitude;
 }
+
+- (void) populateEditValues:(UITextField *)textField
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    switch (textField.tag)
+    {
+        case HOUSE_NAME:
+            pDlg.editItem.name = textField.text;
+            break;
+            
+        case HOUSE_PRICE:
+        {
+            
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pDlg.editItem.price = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+            
+        }
+            break;
+            
+            
+        case HOUSE_AREA:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pDlg.editItem.area = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+        }
+            break;
+            
+        case HOUSE_YEAR:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]];
+            pDlg.editItem.year = atoi([pr UTF8String]);
+        }
+            break;
+            
+        case HOUSE_BEDS:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pDlg.editItem.beds = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+        }
+            break;
+            
+        case HOUSE_BATHS:
+        {
+            NSString *pr = [textField.text stringByTrimmingCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet]];
+            pDlg.editItem.baths = [NSNumber  numberWithDouble:strtod([pr UTF8String], NULL)];
+        }
+            break;
+            
+        case HOUSE_STREET:
+            pDlg.editItem.street = textField.text;
+            break;
+            
+        case HOUSE_CITY:
+            pDlg.editItem.city = textField.text;
+            break;
+            
+        case HOUSE_STATE:
+            pDlg.editItem.state = textField.text;
+            break;
+            
+        case HOUSE_COUNTRY:
+            pDlg.editItem.country = textField.text;
+            break;
+            
+        case HOUSE_ZIP:
+            pDlg.editItem.zip = textField.text;
+            break;
+            
+        default:
+            break;
+            
+    }
+}
+
+
 
 @end

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "common/MainViewController.h"
 #import "common/AddViewController.h"
-#import "EditViewController.h"
+#import "common/EditViewController.h"
 #import "DisplayViewController.h"
 #import "Item.h"
 #import <MapKit/MapKit.h>
@@ -237,6 +237,11 @@
     
     EditViewController *aViewController = [[EditViewController alloc]
                                            initWithNibName:nil bundle:nil];
+    [aViewController setDelegate:[[AddEditDispDelegate alloc] init]];
+    [aViewController setPAlName:pAlName];
+    [aViewController setPFlMgr:pFlMgr];
+    [aViewController setNavViewController:self.navViewController];
+     
     [self.navViewController pushViewController:aViewController animated:YES];
 }
 
@@ -251,8 +256,7 @@
 {
     NSLog(@"Clicked Edit done button\n");
     LocalItem *modItem = self.editItem;
-    EditViewController *pEdit = (EditViewController *)[self.navViewController topViewController];
-    [pEdit queryStop];
+    
     [self.navViewController popViewControllerAnimated:NO];
        self.selectedItem = modItem;
     struct timeval tv;
@@ -309,7 +313,7 @@
     gettimeofday(&tv, 0);
     long long sec = ((long long)tv.tv_sec)*1000000;
     long long usec =tv.tv_usec;
-    AddEditDispDelegate *pAddView = pAddViewCntrl.delegate;
+    AddEditDispDelegate *pAddView = (AddEditDispDelegate *)pAddViewCntrl.delegate;
     
 	pAddView.pNewItem.val1 = sec + usec;
 
