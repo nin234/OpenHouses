@@ -10,7 +10,7 @@
 #import "common/MainViewController.h"
 #import "common/AddViewController.h"
 #import "common/EditViewController.h"
-#import "DisplayViewController.h"
+#import "common/DisplayViewController.h"
 #import "Item.h"
 #import <MapKit/MapKit.h>
 #import <Social/SLComposeViewController.h>
@@ -194,6 +194,11 @@
     
     DisplayViewController *aViewController = [[DisplayViewController alloc]
                                               initWithNibName:nil bundle:nil];
+    [aViewController setPFlMgr:pFlMgr];
+    [aViewController setPAlName:pAlName];
+    [aViewController setNavViewController:self.navViewController];
+    [aViewController setDelegate:[[AddEditDispDelegate alloc]init]];
+    
     [self.navViewController pushViewController:aViewController animated:YES];
     return;
 }

@@ -466,6 +466,13 @@
     return;
 }
 
+-(void) itemEdit
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [pDlg itemEdit];
+    return;
+}
+
 -(NSString *) setTitle
 {
     NSString *title = @"House Info";
@@ -502,6 +509,12 @@
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return pDlg.editItem.notes;
+}
+
+-(NSString *) getDispNotes
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.selectedItem.notes;
 }
 
 -(bool) changeCharacters:(NSInteger) tag
@@ -555,6 +568,17 @@
     return pDlg.editItem.latitude;
 }
 
+-(double) getDispLongitude
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.selectedItem.longitude;
+}
+
+-(double) getDispLatitude
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.selectedItem.latitude;
+}
 
 -(double) getLatitude
 {
@@ -634,6 +658,107 @@
     }
 }
 
+-(NSString *) getDispItemTitle
+{
+    NSString *title ;
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (pDlg.selectedItem.street != nil)
+        title = pDlg.selectedItem.street;
+    else
+        title = @" ";
+    return title;
+}
 
+-(void) populateDispTextFields:(UILabel *) textField textField1:(UILabel *) textField1 row:(NSUInteger)row
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    switch (row)
+    {
+        case 2:
+        {
+            if ([pDlg.selectedItem.area doubleValue] >= 0.0 )
+            {
+                char area1[64];
+                sprintf(area1, "%.0f", [pDlg.selectedItem.area floatValue]);
+                textField.text = [NSString stringWithUTF8String:area1];
+            }
+            
+            if (pDlg.selectedItem.year != 3000)
+            {
+                char year1[64];
+                sprintf(year1, "%d", pDlg.selectedItem.year);
+                textField1.text = [NSString stringWithUTF8String:year1];
+            }
+            
+        }
+            break;
+            
+        case 3:
+        {
+            if ([pDlg.selectedItem.beds  doubleValue] >= 0.0 )
+            {
+                char beds1[64];
+                sprintf(beds1, "%.0f", [pDlg.selectedItem.beds floatValue]);
+                textField.text = [NSString stringWithUTF8String:beds1];
+            }
+            
+            if ([pDlg.selectedItem.baths  doubleValue] >= 0.0 )
+            {
+                char baths1[64];
+                sprintf(baths1, "%.1f", [pDlg.selectedItem.baths floatValue]);
+                textField1.text = [NSString stringWithUTF8String:baths1];
+            }
+        }
+        break;
+            
+        case 0:
+            textField.text = pDlg.selectedItem.name;
+            break;
+            
+        case 1:
+        {
+            if ([pDlg.selectedItem.price  doubleValue] >= 0.0 )
+            {
+                char price1[64];
+                sprintf(price1, "%.2f", [pDlg.selectedItem.price floatValue]);
+                textField.text = [NSString stringWithUTF8String:price1];
+            }
+        }
+            break;
+            
+        case 7:
+            textField.text = pDlg.selectedItem.street;
+            break;
+            
+        case 8:
+            textField.text = pDlg.selectedItem.city ;
+            break;
+            
+        case 9:
+            textField.text = pDlg.selectedItem.state;
+            break;
+            
+        case 10:
+            textField.text = pDlg.selectedItem.country;
+            break;
+        case 11:
+            textField.text = pDlg.selectedItem.zip;
+            break;
+            
+
+        default:
+            break;
+    }
+    
+
+    return;
+}
+
+-(bool) isSingleFieldDispRow:(NSUInteger) row
+{
+    if (row < 2 || row > 6)
+        return true;
+    return false;
+}
 
 @end
