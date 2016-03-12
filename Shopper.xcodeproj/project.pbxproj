@@ -43,7 +43,6 @@
 		DB7DD0FC14AF7FEC009EC45F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB7DD0FA14AF7FEC009EC45F /* InfoPlist.strings */; };
 		DB7DD0FF14AF7FEC009EC45F /* ShopperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD0FE14AF7FEC009EC45F /* ShopperTests.m */; };
 		DB7DD11F14AF8B90009EC45F /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7DD11E14AF8B8F009EC45F /* Item.m */; };
-		DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8547D8179005EA00502AB6 /* ShareItems.m */; };
 		DB91FA0016A580C300B4B7D1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB91F9FF16A580C300B4B7D1 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */ = {isa = PBXBuildFile; fileRef = DB96A99C17695B6300CE6503 /* IphoneButton_White.png */; };
 		DB96A99F17695B7800CE6503 /* IphoneButton_Green.png in Resources */ = {isa = PBXBuildFile; fileRef = DB96A99E17695B7800CE6503 /* IphoneButton_Green.png */; };
@@ -56,13 +55,13 @@
 		DBA7F5D714EC509300E5706A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D614EC509200E5706A /* CoreFoundation.framework */; };
 		DBA7F5D914EC50AA00E5706A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA7F5D814EC50AA00E5706A /* CoreFoundation.framework */; };
 		DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA8685E1657D9E3008A781D /* LocalItem.m */; };
-		DBA868621658016E008A781D /* DataOps.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA868611658016E008A781D /* DataOps.m */; };
 		DBB36167150D8494007C9038 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = DBB36166150D8494007C9038 /* house.png */; };
 		DBB3616A150F6C20007C9038 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB36169150F6C20007C9038 /* AVFoundation.framework */; };
 		DBBFAE571781B04300A07BA4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBFAE561781B04300A07BA4 /* Security.framework */; };
 		DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBFAE5B17823C8D00A07BA4 /* Constants.m */; };
 		DBC096F91AA23B29009C8389 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC096F81AA23B29009C8389 /* StoreKit.framework */; };
 		DBD16AF21C8DA27200052A03 /* AddEditDispDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD16AF11C8DA27200052A03 /* AddEditDispDelegate.m */; };
+		DBD16B161C90584900052A03 /* DataOpsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD16B151C90584900052A03 /* DataOpsDelegate.m */; };
 		DBD2CD0514B965CD00CF26C2 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = DBD2CD0414B965CD00CF26C2 /* Images */; };
 		DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2CD0614B96B1800CF26C2 /* delete_button.png */; };
 		DBED47FC1537C8BD00BCBFB9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */; };
@@ -172,8 +171,6 @@
 		DB7DD0FE14AF7FEC009EC45F /* ShopperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopperTests.m; sourceTree = "<group>"; };
 		DB7DD11D14AF8B8F009EC45F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		DB7DD11E14AF8B8F009EC45F /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		DB8547D7179005E800502AB6 /* ShareItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareItems.h; sourceTree = "<group>"; };
-		DB8547D8179005EA00502AB6 /* ShareItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareItems.m; sourceTree = "<group>"; };
 		DB91F9FF16A580C300B4B7D1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		DB96A99C17695B6300CE6503 /* IphoneButton_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IphoneButton_White.png; sourceTree = "<group>"; };
 		DB96A99E17695B7800CE6503 /* IphoneButton_Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IphoneButton_Green.png; sourceTree = "<group>"; };
@@ -193,8 +190,6 @@
 		DBA7F5D814EC50AA00E5706A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreFoundation.framework; sourceTree = "<group>"; };
 		DBA8685D1657D9E3008A781D /* LocalItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalItem.h; sourceTree = "<group>"; };
 		DBA8685E1657D9E3008A781D /* LocalItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalItem.m; sourceTree = "<group>"; };
-		DBA868601658016D008A781D /* DataOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOps.h; sourceTree = "<group>"; };
-		DBA868611658016E008A781D /* DataOps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOps.m; sourceTree = "<group>"; };
 		DBB36166150D8494007C9038 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house.png; path = ../Images/house.png; sourceTree = "<group>"; };
 		DBB36169150F6C20007C9038 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DBBFAE561781B04300A07BA4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -203,6 +198,8 @@
 		DBC096F81AA23B29009C8389 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DBD16AF01C8DA25E00052A03 /* AddEditDispDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditDispDelegate.h; sourceTree = "<group>"; };
 		DBD16AF11C8DA27200052A03 /* AddEditDispDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditDispDelegate.m; sourceTree = "<group>"; };
+		DBD16B141C90584900052A03 /* DataOpsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOpsDelegate.h; sourceTree = "<group>"; };
+		DBD16B151C90584900052A03 /* DataOpsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOpsDelegate.m; sourceTree = "<group>"; };
 		DBD2CD0414B965CD00CF26C2 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		DBD2CD0614B96B1800CF26C2 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_button.png; path = ../Images/delete_button.png; sourceTree = "<group>"; };
 		DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -335,14 +332,13 @@
 				DB62BF1015E05BB600799582 /* OpenHouse.entitlements */,
 				DB19B609152D0978009B19A1 /* NestQuest.entitlements */,
 				DB9934B615046F2800E77816 /* Shopper.entitlements */,
-				DB8547D7179005E800502AB6 /* ShareItems.h */,
-				DB8547D8179005EA00502AB6 /* ShareItems.m */,
 				DBBFAE5A17823C8C00A07BA4 /* Constants.h */,
 				DBBFAE5B17823C8D00A07BA4 /* Constants.m */,
 				DB9934AF1502B25400E77816 /* SortOptionViewController.xib */,
 				DB9934AD1502B25200E77816 /* SortOptionViewController.h */,
 				DB7DD0E714AF7FEB009EC45F /* Shopper.xcdatamodeld */,
 				DB7DD11D14AF8B8F009EC45F /* Item.h */,
+				DB7DD11E14AF8B8F009EC45F /* Item.m */,
 				DBA8685D1657D9E3008A781D /* LocalItem.h */,
 				DBA8685E1657D9E3008A781D /* LocalItem.m */,
 				DB9934AE1502B25300E77816 /* SortOptionViewController.m */,
@@ -350,12 +346,11 @@
 				DB7DD0E514AF7FEB009EC45F /* AppDelegate.m */,
 				DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */,
 				DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */,
-				DBA868601658016D008A781D /* DataOps.h */,
-				DBA868611658016E008A781D /* DataOps.m */,
-				DB7DD11E14AF8B8F009EC45F /* Item.m */,
 				E9ECCBB31C667E75004D68E9 /* OpenHousesTranslator.h */,
 				E9ECCBB41C667E75004D68E9 /* OpenHousesTranslator.m */,
 				DB5F3EFA1C74A734003DA1C3 /* OpenHousesShareMgr.h */,
+				DBD16B141C90584900052A03 /* DataOpsDelegate.h */,
+				DBD16B151C90584900052A03 /* DataOpsDelegate.m */,
 				DB5F3EFB1C74A734003DA1C3 /* OpenHousesShareMgr.m */,
 				DB7DD0DC14AF7FEB009EC45F /* Supporting Files */,
 			);
@@ -597,12 +592,11 @@
 				E9ECCBB51C667E75004D68E9 /* OpenHousesTranslator.m in Sources */,
 				DB7DD11F14AF8B90009EC45F /* Item.m in Sources */,
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
+				DBD16B161C90584900052A03 /* DataOpsDelegate.m in Sources */,
 				DBD16AF21C8DA27200052A03 /* AddEditDispDelegate.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
 				DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */,
-				DBA868621658016E008A781D /* DataOps.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
-				DB8547D9179005EC00502AB6 /* ShareItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
