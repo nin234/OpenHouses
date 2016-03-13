@@ -78,16 +78,8 @@
 @synthesize purchased;
 @synthesize tabBarController;
 @synthesize pShrMgr;
-- (NSString *) getAlbumDir: (NSString *) album_name
-{
-    NSString *pHdir = NSHomeDirectory();
-    NSString *pAlbums = @"/Documents/albums";
-    NSString *pAlbumsDir = [pHdir stringByAppendingString:pAlbums];
-    pAlbumsDir = [pAlbumsDir stringByAppendingString:@"/"];
-    NSString *pNewAlbum = [pAlbumsDir stringByAppendingString:album_name];
-    NSURL *url = [NSURL fileURLWithPath:pNewAlbum isDirectory:YES];
-    return [url absoluteString];
-}
+@synthesize apputil;
+
 
 -(void) setAlbumName:(id) item albumcntrl:(AlbumContentsViewController *) cntrl
 {
@@ -95,7 +87,7 @@
     if (selectedItem.icloudsync == YES)
         pAlName = itm.album_name;
     else
-        pAlName  = [self getAlbumDir:itm.album_name];
+        pAlName  = [apputil getAlbumDir:itm.album_name];
     [cntrl setPFlMgr:pFlMgr];
     [cntrl setPAlName:pAlName];
     [cntrl setName:itm.name];
@@ -187,7 +179,7 @@
     if (selectedItem.icloudsync == YES)
         pAlName = selectedItem.album_name;
     else
-        pAlName = [self getAlbumDir:selectedItem.album_name];
+        pAlName = [apputil getAlbumDir:selectedItem.album_name];
     NSLog(@"Setting pDlg.pAlName=%@", pAlName);
     
     DisplayViewController *aViewController = [[DisplayViewController alloc]
@@ -1170,6 +1162,7 @@
     [self populateOneMonth];
     kvstore = [NSUbiquitousKeyValueStore defaultStore];
       kchain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:@"3JEQ693MKL.com.rekhaninan.sinacama"];
+    apputil = [[AppUtil alloc] init];
     
 #ifdef CLEANUP
          [self cleanUpEverything];
