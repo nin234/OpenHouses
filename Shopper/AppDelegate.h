@@ -21,6 +21,8 @@
 #import "OpenHousesShareMgr.h"
 #import "common/MainViewController.h"
 #import "sharing/AppShrUtil.h"
+#import "common/AppUtil.h"
+
 
 
 #define   PHOTOREQSOURCE_FB 1
@@ -65,6 +67,8 @@
 @property (nonatomic, retain) DataOps *dataSync;
 @property (nonatomic, retain) KeychainItemWrapper *kchain;
 @property (nonatomic, retain) InAppPurchase *inapp;
+@property (nonatomic, retain) AppUtil *apputil;
+
 @property bool unlocked;
 @property int attchmnts;
 @property int editIndx;
