@@ -17,9 +17,10 @@
 #import "LocalItem.h"
 #import <CoreLocation/CLLocationManager.h>
 #import "common/KeychainItemWrapper.h"
-#import "common/InAppPurchase.h"
+#import "sharing/InAppPurchase.h"
 #import "OpenHousesShareMgr.h"
 #import "common/MainViewController.h"
+#import "sharing/AppShrUtil.h"
 
 
 #define   PHOTOREQSOURCE_FB 1
@@ -99,16 +100,16 @@
 @property bool bInBackGround;
 @property bool bFromShareAction;
 @property bool beingLoggedIn;
-@property bool purchased;
+
 
 @property (nonatomic, retain) NSFileManager *pFlMgr;
+@property (nonatomic, retain) AppShrUtil *appUtl;
 
 - (void)itemAdd;
 - (void)itemAddDone;
 -(void) iCloudOrEmail;
 - (void) itemAddCancel;
 -(void) itemEdit;
--(void) setPurchsd;
 -(void) itemEditDone;
 -(void) itemEditCancel;
 -(void) popView;
