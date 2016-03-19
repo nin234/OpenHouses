@@ -865,6 +865,8 @@
     //[self.window addSubview:self.navViewController.view];
     [self.window setRootViewController:self.navViewController];
     [self.window makeKeyAndVisible];
+    appUtl.window = self.window;
+    appUtl.tabBarController = self.tabBarController;
     if (appUtl.purchased)
         [appUtl registerForRemoteNotifications];
     return YES;
@@ -917,7 +919,6 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
