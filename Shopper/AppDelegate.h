@@ -43,7 +43,7 @@
 @property (nonatomic, retain) OpenHousesShareMgr *pShrMgr;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navViewController;
-@property (nonatomic, retain)  UITabBarController  *tabBarController;
+
 @property (nonatomic, retain) LocalItem* selectedItem;
 @property (nonatomic, retain) LocalItem* editItem;
 @property (nonatomic, retain) NSString *pSearchStr;
@@ -115,7 +115,5 @@
 -(void) storeInKeyChain;
 -(void) storeFriends;
 -(NSString *) getPassword;
--(void) showShareView;
--(void) switchRootView;
 -(NSString *) getEmailFbMsg:(id)itm;
 @end
