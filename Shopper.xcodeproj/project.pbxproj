@@ -18,8 +18,6 @@
 		DB4EC29E166B9FF200D9B1EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4EC29D166B9FF200D9B1EC /* Default.png */; };
 		DB598BCA167BE9DE0073CB2A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB598BC9167BE9DE0073CB2A /* Default-568h@2x.png */; };
 		DB5F3EB31C70012D003DA1C3 /* libsharing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5F3EB21C70011E003DA1C3 /* libsharing.a */; };
-		DB5F3EF81C74A239003DA1C3 /* OpenHousesDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */; };
-		DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5F3EFB1C74A734003DA1C3 /* OpenHousesShareMgr.m */; };
 		DB62BF1715E71CD000799582 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB62BF1615E71CD000799582 /* Default@2x.png */; };
 		DB7B77CC15099FA80020B581 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77CB15099FA80020B581 /* map.png */; };
 		DB7B77CF15099FDA0020B581 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = DB7B77CE15099FDA0020B581 /* camera.png */; };
@@ -67,7 +65,6 @@
 		DBED47FC1537C8BD00BCBFB9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */; };
 		DBFF131117CB82510096DB2B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF131017CB824E0096DB2B /* Icon.png */; };
 		DBFF131317CB82630096DB2B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF131217CB82630096DB2B /* Icon@2x.png */; };
-		E9ECCBB51C667E75004D68E9 /* OpenHousesTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ECCBB41C667E75004D68E9 /* OpenHousesTranslator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -133,10 +130,6 @@
 		DB4EC29D166B9FF200D9B1EC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Images/Default.png; sourceTree = "<group>"; };
 		DB598BC9167BE9DE0073CB2A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB5F3EAC1C70011E003DA1C3 /* sharing.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sharing.xcodeproj; path = ../sharing/sharing.xcodeproj; sourceTree = "<group>"; };
-		DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenHousesDecoder.h; sourceTree = "<group>"; };
-		DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenHousesDecoder.m; sourceTree = "<group>"; };
-		DB5F3EFA1C74A734003DA1C3 /* OpenHousesShareMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenHousesShareMgr.h; sourceTree = "<group>"; };
-		DB5F3EFB1C74A734003DA1C3 /* OpenHousesShareMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenHousesShareMgr.m; sourceTree = "<group>"; };
 		DB62BF1015E05BB600799582 /* OpenHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = OpenHouse.entitlements; sourceTree = "<group>"; };
 		DB62BF1115E062A500799582 /* OpenHouses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = OpenHouses.entitlements; sourceTree = "<group>"; };
 		DB62BF1615E71CD000799582 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -206,8 +199,6 @@
 		DBED47FD1537C8DF00BCBFB9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DBFF131017CB824E0096DB2B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		DBFF131217CB82630096DB2B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		E9ECCBB31C667E75004D68E9 /* OpenHousesTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenHousesTranslator.h; sourceTree = "<group>"; };
-		E9ECCBB41C667E75004D68E9 /* OpenHousesTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenHousesTranslator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,14 +335,8 @@
 				DB9934AE1502B25300E77816 /* SortOptionViewController.m */,
 				DB7DD0E414AF7FEB009EC45F /* AppDelegate.h */,
 				DB7DD0E514AF7FEB009EC45F /* AppDelegate.m */,
-				DB5F3EF61C74A239003DA1C3 /* OpenHousesDecoder.h */,
-				DB5F3EF71C74A239003DA1C3 /* OpenHousesDecoder.m */,
-				E9ECCBB31C667E75004D68E9 /* OpenHousesTranslator.h */,
-				E9ECCBB41C667E75004D68E9 /* OpenHousesTranslator.m */,
-				DB5F3EFA1C74A734003DA1C3 /* OpenHousesShareMgr.h */,
 				DBD16B141C90584900052A03 /* DataOpsDelegate.h */,
 				DBD16B151C90584900052A03 /* DataOpsDelegate.m */,
-				DB5F3EFB1C74A734003DA1C3 /* OpenHousesShareMgr.m */,
 				DB7DD0DC14AF7FEB009EC45F /* Supporting Files */,
 			);
 			path = Shopper;
@@ -588,14 +573,11 @@
 				DB7DD0E214AF7FEB009EC45F /* main.m in Sources */,
 				DB7DD0E614AF7FEB009EC45F /* AppDelegate.m in Sources */,
 				DB7DD0E914AF7FEB009EC45F /* Shopper.xcdatamodeld in Sources */,
-				DB5F3EF81C74A239003DA1C3 /* OpenHousesDecoder.m in Sources */,
-				E9ECCBB51C667E75004D68E9 /* OpenHousesTranslator.m in Sources */,
 				DB7DD11F14AF8B90009EC45F /* Item.m in Sources */,
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
 				DBD16B161C90584900052A03 /* DataOpsDelegate.m in Sources */,
 				DBD16AF21C8DA27200052A03 /* AddEditDispDelegate.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
-				DB5F3EFC1C74A734003DA1C3 /* OpenHousesShareMgr.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

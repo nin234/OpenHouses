@@ -190,6 +190,19 @@
     return;
 }
 
+-(NSString *) getShareMsg:(id)itm
+{
+    LocalItem *item = itm;
+    NSString *message = @"";
+    NSString *msg =[message stringByAppendingFormat:@"Name:%@:;Price: %.2f:;Area: %.2f  Year: %d:;Beds: %.2f  Baths: %.2f:; Notes: %@:;Street: %@:;City: %@:;State: %@:;Country: %@:; Postal Code: %@:;latitude:%f:;longitude:%f:;str1:%@:;",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+                    [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
+                    item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
+                    item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1];
+    return msg;
+    
+
+}
+
 -(NSString *) getEmailFbMsg:(id)itm
 {
     LocalItem *item = itm;
@@ -406,22 +419,13 @@
     return;
 }
 
--(void) shareNow
+-(void) shareContactsAdd
 {
-    NSLog(@"Sharing to openhouses\n");
-    
-    MainViewController *pMainVwCntrl = [self.navViewController.viewControllers objectAtIndex:0];
-    if(![pMainVwCntrl.pAllItms itemsSelected])
-    {
-        [self.apputil iCloudEmailCancel];
-        return;
-    }
-    bShare = true;
-    UIAlertView *pAvw = [[UIAlertView alloc] initWithTitle:@"Share Pictures" message:@"" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-    [pAvw show];
-
+    self.appUtl.selFrndCntrl.bModeShare = true;
+    self.appUtl.tabBarController.selectedIndex = 1;
     return;
 }
+
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller  
           didFinishWithResult:(MFMailComposeResult)result 

@@ -16,7 +16,7 @@
 #import "LocalItem.h"
 #import <CoreLocation/CLLocationManager.h>
 #import "common/KeychainItemWrapper.h"
-#import "OpenHousesShareMgr.h"
+#import "CommonShareMgr.h"
 #import "common/MainViewController.h"
 #import "sharing/AppShrUtil.h"
 #import "common/AppUtil.h"
@@ -112,8 +112,10 @@
 -(void) addToCount;
 -(void) addToTotCount;
 -(void) addToTotCountNoR;
+-(void) shareContactsAdd;
 -(void) storeInKeyChain;
 -(void) storeFriends;
 -(NSString *) getPassword;
 -(NSString *) getEmailFbMsg:(id)itm;
+-(NSString *) getShareMsg:(id)itm;
 @end
