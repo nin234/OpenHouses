@@ -16,7 +16,7 @@
 #import "LocalItem.h"
 #import <CoreLocation/CLLocationManager.h>
 #import "common/KeychainItemWrapper.h"
-#import "CommonShareMgr.h"
+#import "common/CommonShareMgr.h"
 #import "common/MainViewController.h"
 #import "sharing/AppShrUtil.h"
 #import "common/AppUtil.h"
@@ -40,7 +40,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
-@property (nonatomic, retain) OpenHousesShareMgr *pShrMgr;
+@property (nonatomic, retain) CommonShareMgr *pShrMgr;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navViewController;
 
@@ -118,4 +118,5 @@
 -(NSString *) getPassword;
 -(NSString *) getEmailFbMsg:(id)itm;
 -(NSString *) getShareMsg:(id)itm;
+-(NSString *) getItemName:(id)itm;
 @end

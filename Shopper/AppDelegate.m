@@ -190,6 +190,12 @@
     return;
 }
 
+-(NSString *) getItemName:(id)itm
+{
+    LocalItem *item = itm;
+    return item.name;
+}
+
 -(NSString *) getShareMsg:(id)itm
 {
     LocalItem *item = itm;
@@ -708,7 +714,7 @@
     beingLoggedIn = false;
     appUtl = [[AppShrUtil alloc] init];
     appUtl.purchased = false;
-    pShrMgr = [[OpenHousesShareMgr alloc] init];
+    pShrMgr = [[CommonShareMgr alloc] init];
     appUtl.pShrMgr = pShrMgr;
     NSLog(@"Launching openhouses");
     
