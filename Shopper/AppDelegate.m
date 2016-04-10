@@ -715,6 +715,8 @@
     appUtl = [[AppShrUtil alloc] init];
     appUtl.purchased = false;
     pShrMgr = [[CommonShareMgr alloc] init];
+    pShrMgr.pNtwIntf.connectAddr = @"openhouses.ddns.net";
+    pShrMgr.pNtwIntf.connectAddr = @"16973";
     appUtl.pShrMgr = pShrMgr;
     NSLog(@"Launching openhouses");
     
@@ -726,6 +728,7 @@
     apputil.delegate = self;
     [apputil setProductId:@"com.rekhaninan.openhouses_unlocked"];
      apputil = [apputil init];
+    apputil.pShrMgr = pShrMgr;
     
 #ifdef CLEANUP
          [self cleanUpEverything];
