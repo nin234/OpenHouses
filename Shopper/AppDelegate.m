@@ -18,6 +18,7 @@
 #import "SortOptionViewController.h"
 #import "AddEditDispDelegate.h"
 
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -196,11 +197,87 @@
     return item.name;
 }
 
+-(void) decodeAndStoreItem :(NSString *) ItemStr
+{
+    NSArray *pArr = [ItemStr componentsSeparatedByString:@"]:;"];
+    NSMutableDictionary *pItemDic = [[NSMutableDictionary alloc] init];
+    NSUInteger cnt = [pArr count];
+    for (NSUInteger i=0; i < cnt; ++i)
+    {
+        NSString *kval = [pArr objectAtIndex:i];
+        NSArray  *kvarr = [kval componentsSeparatedByString:@":|:"];
+        NSUInteger kvcnt = [kvarr count];
+        if (kvcnt != 2)
+            continue;
+        [pItemDic setObject:[kvarr objectAtIndex:1] forKey:[kvarr objectAtIndex:0]];
+    }
+    LocalItem *pItem = [[LocalItem alloc] init];
+    NSString *pName = [pItemDic objectForKey:@"Name"];
+    if (pName != nil)
+        pItem.name  = pName;
+    NSString *pPrice = [pItemDic objectForKey:@"Price"];
+    if (pPrice != nil)
+        pItem.price = [NSNumber numberWithFloat:[pPrice floatValue]];
+    NSString *pArea = [pItemDic objectForKey:@"Area"];
+    if (pArea != nil)
+        pItem.area = [NSNumber numberWithFloat:[pArea floatValue]];
+    NSString *pYear = [pItemDic objectForKey:@"Year"];
+    if (pYear != nil)
+        pItem.year = [pYear intValue];
+    NSString *pBeds = [pItemDic objectForKey:@"Beds"];
+    if (pBeds != nil)
+        pItem.beds = [NSNumber numberWithFloat:[pBeds floatValue]];
+    NSString *pBaths = [pItemDic objectForKey:@"Baths"];
+    if (pBaths != nil)
+        pItem.baths = [NSNumber numberWithFloat:[pBaths floatValue]];
+    NSString *pNotes = [pItemDic objectForKey:@"Notes"];
+    if (pNotes != nil)
+        pItem.notes = pNotes;
+    NSString *pStreet = [pItemDic objectForKey:@"Street"];
+    if (pStreet != nil)
+        pItem.street = pStreet;
+    NSString *pCity = [pItemDic objectForKey:@"City"];
+    if (pCity != nil)
+        pItem.city = pCity;
+    NSString *pState = [pItemDic objectForKey:@"State"];
+    if (pState != nil)
+        pItem.state = pState;
+    NSString *pZip = [pItemDic objectForKey:@"PostalCode"];
+    if (pZip != nil)
+        pItem.zip = pZip;
+    NSString *pLat = [pItemDic objectForKey:@"latitude"];
+    if (pLat != nil)
+        pItem.latitude = [pLat doubleValue];
+    NSString *pLong = [pItemDic objectForKey:@"longitude"];
+    if (pLong != nil)
+        pItem.longitude = [pLong doubleValue];
+    NSString *pStr1 = [pItemDic objectForKey:@"str1"];
+    if (pStr1 != nil)
+        pItem.str1 = pStr1;
+    struct timeval tv;
+    gettimeofday(&tv, 0);
+    long long sec = ((long long)tv.tv_sec)*1000000;
+    long long usec =tv.tv_usec;
+    pItem.val1 = sec + usec;
+    NSString *pHdir = NSHomeDirectory();
+    NSString *pAlbums = @"/Documents/albums";
+    NSString *pAlbumsDir = [pHdir stringByAppendingString:pAlbums];
+    NSLog(@"create new album name in directory %@", pAlbumsDir);
+    gettimeofday(&tv, NULL);
+    sec = ((long long)tv.tv_sec)*1000000;
+    usec = tv.tv_usec;
+    long long alNo =  sec+ usec;
+    NSString *intStr = [[NSNumber numberWithLongLong:alNo] stringValue];
+    pItem.album_name = intStr;
+    [dataSync addItem:pItem];
+    return;
+}
+
 -(NSString *) getShareMsg:(id)itm
 {
     LocalItem *item = itm;
     NSString *message = @"";
-    NSString *msg =[message stringByAppendingFormat:@"Name:%@:;Price: %.2f:;Area: %.2f  Year: %d:;Beds: %.2f  Baths: %.2f:; Notes: %@:;Street: %@:;City: %@:;State: %@:;Country: %@:; Postal Code: %@:;latitude:%f:;longitude:%f:;str1:%@:;",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
                     [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
                     item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
                     item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1];
@@ -718,6 +795,7 @@
     pShrMgr.pNtwIntf.connectAddr = @"openhouses.ddns.net";
     pShrMgr.pNtwIntf.connectAddr = @"16973";
     appUtl.pShrMgr = pShrMgr;
+    pShrMgr.delegate = self;
     NSLog(@"Launching openhouses");
     
     NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];

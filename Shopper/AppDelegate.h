@@ -25,7 +25,7 @@
 #define PHOTOREQSOURCE_SHARE 2
 #define AWS_OPENHOUSES_APPID 2
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate, MainListViewControllerDelegate, MainViewControllerDelegate, AppUtilDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate, MainListViewControllerDelegate, MainViewControllerDelegate, AppUtilDelegate, CommonShareMgrDelegate>
 {
     NSMetadataQuery *query;
     MKMapView    *mapView;
@@ -96,6 +96,8 @@
 
 @property (nonatomic, retain) NSFileManager *pFlMgr;
 @property (nonatomic, retain) AppShrUtil *appUtl;
+
+-(void) decodeAndStoreItem :(NSString *) ItemStr;
 
 - (void)itemAdd;
 - (void)itemAddDone;
