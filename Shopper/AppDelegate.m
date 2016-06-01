@@ -197,6 +197,18 @@
     return item.name;
 }
 
+-(NSURL *) getPicUrl:(long long ) shareId picName:(NSString *) name itemName:(NSString *) iName
+{
+    NSString *pAlbumName = [dataSync getAlbumName:shareId itemName:iName];
+    if (pAlbumName == nil)
+        return nil;
+    NSString *pAlbumDir = [apputil getAlbumDir:pAlbumName];
+    NSString *picFil = [pAlbumDir stringByAppendingString:@"/"];
+    picFil  = [picFil stringByAppendingString:name];
+    NSURL *picUrl = [NSURL URLWithString:picFil];
+    return picUrl;
+}
+
 -(void) decodeAndStoreItem :(NSString *) ItemStr
 {
     NSArray *pArr = [ItemStr componentsSeparatedByString:@"]:;"];
@@ -254,6 +266,9 @@
     NSString *pStr1 = [pItemDic objectForKey:@"str1"];
     if (pStr1 != nil)
         pItem.str1 = pStr1;
+    NSString *pShrId = [pItemDic objectForKey:@"shareId"];
+    if (pShrId != nil)
+        pItem.val2 = [pShrId doubleValue];
     struct timeval tv;
     gettimeofday(&tv, 0);
     long long sec = ((long long)tv.tv_sec)*1000000;
@@ -277,10 +292,10 @@
 {
     LocalItem *item = itm;
     NSString *message = @"";
-    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;shareId:|:%.2lld",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
                     [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
                     item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
-                    item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1];
+                    item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1, pShrMgr.share_id];
     return msg;
     
 
@@ -398,6 +413,7 @@
     AddEditDispDelegate *pAddView = (AddEditDispDelegate *)pAddViewCntrl.delegate;
     
 	pAddView.pNewItem.val1 = sec + usec;
+    
 
     [dataSync addItem:pAddView.pNewItem];
     NSLog(@"New Item added %@\n", pAddView.pNewItem);
@@ -796,6 +812,7 @@
     pShrMgr.pNtwIntf.connectAddr = @"16973";
     appUtl.pShrMgr = pShrMgr;
     pShrMgr.delegate = self;
+    pShrMgr.shrMgrDelegate = self;
     NSLog(@"Launching openhouses");
     
     NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];

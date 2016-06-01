@@ -61,6 +61,24 @@ if ([album_name isEqualToString:lalbum_name])
     return nil;
 }
 
+-(NSString *)getAlbumName:(long long) shareId itemName:(NSString *) name item:(id)itm
+{
+    if ([itm isKindOfClass:[Item class]])
+    {
+        Item *item = itm;
+        if (item.val2 == shareId && [name isEqualToString:item.name])
+            return item.album_name;
+    }
+    else
+    {
+        LocalItem *litem = itm;
+        if (litem.val2 == shareId && [name isEqualToString:litem.name])
+            return litem.album_name;
+    }
+    return nil;
+}
+
+
 -(id) getNewItem:(NSEntityDescription *) entity context:(NSManagedObjectContext *) managedObjectContext
 {
     Item *newItem = [[Item alloc]

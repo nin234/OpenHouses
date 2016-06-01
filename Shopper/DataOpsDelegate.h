@@ -21,4 +21,5 @@
 -(id) getLocalItem;
 -(void) copyFromItem:(id) itm local:(id)litm;
 -(MainViewController *) getMainViewController;
+-(NSString *)getAlbumName:(long long) shareId itemName:(NSString *) name item:(id)itm;
 @end

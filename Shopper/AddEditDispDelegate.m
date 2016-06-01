@@ -22,6 +22,7 @@
     pNewItem.area = [NSNumber numberWithDouble:-2.0];
     pNewItem.beds = [NSNumber numberWithDouble:-2.0];
     pNewItem.baths = [NSNumber numberWithDouble:-2.0];
+    pNewItem.val2 = 0.0;
     return;
 }
 
