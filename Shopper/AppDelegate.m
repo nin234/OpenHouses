@@ -197,6 +197,53 @@
     return item.name;
 }
 
+-(void) storeThumbNailImage:(NSURL *)picUrl
+{
+    UIImage  *fullScreenImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:picUrl] scale:1.0];
+    CGSize oImgSize;
+    oImgSize.height = 71;
+    oImgSize.width = 71;
+    UIGraphicsBeginImageContext(oImgSize);
+    [fullScreenImage drawInRect:CGRectMake(0, 0, oImgSize.width, oImgSize.height)];
+    UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    //  CGImageRef thumbnailImageRef = MyCreateThumbnailImageFromData (data, 5);
+    // UIImage *thumbnail = [UIImage imageWithCGImage:thumbnailImageRef];
+    CGSize pImgSiz = [thumbnail size];
+    NSLog(@"Added thumbnail Image height = %f width=%f \n", pImgSiz.height, pImgSiz.width);
+    
+    NSData *thumbnaildata = UIImageJPEGRepresentation(thumbnail, 0.3);
+    
+   // [pAlName stringByAppendingString:@"/thumbnails/"];
+    NSURL *albumurl = [picUrl URLByDeletingLastPathComponent];
+    albumurl = [albumurl URLByAppendingPathComponent:@"thumbnails" isDirectory:YES];
+   // NSURL  *albumurl = pDlg.pThumbNailsDir;
+    NSError *err;
+    NSString *pFlName = [picUrl lastPathComponent];
+    NSURL *pFlUrl;
+    if (albumurl != nil && [albumurl checkResourceIsReachableAndReturnError:&err])
+    {
+        
+        pFlUrl = [albumurl URLByAppendingPathComponent:pFlName isDirectory:NO];
+    }
+    
+    if ([thumbnaildata writeToURL:pFlUrl atomically:YES] == NO)
+    {
+        NSLog (@"Failed to write to thumbnail file  %@\n",  pFlUrl);
+        return;
+        // --nAlNo;
+        
+    }
+    else
+    {
+        NSLog(@"Save thumbnail file %@\n", pFlUrl);
+    }
+    
+    
+
+    return;
+}
+
 -(NSURL *) getPicUrl:(long long ) shareId picName:(NSString *) name itemName:(NSString *) iName
 {
     NSString *pAlbumName = [dataSync getAlbumName:shareId itemName:iName];
@@ -284,8 +331,20 @@
     long long alNo =  sec+ usec;
     NSString *intStr = [[NSNumber numberWithLongLong:alNo] stringValue];
     pItem.album_name = intStr;
-    [dataSync addItem:pItem];
-    return;
+    bool bNewItem = true;
+    if (![dataSync isNewItem:pItem])
+    {
+        bNewItem = false;
+    }
+    if (bNewItem)
+    {
+        [dataSync addItem:pItem];
+    }
+    else
+    {
+        [dataSync editedItem:pItem];
+    }
+       return;
 }
 
 -(NSString *) getShareMsg:(id)itm

@@ -78,6 +78,14 @@ if ([album_name isEqualToString:lalbum_name])
     return nil;
 }
 
+-(bool ) isEqualToLclItem:(id) item local:(id) litem
+{
+    LocalItem *Item = item;
+    LocalItem *LItem = litem;
+    if ([Item.name isEqualToString:LItem.name] && Item.val2 == LItem.val2)
+        return true;
+    return false;
+}
 
 -(id) getNewItem:(NSEntityDescription *) entity context:(NSManagedObjectContext *) managedObjectContext
 {
