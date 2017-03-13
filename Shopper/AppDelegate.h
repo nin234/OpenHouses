@@ -60,6 +60,7 @@
 @property (nonatomic, retain) InAppPurchase *inapp;
 @property (nonatomic, retain) AppUtil *apputil;
 
+
 @property bool unlocked;
 @property int editIndx;
 @property int selectIndx;

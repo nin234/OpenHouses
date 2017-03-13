@@ -75,6 +75,7 @@
 @synthesize appUtl;
 @synthesize apputil;
 
+
 -(void) setPurchsed
 {
     [kchain setObject:@"true" forKey:(__bridge id)kSecAttrAccount];
@@ -351,7 +352,7 @@
 {
     LocalItem *item = itm;
     NSString *message = @"";
-    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;shareId:|:%.2lld",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;shareId:|:%ld",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
                     [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
                     item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
                     item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1, pShrMgr.share_id];
@@ -893,6 +894,8 @@
     dataSync = [[DataOps alloc] init];
     [dataSync start];
     
+    apputil.dataSync = dataSync;
+        
     NSString *pAlbumsDir = [pHdir stringByAppendingPathComponent:@"/Documents/albums"];
     saveQ = [[NSOperationQueue alloc] init];
     NSLog (@"initialized saveQ %s %d \n", __FILE__, __LINE__);
@@ -995,7 +998,8 @@
     [appUtl registerForRemoteNotifications];
     
     [apputil setWindow:self.window];
-    apputil.navViewController = self.navViewController;
+    [apputil setNavViewController:self.navViewController];
+    
     [apputil initializeShrUtl];
     return YES;
 }

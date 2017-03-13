@@ -728,7 +728,10 @@
 				GCC_PREFIX_HEADER = "Shopper/Shopper-Prefix.pch";
 				GCC_SHORT_ENUMS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				"HEADER_SEARCH_PATHS[arch=*]" = /Users/nin234/projects/sharing;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/Users/ninanthomas/projects/common,
+					/Users/ninanthomas/projects/sharing,
+				);
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 8.2;
