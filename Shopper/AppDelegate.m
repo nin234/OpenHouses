@@ -74,6 +74,7 @@
 @synthesize pShrMgr;
 @synthesize appUtl;
 @synthesize apputil;
+@synthesize dataOpsDelegate;
 
 
 -(void) setPurchsed
@@ -963,6 +964,10 @@
         // Override point for customization after application launch.
     UINavigationController *navCntrl = [[UINavigationController alloc] initWithRootViewController:aViewController];
     self.navViewController = navCntrl;
+      dataSync.navViewController = navCntrl;
+    dataOpsDelegate = [[DataOpsDelegate alloc] init];
+    dataSync.delegate = dataOpsDelegate;
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:self.navViewController.view];
     [self.window makeKeyAndVisible];

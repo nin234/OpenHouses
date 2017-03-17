@@ -356,12 +356,12 @@
         }
             break;
             
-        case 8:
+        case 9:
             textField.text = pNewItem.street;
             textField.tag = HOUSE_STREET ;
             break;
             
-        case 9:
+        case 10:
         {
             textField.text = pNewItem.city;
             textField.tag = HOUSE_CITY ;
@@ -369,15 +369,15 @@
         }
             break;
             
-        case 10:
+        case 11:
             textField.text = pNewItem.state;
             textField.tag = HOUSE_STATE ;
             break;
-        case 11:
+        case 12:
             textField.text = pNewItem.country;
             textField.tag = HOUSE_COUNTRY ;
             break;
-        case 12:
+        case 13:
             textField.text = pNewItem.zip;
             textField.tag = HOUSE_ZIP ;
             break;
@@ -429,7 +429,7 @@
 
 -(bool) isSingleFieldRow:(NSUInteger) row
 {
-     if (row < 2 || row > 7)
+     if (row < 2 || row > 8)
       return true;
     return false;
 }

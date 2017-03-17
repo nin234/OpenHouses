@@ -20,6 +20,7 @@
 #import "common/MainViewController.h"
 #import "sharing/AppShrUtil.h"
 #import "common/AppUtil.h"
+#import "DataOpsDelegate.h"
 
 
 #define PHOTOREQSOURCE_SHARE 2
@@ -97,6 +98,7 @@
 
 @property (nonatomic, retain) NSFileManager *pFlMgr;
 @property (nonatomic, retain) AppShrUtil *appUtl;
+@property  (nonatomic, retain) DataOpsDelegate *dataOpsDelegate;
 
 -(void) decodeAndStoreItem :(NSString *) ItemStr;
 -(NSURL *) getPicUrl:(long long ) shareId picName:(NSString *) name itemName:(NSString *) iName;
