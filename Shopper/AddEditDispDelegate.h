@@ -36,10 +36,12 @@
 -(NSString *) setTitle;
 -(NSString *) getAlbumTitle;
 -(NSString *) getNotes;
+-(NSString *) getName;
 -(double) getLongitude;
 -(double) getLatitude;
 -(double) getEditLongitude;
 -(double) getEditLatitude;
+-(NSString *) getEditName;
 
 -(void) itemEditCancel;
 -(void) itemEditDone;
@@ -53,6 +55,7 @@
 -(NSString *) getEditItemTitle;
 -(double) getDispLatitude;
 -(double) getDispLongitude;
+-(NSString *) getDispName;
 -(NSString *) getEditNotes;
 -(bool) changeCharacters:(NSInteger) tag;
 -(bool) rangeFourTag:(NSInteger) tag;

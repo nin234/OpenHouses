@@ -239,27 +239,27 @@
         }
             break;
             
-        case 8:
+        case 9:
             textField.text = pDlg.editItem.street;
             textField.tag = HOUSE_STREET;
             break;
             
-        case 9:
+        case 10:
         {
             textField.text = pDlg.editItem.city;
             textField.tag = HOUSE_CITY;
         }
             break;
             
-        case 10:
+        case 11:
             textField.text = pDlg.editItem.state;
             textField.tag = HOUSE_STATE;
             break;
-        case 11:
+        case 12:
             textField.text = pDlg.editItem.country;
             textField.tag = HOUSE_COUNTRY;
             break;
-        case 12:
+        case 13:
             textField.text = pDlg.editItem.zip;
             textField.tag = HOUSE_ZIP;
             break;
@@ -270,6 +270,11 @@
     }
 
     return;
+}
+
+-(NSString *) getName
+{
+    return pNewItem.name;
 }
 
 -(void) populateTextFields:(UITextField *) textField textField1:(UITextField *) textField1 row:(NSUInteger)row
@@ -569,6 +574,13 @@
     return pDlg.editItem.latitude;
 }
 
+-(NSString *) getEditName
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.editItem.name;
+}
+
+
 -(double) getDispLongitude
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -579,6 +591,12 @@
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return pDlg.selectedItem.latitude;
+}
+
+-(NSString *) getDispName
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.selectedItem.name;
 }
 
 -(double) getLatitude
@@ -727,22 +745,22 @@
         }
             break;
             
-        case 7:
+        case 8:
             textField.text = pDlg.selectedItem.street;
             break;
             
-        case 8:
+        case 9:
             textField.text = pDlg.selectedItem.city ;
             break;
             
-        case 9:
+        case 10:
             textField.text = pDlg.selectedItem.state;
             break;
             
-        case 10:
+        case 11:
             textField.text = pDlg.selectedItem.country;
             break;
-        case 11:
+        case 12:
             textField.text = pDlg.selectedItem.zip;
             break;
             
