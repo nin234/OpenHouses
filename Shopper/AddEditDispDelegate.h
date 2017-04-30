@@ -26,6 +26,7 @@
 - (void) populateValues:(UITextField *)textField;
 -(void) populateTextFields:(UITextField *) textField textField1:(UITextField *) textField1 row:(NSUInteger)row;
 -(NSArray *) getFieldNames;
+-(NSArray *) getFieldDispNames;
 -(NSArray *) getSecondFieldNames;
 -(bool) isTwoFieldRow:(NSUInteger) row;
 -(CGRect) getTextFrame;
@@ -42,6 +43,7 @@
 -(double) getEditLongitude;
 -(double) getEditLatitude;
 -(NSString *) getEditName;
+-(bool) ratingsTag:(NSInteger) tag;
 
 -(void) itemEditCancel;
 -(void) itemEditDone;
@@ -64,6 +66,7 @@
 -(bool) numbersTag:(NSInteger) tag;
 -(NSString *) getDispItemTitle;
 -(NSString *) getDispNotes;
+- (BOOL)characterChk:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 
 
 @end

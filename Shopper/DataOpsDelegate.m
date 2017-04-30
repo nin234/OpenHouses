@@ -160,6 +160,14 @@ if ([album_name isEqualToString:lalbum_name])
             return @"baths";
         }
         break;
+            
+        case 6:
+        {
+            *ascending = pDlg.bRatingsAsc;
+            return @"str2";
+        }
+            break;
+            
         case 0:
         {
             *ascending = pDlg.bDateAsc;

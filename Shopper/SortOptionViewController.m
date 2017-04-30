@@ -152,6 +152,16 @@
     
 }
 
+- (void) ratingsToggle
+{
+    NSLog(@"Received ratings toggle \n");
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    pDlg.bBathsAsc = !pDlg.bBathsAsc;
+    [self.tableView reloadData];
+    return;
+    
+}
+
 
 #pragma mark - Table view data source
 
@@ -165,7 +175,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -210,6 +220,7 @@
     NSString *year = pDlg.bYearAsc?@"old":@"new";
     NSString *beds = pDlg.bBedsAsc?@"low":@"high";
     NSString *baths = pDlg.bBathsAsc?@"low":@"high";
+    NSString *ratings = pDlg.bRatingsAsc?@"low":@"high";
     
     switch (indexPath.row)
     {
@@ -259,6 +270,15 @@
             button.backgroundColor = pDlg.bBathsAsc?[UIColor brownColor]:[UIColor blueColor];
             [button addTarget:self action:@selector(bathsToggle) forControlEvents:UIControlEventTouchDown];
             break;
+            
+        case 6:
+            NSLog(@"Setting ratings button title %@ \n" , ratings);
+            [button setTitle:ratings forState:UIControlStateNormal];
+            button.backgroundColor = [UIColor brownColor];
+            button.backgroundColor = pDlg.bRatingsAsc?[UIColor brownColor]:[UIColor blueColor];
+            [button addTarget:self action:@selector(ratingsToggle) forControlEvents:UIControlEventTouchDown];
+            break;
+            
 
         default:
         
@@ -293,6 +313,10 @@
             break;
         case 5:
             label1.text = pDlg.bBathsAsc?@" to high":@" to low";
+            break;
+            
+        case 6:
+            label1.text = pDlg.bRatingsAsc?@" to high":@" to low";
             break;
             
         default:

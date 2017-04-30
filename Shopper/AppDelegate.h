@@ -72,6 +72,7 @@
 @property bool bYearAsc;
 @property bool bBedsAsc;
 @property bool bBathsAsc;
+@property bool bRatingsAsc;
 @property bool biCloudAvail;
 @property bool bPtoPShare;
 @property int toggle;

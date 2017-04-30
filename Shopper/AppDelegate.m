@@ -75,6 +75,7 @@
 @synthesize appUtl;
 @synthesize apputil;
 @synthesize dataOpsDelegate;
+@synthesize bRatingsAsc;
 
 
 -(void) setPurchsed
@@ -853,6 +854,7 @@
     bAreaAsc = true;
     bYearAsc = true;
     bBedsAsc = true;
+    bRatingsAsc = true;
     bBathsAsc = true;
     biCloudAvail = false;
     toggle = 0;

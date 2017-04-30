@@ -152,6 +152,10 @@
             pNewItem.state = textField.text;
             break;
             
+        case HOUSE_RATINGS:
+            pNewItem.str2 = textField.text;
+            break;
+            
         case HOUSE_COUNTRY:
             pNewItem.country = textField.text;
             break;
@@ -240,26 +244,32 @@
             break;
             
         case 9:
+            textField.text = pDlg.editItem.str2;
+            textField.tag = HOUSE_RATINGS;
+            textField.keyboardType = UIKeyboardTypeNumberPad;
+            break;
+            
+        case 10:
             textField.text = pDlg.editItem.street;
             textField.tag = HOUSE_STREET;
             break;
             
-        case 10:
+        case 11:
         {
             textField.text = pDlg.editItem.city;
             textField.tag = HOUSE_CITY;
         }
             break;
             
-        case 11:
+        case 12:
             textField.text = pDlg.editItem.state;
             textField.tag = HOUSE_STATE;
             break;
-        case 12:
+        case 13:
             textField.text = pDlg.editItem.country;
             textField.tag = HOUSE_COUNTRY;
             break;
-        case 13:
+        case 14:
             textField.text = pDlg.editItem.zip;
             textField.tag = HOUSE_ZIP;
             break;
@@ -358,15 +368,24 @@
             }
             textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             textField.tag = HOUSE_PRICE;
+            
         }
             break;
             
         case 9:
+            textField.text = pNewItem.str2;
+            textField.tag = HOUSE_RATINGS ;
+            textField.keyboardType = UIKeyboardTypeNumberPad;
+            break;
+            
+
+            
+        case 10:
             textField.text = pNewItem.street;
             textField.tag = HOUSE_STREET ;
             break;
             
-        case 10:
+        case 11:
         {
             textField.text = pNewItem.city;
             textField.tag = HOUSE_CITY ;
@@ -374,15 +393,15 @@
         }
             break;
             
-        case 11:
+        case 12:
             textField.text = pNewItem.state;
             textField.tag = HOUSE_STATE ;
             break;
-        case 12:
+        case 13:
             textField.text = pNewItem.country;
             textField.tag = HOUSE_COUNTRY ;
             break;
-        case 13:
+        case 14:
             textField.text = pNewItem.zip;
             textField.tag = HOUSE_ZIP ;
             break;
@@ -400,7 +419,12 @@
 
 -(NSArray *) getFieldNames
 {
-    return [NSArray arrayWithObjects:@"Name", @"Price", @"Area", @"Beds", @"Camera", @"Notes", @"Pictures", @"Map", @"Street", @"City", @"State", @"Country", @"Postal Code", nil];
+    return [NSArray arrayWithObjects:@"Name", @"Price", @"Area", @"Beds", @"Camera", @"Check List",  @"Notes", @"Pictures", @"Map", @"Ratings",  @"Street", @"City", @"State", @"Country", @"Postal Code", nil];
+}
+
+-(NSArray *) getFieldDispNames
+{
+    return [NSArray arrayWithObjects:@"Name", @"Price", @"Area", @"Beds", @"Check List",  @"Notes", @"Pictures", @"Map", @"Ratings",  @"Street", @"City", @"State", @"Country", @"Postal Code", nil];
 }
 
 -(NSArray *) getSecondFieldNames
@@ -427,7 +451,7 @@
 
 -(bool) isSingleFieldEditRow:(NSUInteger) row
 {
-    if(row < 2 || (row > 7 && row < 13))
+    if(row < 2 || (row > 8 && row < 15 ))
         return true;
     return false;
 }
@@ -549,6 +573,99 @@
         return true;
     return false;
 }
+-(bool) ratingsTag:(NSInteger) tag
+{
+    return tag == HOUSE_RATINGS;
+}
+
+- (BOOL)characterChk:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"Text field should change character %s %ld %lu %lu\n", [textField.text UTF8String], (long)textField.tag, (unsigned long)range.location , (unsigned long)range.length);
+    switch (textField.tag)
+    {
+        case HOUSE_PRICE:
+        case HOUSE_AREA:
+        case HOUSE_BATHS:
+        case HOUSE_BEDS:
+        case HOUSE_YEAR:
+        case HOUSE_RATINGS:
+            break;
+            
+        default:
+            return YES;
+            break;
+    }
+    
+    static NSString *numbers = @"0123456789";
+    static NSString *numbersPeriod = @"01234567890.";
+    
+    
+    //NSLog(@"%d %d %@", range.location, range.length, string);
+    if (range.length > 0 && [string length] == 0) {
+        // enable delete
+        return YES;
+    }
+    
+    // NSString *symbol = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+    NSString *symbol = @".";
+    if (range.location == 0 && [string isEqualToString:symbol]) {
+        // decimalseparator should not be first
+        return NO;
+    }
+    NSCharacterSet *characterSet;
+    if (textField.tag == HOUSE_YEAR)
+    {
+        if ([string rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet].invertedSet].location != NSNotFound)
+        {
+            return NO;
+        }
+        NSString *proposedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        if (proposedText.length > 4)        {
+            return NO;
+        }
+               characterSet = [[NSCharacterSet characterSetWithCharactersInString:numbers] invertedSet];
+    }
+    else if (textField.tag == HOUSE_RATINGS)
+    {
+        if ([string rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet].invertedSet].location != NSNotFound)
+        {
+            return NO;
+        }
+          NSString *proposedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        if (proposedText.length > 2)
+        {
+            return NO;
+        }
+
+        if ([proposedText intValue] < 0 || [proposedText intValue] >10)
+            return NO;
+        characterSet = [[NSCharacterSet characterSetWithCharactersInString:numbers] invertedSet];
+    }
+    else
+    {
+        
+        NSRange separatorRange = [textField.text rangeOfString:symbol];
+        if (separatorRange.location == NSNotFound)
+        {
+            //  if ([symbol isEqualToString:@"."]) {
+            characterSet = [[NSCharacterSet characterSetWithCharactersInString:numbersPeriod] invertedSet];
+        }
+        else
+        {
+            // allow 2 characters after the decimal separator
+            if (range.location > (separatorRange.location + 2))
+            {
+                return NO;
+            }
+            characterSet = [[NSCharacterSet characterSetWithCharactersInString:numbers] invertedSet];
+        }
+    }
+    return ([[string stringByTrimmingCharactersInSet:characterSet] length] > 0);
+
+    
+}
+
 
 -(bool) numbersTag:(NSInteger) tag;
 {
@@ -659,6 +776,11 @@
             pDlg.editItem.city = textField.text;
             break;
             
+        case HOUSE_RATINGS:
+            pDlg.editItem.str2 = textField.text;
+            break;
+
+            
         case HOUSE_STATE:
             pDlg.editItem.state = textField.text;
             break;
@@ -745,22 +867,27 @@
         }
             break;
             
+            
         case 8:
-            textField.text = pDlg.selectedItem.street;
+            textField.text = pDlg.selectedItem.str2;
             break;
             
         case 9:
-            textField.text = pDlg.selectedItem.city ;
+            textField.text = pDlg.selectedItem.street;
             break;
             
         case 10:
-            textField.text = pDlg.selectedItem.state;
+            textField.text = pDlg.selectedItem.city ;
             break;
             
         case 11:
+            textField.text = pDlg.selectedItem.state;
+            break;
+            
+        case 12:
             textField.text = pDlg.selectedItem.country;
             break;
-        case 12:
+        case 13:
             textField.text = pDlg.selectedItem.zip;
             break;
             

@@ -33,7 +33,7 @@
 @property double val1;
 @property double val2;
 @property (nonatomic, retain) NSString *str1;
-@property (nonatomic, retain) NSString *str2;
+@property (nonatomic, retain) NSString *str2; // stores the ratings value
 @property (nonatomic, retain) NSString *str3;
 
 -(void) copyFromLocalItem:(LocalItem *)item copyAlbumName:(bool) bCopy;
