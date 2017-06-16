@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B9CF8B41EF1F550004F009D /* AlbumContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */; };
+		3B9CF8CA1EF3E99B004F009D /* AlbumContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */; };
+		3BE9C8611EEA049600F69D48 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9C8601EEA049600F69D48 /* MapViewController.xib */; };
 		DB00E4D01C7AB2B900E898F7 /* libcommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB00E4CD1C7AB1BA00E898F7 /* libcommon.a */; };
 		DB02668E151342BE00A28458 /* IsSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = DB02668D151342BE00A28458 /* IsSelected.png */; };
 		DB026691151342E400A28458 /* NotSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = DB026690151342E400A28458 /* NotSelected.png */; };
@@ -118,6 +121,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsViewController.xib; sourceTree = "<group>"; };
+		3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsTableViewCell.xib; sourceTree = "<group>"; };
+		3BE9C8601EEA049600F69D48 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = common.xcodeproj; path = ../common/common.xcodeproj; sourceTree = "<group>"; };
 		DB02668D151342BE00A28458 /* IsSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IsSelected.png; path = ../Images/IsSelected.png; sourceTree = "<group>"; };
 		DB026690151342E400A28458 /* NotSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NotSelected.png; path = ../Images/NotSelected.png; sourceTree = "<group>"; };
@@ -317,8 +323,11 @@
 		DB7DD0DB14AF7FEB009EC45F /* Shopper */ = {
 			isa = PBXGroup;
 			children = (
+				3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */,
 				DBD16AF01C8DA25E00052A03 /* AddEditDispDelegate.h */,
+				3BE9C8601EEA049600F69D48 /* MapViewController.xib */,
 				DBD16AF11C8DA27200052A03 /* AddEditDispDelegate.m */,
+				3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */,
 				DB62BF1115E062A500799582 /* OpenHouses.entitlements */,
 				DB62BF1015E05BB600799582 /* OpenHouse.entitlements */,
 				DB19B609152D0978009B19A1 /* NestQuest.entitlements */,
@@ -456,6 +465,9 @@
 					DB7DD0CE14AF7FEB009EC45F = {
 						DevelopmentTeam = 3JEQ693MKL;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -515,6 +527,8 @@
 			files = (
 				DB7DD0E014AF7FEB009EC45F /* InfoPlist.strings in Resources */,
 				DBD2CD0514B965CD00CF26C2 /* Images in Resources */,
+				3B9CF8B41EF1F550004F009D /* AlbumContentsViewController.xib in Resources */,
+				3B9CF8CA1EF3E99B004F009D /* AlbumContentsTableViewCell.xib in Resources */,
 				DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */,
 				DB9934B11502B25500E77816 /* SortOptionViewController.xib in Resources */,
 				DB7B77CC15099FA80020B581 /* map.png in Resources */,
@@ -532,6 +546,7 @@
 				DB62BF1715E71CD000799582 /* Default@2x.png in Resources */,
 				DB4EC29E166B9FF200D9B1EC /* Default.png in Resources */,
 				DB598BCA167BE9DE0073CB2A /* Default-568h@2x.png in Resources */,
+				3BE9C8611EEA049600F69D48 /* MapViewController.xib in Resources */,
 				DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */,
 				DB96A99F17695B7800CE6503 /* IphoneButton_Green.png in Resources */,
 				DBFF131117CB82510096DB2B /* Icon.png in Resources */,

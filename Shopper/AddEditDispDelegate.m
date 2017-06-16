@@ -900,6 +900,19 @@
     return;
 }
 
+-(void ) setAddNotes:(NSString *)notes
+{
+    pNewItem.notes = notes;
+    NSLog(@"Setting notes in add item %@", notes);
+}
+
+-(void) setEditNotes: (NSString *)notes
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    pDlg.editItem.notes = notes;
+    
+}
+
 -(bool) isSingleFieldDispRow:(NSUInteger) row
 {
     if (row < 2 || row > 6)

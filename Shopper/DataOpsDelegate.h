@@ -23,5 +23,7 @@
 -(MainViewController *) getMainViewController;
 -(NSString *)getAlbumName:(long long) shareId itemName:(NSString *) name item:(id)itm;
 -(bool ) isEqualToLclItem:(id) item local:(id) litem;
+-(NSString *) getEntityName;
+
 
 @end

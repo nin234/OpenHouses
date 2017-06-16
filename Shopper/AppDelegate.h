@@ -127,4 +127,6 @@
 -(NSString *) getEmailFbMsg:(id)itm;
 -(NSString *) getShareMsg:(id)itm;
 -(NSString *) getItemName:(id)itm;
+-(NSString* ) mainVwCntrlTitle;
+
 @end

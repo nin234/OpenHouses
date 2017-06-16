@@ -48,6 +48,8 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Take pictures of house</string>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>NSLo</key>
@@ -58,6 +60,8 @@
 	<string>Need location info to fill property address</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location info needed for Map/address</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Record sound  in videos of houses </string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>UIRequiredDeviceCapabilities</key>

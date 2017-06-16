@@ -489,6 +489,7 @@
   //  UIBarButtonItem *pBarItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(itemAddCancel) ];
     NSLog(@"Adding item purchase = %d COUNT = %lld", appUtl.purchased, COUNT);
     
+    /*
     if (!appUtl.purchased)
     {
         if (COUNT >= 2)
@@ -501,6 +502,7 @@
 
         }
     }
+     */
     NSLog(@"Authorization status %d", [CLLocationManager authorizationStatus]);
     UIDevice *dev = [UIDevice currentDevice];
     if (!([[dev systemVersion] doubleValue] < 8.0))
@@ -807,6 +809,11 @@
     return;
 }
 
+-(NSString* ) mainVwCntrlTitle
+{
+    return @"House List";
+}
+
 -(void) cleanUpEverything
 {
     NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
@@ -895,6 +902,7 @@
     
     NSError *error;
     dataSync = [[DataOps alloc] init];
+    dataSync.appName = @"Shopper";
     [dataSync start];
     
     apputil.dataSync = dataSync;

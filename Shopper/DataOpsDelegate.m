@@ -61,6 +61,12 @@ if ([album_name isEqualToString:lalbum_name])
     return nil;
 }
 
+-(NSString *) getEntityName
+{
+    return @"Item";
+}
+
+
 -(NSString *)getAlbumName:(long long) shareId itemName:(NSString *) name item:(id)itm
 {
     if ([itm isKindOfClass:[Item class]])

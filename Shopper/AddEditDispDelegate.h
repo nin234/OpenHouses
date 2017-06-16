@@ -67,6 +67,8 @@
 -(NSString *) getDispItemTitle;
 -(NSString *) getDispNotes;
 - (BOOL)characterChk:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+-(void ) setAddNotes:(NSString *)notes;
+-(void) setEditNotes: (NSString *)notes;
 
 
 @end
