@@ -183,12 +183,13 @@
         pAlName = [apputil getAlbumDir:selectedItem.album_name];
     NSLog(@"Setting pDlg.pAlName=%@", pAlName);
     
-    DisplayViewController *aViewController = [[DisplayViewController alloc]
-                                              initWithNibName:nil bundle:nil];
+    DisplayViewController *aViewController = [DisplayViewController alloc];
+    
     [aViewController setPFlMgr:pFlMgr];
     [aViewController setPAlName:pAlName];
     [aViewController setNavViewController:self.navViewController];
     [aViewController setDelegate:[[AddEditDispDelegate alloc]init]];
+    aViewController = [aViewController  initWithNibName:nil bundle:nil];
     
     [self.navViewController pushViewController:aViewController animated:YES];
     return;
@@ -354,7 +355,7 @@
 {
     LocalItem *item = itm;
     NSString *message = @"";
-    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;shareId:|:%ld",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;shareId:|:%lld",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
                     [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
                     item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
                     item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1, pShrMgr.share_id];
@@ -395,12 +396,13 @@
     //putchar('I');
     
     
-    EditViewController *aViewController = [[EditViewController alloc]
-                                           initWithNibName:nil bundle:nil];
+    EditViewController *aViewController = [EditViewController alloc];
+    
     [aViewController setDelegate:[[AddEditDispDelegate alloc] init]];
     [aViewController setPAlName:pAlName];
     [aViewController setPFlMgr:pFlMgr];
     [aViewController setNavViewController:self.navViewController];
+    aViewController = [aViewController initWithNibName:nil bundle:nil];
      
     [self.navViewController pushViewController:aViewController animated:YES];
 }
@@ -524,11 +526,12 @@
     [pMainVwCntrl.pSearchBar resignFirstResponder];
     [pMainVwCntrl setDelegate:self];
     [pMainVwCntrl setDelegate_1:self];
-    AddViewController *aViewController = [[AddViewController alloc]
-                                          initWithNibName:nil bundle:nil];
+    AddViewController *aViewController = [AddViewController alloc];
+    
     [aViewController setPFlMgr:pFlMgr];
     [aViewController setNavViewController:self.navViewController];
     [aViewController setDelegate:[[AddEditDispDelegate alloc]init]];
+    aViewController = [aViewController initWithNibName:nil bundle:nil];
     aVw = aViewController;
     mapView.showsUserLocation = YES;
     [self.navViewController pushViewController:aViewController animated:YES];
@@ -879,7 +882,7 @@
     appUtl.purchased = false;
     pShrMgr = [[CommonShareMgr alloc] init];
     pShrMgr.pNtwIntf.connectAddr = @"openhouses.ddns.net";
-    pShrMgr.pNtwIntf.connectAddr = @"16973";
+    pShrMgr.pNtwIntf.connectAddr = @"16789";
     appUtl.pShrMgr = pShrMgr;
     pShrMgr.delegate = self;
     pShrMgr.shrMgrDelegate = self;

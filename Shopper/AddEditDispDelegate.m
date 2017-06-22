@@ -16,7 +16,7 @@
 
 -(void) initializeNewItem
 {
-    
+    pNewItem = [[LocalItem alloc] init];
     pNewItem.year = 3000;
     pNewItem.price = [NSNumber numberWithDouble:-2.0];
     pNewItem.area = [NSNumber numberWithDouble:-2.0];
@@ -633,7 +633,7 @@
             return NO;
         }
           NSString *proposedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        if (proposedText.length > 2)
+        if (proposedText.length > 1)
         {
             return NO;
         }
@@ -915,7 +915,7 @@
 
 -(bool) isSingleFieldDispRow:(NSUInteger) row
 {
-    if (row < 2 || row > 6)
+    if (row < 2 || row > 7)
         return true;
     return false;
 }

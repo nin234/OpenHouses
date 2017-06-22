@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B8AF2991EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AF2971EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodeld */; };
+		3B8AF29F1EF9442900ACF7C6 /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B8AF29E1EF9442900ACF7C6 /* DisplayViewController.xib */; };
+		3B8AF2A11EF9443300ACF7C6 /* NotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B8AF2A01EF9443300ACF7C6 /* NotesViewController.xib */; };
 		3B9CF8B41EF1F550004F009D /* AlbumContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */; };
 		3B9CF8CA1EF3E99B004F009D /* AlbumContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */; };
 		3BE9C8611EEA049600F69D48 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9C8601EEA049600F69D48 /* MapViewController.xib */; };
@@ -121,6 +124,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B8AF2981EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyGrocList.xcdatamodel; sourceTree = "<group>"; };
+		3B8AF29E1EF9442900ACF7C6 /* DisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
+		3B8AF2A01EF9443300ACF7C6 /* NotesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesViewController.xib; sourceTree = "<group>"; };
 		3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsViewController.xib; sourceTree = "<group>"; };
 		3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsTableViewCell.xib; sourceTree = "<group>"; };
 		3BE9C8601EEA049600F69D48 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -324,6 +330,9 @@
 			isa = PBXGroup;
 			children = (
 				3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */,
+				3B8AF2971EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodeld */,
+				3B8AF2A01EF9443300ACF7C6 /* NotesViewController.xib */,
+				3B8AF29E1EF9442900ACF7C6 /* DisplayViewController.xib */,
 				DBD16AF01C8DA25E00052A03 /* AddEditDispDelegate.h */,
 				3BE9C8601EEA049600F69D48 /* MapViewController.xib */,
 				DBD16AF11C8DA27200052A03 /* AddEditDispDelegate.m */,
@@ -460,7 +469,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				TargetAttributes = {
 					DB7DD0CE14AF7FEB009EC45F = {
 						DevelopmentTeam = 3JEQ693MKL;
@@ -549,7 +558,9 @@
 				3BE9C8611EEA049600F69D48 /* MapViewController.xib in Resources */,
 				DB96A99D17695B6300CE6503 /* IphoneButton_White.png in Resources */,
 				DB96A99F17695B7800CE6503 /* IphoneButton_Green.png in Resources */,
+				3B8AF2A11EF9443300ACF7C6 /* NotesViewController.xib in Resources */,
 				DBFF131117CB82510096DB2B /* Icon.png in Resources */,
+				3B8AF29F1EF9442900ACF7C6 /* DisplayViewController.xib in Resources */,
 				DBFF131317CB82630096DB2B /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8AF2991EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodeld in Sources */,
 				DB7DD0E214AF7FEB009EC45F /* main.m in Sources */,
 				DB7DD0E614AF7FEB009EC45F /* AppDelegate.m in Sources */,
 				DB7DD0E914AF7FEB009EC45F /* Shopper.xcdatamodeld in Sources */,
@@ -654,7 +666,9 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rekha Thomas (GTS476H2M8)";
@@ -698,7 +712,9 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rekha Thomas (GTS476H2M8)";
@@ -750,7 +766,7 @@
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 8.2;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -784,7 +800,7 @@
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				"INFOPLIST_PREPROCESSOR_DEFINITIONS[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"-DFOR_APPSTORE",
@@ -872,6 +888,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		3B8AF2971EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3B8AF2981EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodel */,
+			);
+			currentVersion = 3B8AF2981EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodel */;
+			path = EasyGrocList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		DB7DD0E714AF7FEB009EC45F /* Shopper.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

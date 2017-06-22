@@ -22,7 +22,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="321" height="82.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" id="7" customClass="ThumbnailImageView" customModule="OpenHouses">
+                    <imageView contentMode="scaleToFill" id="7" customClass="ThumbnailImageView">
                         <rect key="frame" x="5" y="4" width="71" height="71"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>

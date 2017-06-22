@@ -156,7 +156,7 @@
 {
     NSLog(@"Received ratings toggle \n");
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    pDlg.bBathsAsc = !pDlg.bBathsAsc;
+    pDlg.bRatingsAsc = !pDlg.bRatingsAsc;
     [self.tableView reloadData];
     return;
     
@@ -184,7 +184,7 @@
     static NSArray* fieldNames = nil;
     if (!fieldNames)
     {
-        fieldNames = [NSArray arrayWithObjects:@"Viewed", @"Price", @"Area", @"Year", @"Beds", @"Baths", nil];
+        fieldNames = [NSArray arrayWithObjects:@"Viewed", @"Price", @"Area", @"Year", @"Beds", @"Baths", @"Ratings", nil];
     }
     NSLog(@"Sortoption cellforRowAtIndexPath %ld", (long)indexPath.row);
     
