@@ -175,6 +175,12 @@
     return @"Delete House";
 }
 
+-(NSUInteger) getShareId
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return [pDlg getShareId];
+}
+
 -(void) populateEditTextFields:(UITextField *) textField textField1:(UITextField *) textField1 row:(NSUInteger)row
 {
      AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -697,6 +703,11 @@
     return pDlg.editItem.name;
 }
 
+-(NSUInteger) getEditItemShareId
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return pDlg.editItem.share_id;
+}
 
 -(double) getDispLongitude
 {

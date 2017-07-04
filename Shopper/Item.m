@@ -34,6 +34,7 @@
 @dynamic str1;
 @dynamic str2;
 @dynamic str3;
+@dynamic share_id;
 
 
 -(void) copyFromLocalItem:(LocalItem *)item copyAlbumName:(bool)bCopy
@@ -65,6 +66,7 @@
 	self.str1 = item.str1;
 	self.str2 = item.str2;
 	self.str3 = item.str3;
+    self.share_id = item.share_id;
     return;
 }
 

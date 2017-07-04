@@ -35,6 +35,7 @@
 @property (nonatomic, retain) NSString *str1;
 @property (nonatomic, retain) NSString *str2; // stores the ratings value
 @property (nonatomic, retain) NSString *str3;
+@property (nonatomic) long long share_id;
 
 -(void) copyFromLocalItem:(LocalItem *)item copyAlbumName:(bool) bCopy;
 -(void) updateItem:(LocalItem*)item;

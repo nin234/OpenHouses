@@ -434,6 +434,10 @@
     
 }
 
+-(NSUInteger) getShareId
+{
+    return pShrMgr.share_id;
+}
 -(void) stopLocUpdate
 {
   mapView.showsUserLocation = NO;

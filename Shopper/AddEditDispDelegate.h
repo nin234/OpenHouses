@@ -43,6 +43,7 @@
 -(double) getEditLongitude;
 -(double) getEditLatitude;
 -(NSString *) getEditName;
+-(NSUInteger) getEditItemShareId;
 -(bool) ratingsTag:(NSInteger) tag;
 
 -(void) itemEditCancel;
@@ -69,6 +70,7 @@
 - (BOOL)characterChk:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 -(void ) setAddNotes:(NSString *)notes;
 -(void) setEditNotes: (NSString *)notes;
+-(NSUInteger) getShareId;
 
 
 @end

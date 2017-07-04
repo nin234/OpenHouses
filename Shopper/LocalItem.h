@@ -34,6 +34,7 @@
 @property (nonatomic, retain) NSString *str1;
 @property (nonatomic, retain) NSString *str2;
 @property (nonatomic, retain) NSString *str3;
+@property (nonatomic) long long share_id;
 
 -(id) init;
 -(id) initWithItem:(Item *)item;
