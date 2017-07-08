@@ -95,7 +95,7 @@
 @property bool bInBackGround;
 @property bool bFromShareAction;
 @property bool beingLoggedIn;
-
+@property long long share_id;
 
 @property (nonatomic, retain) NSFileManager *pFlMgr;
 @property (nonatomic, retain) AppShrUtil *appUtl;
@@ -127,7 +127,8 @@
 -(NSString *) getEmailFbMsg:(id)itm;
 -(NSString *) getShareMsg:(id)itm;
 -(NSString *) getItemName:(id)itm;
+-(long long ) getItemShareId:(id) itm;
 -(NSString* ) mainVwCntrlTitle;
--(NSUInteger) getShareId;
+-(long long) getShareId;
 
 @end

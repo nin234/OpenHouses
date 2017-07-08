@@ -17,6 +17,7 @@
 #import <sharing/AddFriendViewController.h>
 #import "SortOptionViewController.h"
 #import "AddEditDispDelegate.h"
+#import "common/AppCmnUtil.h"
 
 
 @implementation AppDelegate
@@ -76,7 +77,15 @@
 @synthesize apputil;
 @synthesize dataOpsDelegate;
 @synthesize bRatingsAsc;
+@synthesize share_id;
 
+
+-(void ) setShareId:(long long)shareId
+{
+    share_id = shareId;
+    AppCmnUtil *pAppCmnUtil = [AppCmnUtil sharedInstance];
+    pAppCmnUtil.share_id = share_id;
+}
 
 -(void) setPurchsed
 {
@@ -351,6 +360,12 @@
        return;
 }
 
+-(long long ) getItemShareId:(id) itm
+{
+   LocalItem *item = itm;
+    return item.share_id;
+}
+
 -(NSString *) getShareMsg:(id)itm
 {
     LocalItem *item = itm;
@@ -434,7 +449,7 @@
     
 }
 
--(NSUInteger) getShareId
+-(long long) getShareId
 {
     return pShrMgr.share_id;
 }
@@ -482,6 +497,7 @@
     AddEditDispDelegate *pAddView = (AddEditDispDelegate *)pAddViewCntrl.delegate;
     
 	pAddView.pNewItem.val1 = sec + usec;
+    pAddView.pNewItem.share_id = share_id;
     
 
     [dataSync addItem:pAddView.pNewItem];
@@ -1023,7 +1039,7 @@
     [apputil setWindow:self.window];
     [apputil setNavViewController:self.navViewController];
     
-    [apputil initializeShrUtl];
+    [pShrMgr start];
     return YES;
 }
 

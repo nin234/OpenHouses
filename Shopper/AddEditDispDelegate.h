@@ -42,8 +42,8 @@
 -(double) getLatitude;
 -(double) getEditLongitude;
 -(double) getEditLatitude;
--(NSString *) getEditName;
--(NSUInteger) getEditItemShareId;
+-(ItemKey *) getEditItemKey;
+-(long long) getEditItemShareId;
 -(bool) ratingsTag:(NSInteger) tag;
 
 -(void) itemEditCancel;
@@ -58,7 +58,7 @@
 -(NSString *) getEditItemTitle;
 -(double) getDispLatitude;
 -(double) getDispLongitude;
--(NSString *) getDispName;
+-(ItemKey *) getDispItemKey;
 -(NSString *) getEditNotes;
 -(bool) changeCharacters:(NSInteger) tag;
 -(bool) rangeFourTag:(NSInteger) tag;

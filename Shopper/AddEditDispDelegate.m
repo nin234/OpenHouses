@@ -697,13 +697,22 @@
     return pDlg.editItem.latitude;
 }
 
+-(ItemKey *) getEditItemKey
+{
+    AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ItemKey *itk = [[ItemKey alloc] init];
+    itk.name = pDlg.editItem.name;
+    itk.share_id = pDlg.editItem.share_id;
+    return itk;
+}
+
 -(NSString *) getEditName
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return pDlg.editItem.name;
 }
 
--(NSUInteger) getEditItemShareId
+-(long long) getEditItemShareId
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return pDlg.editItem.share_id;
@@ -721,10 +730,13 @@
     return pDlg.selectedItem.latitude;
 }
 
--(NSString *) getDispName
+-(ItemKey *) getDispItemKey
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    return pDlg.selectedItem.name;
+    ItemKey *itk = [[ItemKey alloc] init];
+    itk.name = pDlg.selectedItem.name;
+    itk.share_id = pDlg.selectedItem.share_id;
+    return itk;
 }
 
 -(double) getLatitude
