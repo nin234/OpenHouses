@@ -11,8 +11,9 @@
 #import "common/AddViewController.h"
 #import "common/EditViewController.h"
 #import "common/DisplayViewController.h"
+#import "common/NotesViewController.h"
 
-@interface AddEditDispDelegate : NSObject<AddViewControllerDelegate, EditViewControllerDelegate, DisplayViewControllerDelegate>
+@interface AddEditDispDelegate : NSObject<AddViewControllerDelegate, EditViewControllerDelegate, DisplayViewControllerDelegate, NotesViewControllerDelegate>
 
 @property (nonatomic, retain) LocalItem *pNewItem;
 -(void) initializeNewItem;
@@ -70,7 +71,7 @@
 - (BOOL)characterChk:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 -(void ) setAddNotes:(NSString *)notes;
 -(void) setEditNotes: (NSString *)notes;
--(NSUInteger) getShareId;
+-(long long) getShareId;
 
 
 @end

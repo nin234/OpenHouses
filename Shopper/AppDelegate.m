@@ -78,6 +78,7 @@
 @synthesize dataOpsDelegate;
 @synthesize bRatingsAsc;
 @synthesize share_id;
+@synthesize aViewController1;
 
 
 -(void ) setShareId:(long long)shareId
@@ -918,6 +919,7 @@
     [apputil setProductId:@"com.rekhaninan.openhouses_unlocked"];
      apputil = [apputil init];
     apputil.pShrMgr = pShrMgr;
+    apputil.appShrUtl = appUtl;
     
 #ifdef CLEANUP
          [self cleanUpEverything];
@@ -977,6 +979,7 @@
     }
 
     
+    
     bKvInit = false;
     
     if (kvstore)
@@ -1005,6 +1008,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:self.navViewController.view];
     [self.window makeKeyAndVisible];
+    
+    appUtl.window = self.window;
+    appUtl.navViewController = self.navViewController;
+        
      CGRect mapFrame = CGRectMake(90, 12, 200, 25);
     mapView = [[MKMapView alloc] initWithFrame:mapFrame];
     mapView.showsUserLocation = NO;
@@ -1038,7 +1045,7 @@
     
     [apputil setWindow:self.window];
     [apputil setNavViewController:self.navViewController];
-    
+    [apputil initShareTabBar];
     [pShrMgr start];
     return YES;
 }

@@ -36,6 +36,8 @@
     bool bKvInit;
     bool bFirstActive;
     bool bUpgradeAlert;
+    UINavigationController *mainVwNavCntrl;
+    
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -60,6 +62,7 @@
 @property (nonatomic, retain) KeychainItemWrapper *kchain;
 @property (nonatomic, retain) InAppPurchase *inapp;
 @property (nonatomic, retain) AppUtil *apputil;
+@property (nonatomic, retain)  MainViewController *aViewController1;
 
 
 @property bool unlocked;

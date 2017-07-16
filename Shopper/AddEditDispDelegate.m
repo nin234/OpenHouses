@@ -175,7 +175,7 @@
     return @"Delete House";
 }
 
--(NSUInteger) getShareId
+-(long long) getShareId
 {
     AppDelegate *pDlg = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return [pDlg getShareId];
