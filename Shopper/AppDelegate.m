@@ -945,13 +945,16 @@
         printf("Fail to create album directory %s reason %s\n", [pAlbumsDir UTF8String], [[error localizedDescription] UTF8String]);
    // [self initializeiCloudAccess];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    MainViewController *aViewController = [[MainViewController alloc]
-                                           initWithNibName:nil bundle:nil];
+    MainViewController *aViewController = [MainViewController alloc];
+    
     aViewController.pAllItms.bInICloudSync = false;
     aViewController.pAllItms.bInEmail = false;
     aViewController.pAllItms.bAttchmentsInit = false;
     aViewController.delegate = self;
     aViewController.delegate_1  = self;
+    aViewController.bShareView = false;
+    aViewController = [aViewController initWithNibName:nil bundle:nil];
+    
     
     fetchQueue = dispatch_queue_create("com.rekhaninan.fetchQueue", NULL);
         userName = [kchain objectForKey:(__bridge id)kSecAttrAccount];
