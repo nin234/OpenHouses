@@ -78,7 +78,7 @@
 @synthesize dataOpsDelegate;
 @synthesize bRatingsAsc;
 @synthesize share_id;
-@synthesize aViewController1;
+
 
 
 -(void ) setShareId:(long long)shareId
@@ -129,6 +129,10 @@
 {
     [apputil photoActions:source];
     return;
+}
+-(void) refreshShareView
+{
+    [apputil refreshShareView];
 }
 
 -(void) initRefresh

@@ -62,7 +62,7 @@
 @property (nonatomic, retain) KeychainItemWrapper *kchain;
 @property (nonatomic, retain) InAppPurchase *inapp;
 @property (nonatomic, retain) AppUtil *apputil;
-@property (nonatomic, retain)  MainViewController *aViewController1;
+
 
 
 @property bool unlocked;
@@ -133,5 +133,6 @@
 -(long long ) getItemShareId:(id) itm;
 -(NSString* ) mainVwCntrlTitle;
 -(long long) getShareId;
+-(void) refreshShareView;
 
 @end
