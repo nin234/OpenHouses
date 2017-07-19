@@ -908,7 +908,7 @@
     appUtl.purchased = false;
     pShrMgr = [[CommonShareMgr alloc] init];
     pShrMgr.pNtwIntf.connectAddr = @"openhouses.ddns.net";
-    pShrMgr.pNtwIntf.connectAddr = @"16789";
+    pShrMgr.pNtwIntf.connectPort = @"16789";
     appUtl.pShrMgr = pShrMgr;
     pShrMgr.delegate = self;
     pShrMgr.shrMgrDelegate = self;
