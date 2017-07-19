@@ -492,6 +492,9 @@
 					DB7DD0CE14AF7FEB009EC45F = {
 						DevelopmentTeam = 3JEQ693MKL;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
