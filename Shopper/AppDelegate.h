@@ -134,5 +134,6 @@
 -(NSString* ) mainVwCntrlTitle;
 -(long long) getShareId;
 -(void) refreshShareView;
+-(ItemKey *) getItemKey:(id) itm;
 
 @end

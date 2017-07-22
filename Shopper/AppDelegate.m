@@ -333,7 +333,10 @@
         pItem.str1 = pStr1;
     NSString *pShrId = [pItemDic objectForKey:@"shareId"];
     if (pShrId != nil)
+    {
         pItem.val2 = [pShrId doubleValue];
+        pItem.share_id = [pShrId longLongValue];
+    }
     struct timeval tv;
     gettimeofday(&tv, 0);
     long long sec = ((long long)tv.tv_sec)*1000000;
@@ -365,6 +368,15 @@
        return;
 }
 
+-(ItemKey *) getItemKey:(id) itm
+{
+  LocalItem *item = itm;
+    ItemKey *itk = [[ItemKey alloc] init];
+    itk.share_id = item.share_id;
+    itk.name = item.name;
+    return itk;
+}
+
 -(long long ) getItemShareId:(id) itm
 {
    LocalItem *item = itm;
@@ -375,10 +387,44 @@
 {
     LocalItem *item = itm;
     NSString *message = @"";
-    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;Notes:|: %@]:;Street:|:%@]:;City:|:%@]:;State:|:%@]:;Country:|:%@]:;PostalCode:|:%@]:;latitude:|:%f]:;longitude:|:%f]:;str1:|:%@]:;shareId:|:%lld",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
+    NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;latitude:|:%f]:;longitude:|:%f]:;shareId:|:%lld]:;",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
                     [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
-                    item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue], item.notes, item.street,
-                    item.city, item.state, item.country, item.zip, item.latitude, item.longitude, item.str1, pShrMgr.share_id];
+                    item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue],   item.latitude, item.longitude,  item.share_id];
+    if (item.notes && [item.notes length])
+    {
+        msg = [msg stringByAppendingFormat:@"Notes:|:%@]:;", item.notes];
+    }
+    
+    if (item.street && [item.street length])
+    {
+        msg = [msg stringByAppendingFormat:@"Street:|:%@]:;", item.street];
+    }
+
+    if (item.city && [item.city length])
+    {
+        msg = [msg stringByAppendingFormat:@"City:|:%@]:;", item.street];
+    }
+    
+    if (item.state && [item.state length])
+    {
+        msg = [msg stringByAppendingFormat:@"State:|:%@]:;", item.state];
+    }
+    
+    if (item.country && [item.country length])
+    {
+        msg = [msg stringByAppendingFormat:@"Country:|:%@]:;", item.country];
+    }
+
+    if (item.zip && [item.zip length])
+    {
+        msg = [msg stringByAppendingFormat:@"PostalCode:|:%@]:;", item.zip];
+    }
+
+    if (item.str1 && [item.str1 length])
+    {
+        msg = [msg stringByAppendingFormat:@"str1:|:%@]:;", item.str1];
+    }
+
     return msg;
     
 
