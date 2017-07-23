@@ -353,6 +353,9 @@
     NSString *pCity = [pItemDic objectForKey:@"City"];
     if (pCity != nil)
         pItem.city = pCity;
+    NSString *pCountry = [pItemDic objectForKey:@"Country"];
+    if (pCountry != nil)
+        pItem.country = pCountry;
     NSString *pState = [pItemDic objectForKey:@"State"];
     if (pState != nil)
         pItem.state = pState;
@@ -457,7 +460,7 @@
 
     if (item.city && [item.city length])
     {
-        msg = [msg stringByAppendingFormat:@"City:|:%@]:;", item.street];
+        msg = [msg stringByAppendingFormat:@"City:|:%@]:;", item.city];
     }
     
     if (item.state && [item.state length])
