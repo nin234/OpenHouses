@@ -444,7 +444,7 @@
     NSString *message = @"";
     NSString *msg =[message stringByAppendingFormat:@"Name:|:%@]:;Price:|:%.2f]:;Area:|:%.2f]:;Year:|:%d]:;Beds:|:%.2f]:;Baths:|:%.2f]:;latitude:|:%f]:;longitude:|:%f]:;shareId:|:%lld]:;",item.name, [item.price floatValue] < 0.0? 0.0: [item.price floatValue],
                     [item.area floatValue] < 0.0 ? 0.0 : [item.area floatValue],
-                    item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0, [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue],   item.latitude, item.longitude,  item.share_id];
+                    item.year == 3000? 0: item.year, [item.beds floatValue] < 0.0? 0.0:[item.beds floatValue] < 0.0? 0.0:[item.beds floatValue], [item.baths floatValue] < 0.0? 0.0: [item.baths floatValue],   item.latitude, item.longitude,  item.share_id];
     if (item.notes && [item.notes length])
     {
         msg = [msg stringByAppendingFormat:@"Notes:|:%@]:;", item.notes];
