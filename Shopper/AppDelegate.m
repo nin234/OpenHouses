@@ -275,6 +275,11 @@
    // NSURL  *albumurl = pDlg.pThumbNailsDir;
     NSError *err;
     NSString *pFlName = [picUrl lastPathComponent];
+    if ([pFlName hasSuffix:@".mp4"])
+    {
+        pFlName = [pFlName stringByReplacingOccurrencesOfString:@"mp4" withString:@"jpg"];
+        
+    }
     NSURL *pFlUrl;
     if (albumurl != nil && [albumurl checkResourceIsReachableAndReturnError:&err])
     {
