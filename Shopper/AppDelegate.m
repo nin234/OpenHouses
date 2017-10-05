@@ -402,6 +402,11 @@
     NSString *pStr1 = [pItemDic objectForKey:@"str1"];
     if (pStr1 != nil)
         pItem.str1 = pStr1;
+    
+    NSString *pStr2 = [pItemDic objectForKey:@"Ratings"];
+    if (pStr2 != nil)
+        pItem.str2 = pStr2;
+    
     NSString *pShrId = [pItemDic objectForKey:@"shareId"];
     if (pShrId != nil)
     {
@@ -512,6 +517,11 @@
     if (item.str1 && [item.str1 length])
     {
         msg = [msg stringByAppendingFormat:@"str1:|:%@]:;", item.str1];
+    }
+
+    if (item.str2 && [item.str2 length])
+    {
+        msg = [msg stringByAppendingFormat:@"Ratings:|:%@]:;", item.str2];
     }
 
     return msg;
