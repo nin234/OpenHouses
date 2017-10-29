@@ -19,6 +19,7 @@
 		3B9CF8B41EF1F550004F009D /* AlbumContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */; };
 		3B9CF8CA1EF3E99B004F009D /* AlbumContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */; };
 		3BE9C8611EEA049600F69D48 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9C8601EEA049600F69D48 /* MapViewController.xib */; };
+		3BFE75F31FA68A24005A4B56 /* sharing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE75F11FA68A24005A4B56 /* sharing.xcdatamodeld */; };
 		DB00E4D01C7AB2B900E898F7 /* libcommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB00E4CD1C7AB1BA00E898F7 /* libcommon.a */; };
 		DB02668E151342BE00A28458 /* IsSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = DB02668D151342BE00A28458 /* IsSelected.png */; };
 		DB026691151342E400A28458 /* NotSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = DB026690151342E400A28458 /* NotSelected.png */; };
@@ -142,6 +143,7 @@
 		3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsViewController.xib; sourceTree = "<group>"; };
 		3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentsTableViewCell.xib; sourceTree = "<group>"; };
 		3BE9C8601EEA049600F69D48 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		3BFE75F21FA68A24005A4B56 /* sharing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sharing.xcdatamodel; sourceTree = "<group>"; };
 		DB00E4C71C7AB1BA00E898F7 /* common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = common.xcodeproj; path = ../common/common.xcodeproj; sourceTree = "<group>"; };
 		DB02668D151342BE00A28458 /* IsSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IsSelected.png; path = ../Images/IsSelected.png; sourceTree = "<group>"; };
 		DB026690151342E400A28458 /* NotSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NotSelected.png; path = ../Images/NotSelected.png; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				DBBFAE5A17823C8C00A07BA4 /* Constants.h */,
 				DBBFAE5B17823C8D00A07BA4 /* Constants.m */,
 				DBD16B141C90584900052A03 /* DataOpsDelegate.h */,
+				3BFE75F11FA68A24005A4B56 /* sharing.xcdatamodeld */,
 				DBD16B151C90584900052A03 /* DataOpsDelegate.m */,
 				3B8AF29E1EF9442900ACF7C6 /* DisplayViewController.xib */,
 				3B8AF2971EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodeld */,
@@ -633,6 +636,7 @@
 				DBD16AF21C8DA27200052A03 /* AddEditDispDelegate.m in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
+				3BFE75F31FA68A24005A4B56 /* sharing.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,7 +795,7 @@
 					/Users/ninanthomas/projects/sharing,
 				);
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -826,7 +830,7 @@
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				"INFOPLIST_PREPROCESSOR_DEFINITIONS[sdk=*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
@@ -922,6 +926,16 @@
 			);
 			currentVersion = 3B8AF2981EF7EC0F00ACF7C6 /* EasyGrocList.xcdatamodel */;
 			path = EasyGrocList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		3BFE75F11FA68A24005A4B56 /* sharing.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3BFE75F21FA68A24005A4B56 /* sharing.xcdatamodel */,
+			);
+			currentVersion = 3BFE75F21FA68A24005A4B56 /* sharing.xcdatamodel */;
+			path = sharing.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
