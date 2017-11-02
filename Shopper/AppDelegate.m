@@ -918,13 +918,6 @@
 }
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    [pShrMgr getItems];
-    
-    return;
-}
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     [appUtl didRegisterForRemoteNotification:deviceToken];
@@ -938,50 +931,46 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    NSLog(@"Application did become active");
-    if (bFirstActive)
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    NSLog(@"Application did become active %s %d", __FILE__, __LINE__);
+    
+    NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
+    BOOL download = [kvlocal boolForKey:@"ToDownload"];
+    if (download == YES)
     {
-        NSLog(@"First time activation skipping download items on start up as it is called from application didFinishLaunchingWithOptions");
-        bFirstActive = false;
-        return;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
+        [pShrMgr getItems];
+        [kvlocal setBool:NO forKey:@"ToDownload"];
+    }
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    
+    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+    NSLog(@"didReceiveRemoteNotification: Downloading items %s %d", __FILE__, __LINE__);
+    [pShrMgr getItems];
+    if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
+    {
+        //Do checking here.
+        NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
+        [kvlocal setBool:YES forKey:@"ToDownload"];
+        
+        [pShrMgr processItems];
     }
     
-    if (!bRegistered)
-    {
-        NSString *unameInKChain = [kchain objectForKey:(__bridge id)kSecAttrAccount];
-        if (unameInKChain != nil && [unameInKChain length] > 0)
-        {
-            NSLog(@"Login now as we got a registered signal");
-            NSLog(@"Registered Never logged in before so popping up alert to allow push notifications for sharing and then login");
-            bShareAction = true;
-            userName = unameInKChain;
-
-            UIAlertView *pAvw = [[UIAlertView alloc] initWithTitle:@"Enable Sharing" message:@"Notifications must be allowed for sharing. Please click OK when prompted for \"OpenHouses App would like to send notifications\" or enable notifications in the notification center." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [pAvw show];
-
-        }
-        else
-        {
-            //This case is to address the scenario  where Autospree app is started and put in background and openhouses did the registration. and now we have to reinitialize kchain object to sync it
-             kchain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:@"3JEQ693MKL.com.rekhaninan.sinacama"];
-            unameInKChain = [kchain objectForKey:(__bridge id)kSecAttrAccount];
-            if (unameInKChain != nil && [unameInKChain length] > 0)
-            {
-                NSLog(@"Login now as we got a registered signal");
-                NSLog(@"Registered Never logged in before so popping up alert to allow push notifications for sharing and then login");
-                bShareAction = true;
-                userName = unameInKChain;
-                UIAlertView *pAvw = [[UIAlertView alloc] initWithTitle:@"Enable Sharing" message:@"Notifications must be allowed for sharing. Please click OK when prompted for \"OpenHouses App would like to send notifications\" or enable notifications in the notification center." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [pAvw show];
-                
-            }
-
-            //Now try once again
-        }
-
-    }
+    
+    
+    
+    completionHandler(UIBackgroundFetchResultNewData);
     return;
 }
+
+
 
 -(NSString* ) mainVwCntrlTitle
 {
