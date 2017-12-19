@@ -41,7 +41,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.2</string>
+	<string>3.5</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -60,8 +60,13 @@
 	<string>Location info needed for Map/address</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Record sound  in videos of houses </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need access to photos to add pictures to houses</string>
 	<key>UIBackgroundModes</key>
-	<array/>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>DisplayViewController</string>
 	<key>UIRequiredDeviceCapabilities</key>
