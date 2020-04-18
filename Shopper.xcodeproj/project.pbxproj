@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3955A6244A9F2B007028F6 /* OpenHouses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3955A5244A9F2B007028F6 /* OpenHouses.swift */; };
 		3B3D29101F1BE31400AC3D5D /* 802-dog-house-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D290A1F1BE31400AC3D5D /* 802-dog-house-selected@2x.png */; };
 		3B3D29111F1BE31400AC3D5D /* 802-dog-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D290B1F1BE31400AC3D5D /* 802-dog-house@2x.png */; };
 		3B3D29121F1BE31400AC3D5D /* 895-user-group-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D290C1F1BE31400AC3D5D /* 895-user-group-selected@2x.png */; };
@@ -87,6 +88,8 @@
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.proxy.script;
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 			);
@@ -133,6 +136,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B3955A4244A9F2A007028F6 /* OpenHouses-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenHouses-Bridging-Header.h"; sourceTree = "<group>"; };
+		3B3955A5244A9F2B007028F6 /* OpenHouses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHouses.swift; sourceTree = "<group>"; };
 		3B3D290A1F1BE31400AC3D5D /* 802-dog-house-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "802-dog-house-selected@2x.png"; sourceTree = "<group>"; };
 		3B3D290B1F1BE31400AC3D5D /* 802-dog-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "802-dog-house@2x.png"; sourceTree = "<group>"; };
 		3B3D290C1F1BE31400AC3D5D /* 895-user-group-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "895-user-group-selected@2x.png"; sourceTree = "<group>"; };
@@ -358,6 +363,7 @@
 				DBD16AF01C8DA25E00052A03 /* AddEditDispDelegate.h */,
 				DBD16AF11C8DA27200052A03 /* AddEditDispDelegate.m */,
 				3B9CF8C91EF3E99B004F009D /* AlbumContentsTableViewCell.xib */,
+				3B3955A5244A9F2B007028F6 /* OpenHouses.swift */,
 				3B9CF8B31EF1F550004F009D /* AlbumContentsViewController.xib */,
 				DB7DD0E414AF7FEB009EC45F /* AppDelegate.h */,
 				DB7DD0E514AF7FEB009EC45F /* AppDelegate.m */,
@@ -383,6 +389,7 @@
 				DB9934AE1502B25300E77816 /* SortOptionViewController.m */,
 				DB9934AF1502B25400E77816 /* SortOptionViewController.xib */,
 				DB7DD0DC14AF7FEB009EC45F /* Supporting Files */,
+				3B3955A4244A9F2A007028F6 /* OpenHouses-Bridging-Header.h */,
 			);
 			path = Shopper;
 			sourceTree = "<group>";
@@ -499,6 +506,7 @@
 				LastUpgradeCheck = 0830;
 				TargetAttributes = {
 					DB7DD0CE14AF7FEB009EC45F = {
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -515,10 +523,11 @@
 				};
 			};
 			buildConfigurationList = DB7DD0C914AF7FEB009EC45F /* Build configuration list for PBXProject "Shopper" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = DB7DD0C414AF7FEB009EC45F;
@@ -642,6 +651,7 @@
 				DB9934B01502B25500E77816 /* SortOptionViewController.m in Sources */,
 				DBD16B161C90584900052A03 /* DataOpsDelegate.m in Sources */,
 				DBD16AF21C8DA27200052A03 /* AddEditDispDelegate.m in Sources */,
+				3B3955A6244A9F2B007028F6 /* OpenHouses.swift in Sources */,
 				DBA8685F1657D9E4008A781D /* LocalItem.m in Sources */,
 				DBBFAE5D17823C8D00A07BA4 /* Constants.m in Sources */,
 				3BFE75F31FA68A24005A4B56 /* sharing.xcdatamodeld in Sources */,
@@ -732,7 +742,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACH_O_TYPE = mh_execute;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_CFLAGS[arch=*]" = "";
@@ -770,7 +780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACH_O_TYPE = mh_execute;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
@@ -786,12 +796,15 @@
 		DB7DD10314AF7FEC009EC45F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Shopper/OpenHouses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 3JEQ693MKL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -806,8 +819,12 @@
 					/Users/ninanthomas/projects/sharing,
 				);
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
@@ -817,6 +834,9 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shopper/OpenHouses-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = /Users/nin234/projects/common;
 				VALID_ARCHS = "arm64 armv7 armv7s armv6";
@@ -827,12 +847,15 @@
 		DB7DD10414AF7FEC009EC45F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Shopper/OpenHouses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 3JEQ693MKL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -848,7 +871,11 @@
 				);
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				"INFOPLIST_PREPROCESSOR_DEFINITIONS[sdk=*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
@@ -863,6 +890,8 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shopper/OpenHouses-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;

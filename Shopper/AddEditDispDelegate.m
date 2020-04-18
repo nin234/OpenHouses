@@ -14,6 +14,15 @@
 
 @synthesize pNewItem;
 
+
+//Just a function to make compiler happy
+-(ThumbnailImageView *) thumbNailInvoker
+{
+    ThumbnailImageView *pThumVw = [[ThumbnailImageView alloc] init];
+    return pThumVw;
+}
+
+
 -(void) initializeNewItem
 {
     pNewItem = [[LocalItem alloc] init];

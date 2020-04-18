@@ -22,7 +22,7 @@
 #import "AVFoundation/AVAsset.h"
 #import "AVFoundation/AVTime.h"
 #import "CoreMedia/CMTime.h"
-#import "common/ThumbnailImageView.h"
+//#import "common/ThumbnailImageView.h"
 
 
 
@@ -258,12 +258,6 @@
     return item.name;
 }
 
-//Just a function to make compiler happy
--(ThumbnailImageView *) thumbNailInvoker
-{
-    ThumbnailImageView *pThumVw = [[ThumbnailImageView alloc] init];
-    return pThumVw;
-}
 
 -(void) storeThumbNailImage:(NSURL *)picUrl
 {
