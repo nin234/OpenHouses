@@ -81,6 +81,7 @@
 		DBED47FC1537C8BD00BCBFB9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBED47FB1537C8BD00BCBFB9 /* CoreMedia.framework */; };
 		DBFF131117CB82510096DB2B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF131017CB824E0096DB2B /* Icon.png */; };
 		DBFF131317CB82630096DB2B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF131217CB82630096DB2B /* Icon@2x.png */; };
+		E862142424EFD0F3007FBF89 /* client.der in Resources */ = {isa = PBXBuildFile; fileRef = E862142124EFD0F3007FBF89 /* client.der */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -234,6 +235,7 @@
 		DBED47FD1537C8DF00BCBFB9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DBFF131017CB824E0096DB2B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		DBFF131217CB82630096DB2B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		E862142124EFD0F3007FBF89 /* client.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = client.der; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 		DB7DD0DB14AF7FEB009EC45F /* Shopper */ = {
 			isa = PBXGroup;
 			children = (
+				E862142124EFD0F3007FBF89 /* client.der */,
 				3B3D290A1F1BE31400AC3D5D /* 802-dog-house-selected@2x.png */,
 				3B3D290B1F1BE31400AC3D5D /* 802-dog-house@2x.png */,
 				3B3D290C1F1BE31400AC3D5D /* 895-user-group-selected@2x.png */,
@@ -581,6 +584,7 @@
 				3B9319131FE5CA5100BE38E3 /* Shopper.xcassets in Resources */,
 				DBD2CD0714B96B1800CF26C2 /* delete_button.png in Resources */,
 				DB9934B11502B25500E77816 /* SortOptionViewController.xib in Resources */,
+				E862142424EFD0F3007FBF89 /* client.der in Resources */,
 				DB7B77CC15099FA80020B581 /* map.png in Resources */,
 				DB7B77CF15099FDA0020B581 /* camera.png in Resources */,
 				DB7B77D1150B5AA20020B581 /* note.png in Resources */,
@@ -815,8 +819,8 @@
 				GCC_SHORT_ENUMS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
-					/Users/ninanthomas/projects/common,
-					/Users/ninanthomas/projects/sharing,
+					/Users/ninan/ios/common,
+					/Users/ninan/ios/sharing,
 				);
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -838,7 +842,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				"USER_HEADER_SEARCH_PATHS[arch=*]" = /Users/nin234/projects/common;
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = /Users/ninan/ios/common;
 				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;
 			};
@@ -866,8 +870,8 @@
 				GCC_SHORT_ENUMS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					/Users/ninanthomas/projects/common,
-					/Users/ninanthomas/projects/sharing,
+					/Users/ninan/ios/common,
+					/Users/ninan/ios/sharing,
 				);
 				INFOPLIST_FILE = "Shopper/Shopper-Info.plist";
 				"INFOPLIST_PREPROCESSOR_DEFINITIONS[sdk=*]" = "";

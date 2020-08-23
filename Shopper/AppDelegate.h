@@ -26,7 +26,7 @@
 #define PHOTOREQSOURCE_SHARE 2
 #define AWS_OPENHOUSES_APPID 2
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate, MainListViewControllerDelegate, MainViewControllerDelegate, AppUtilDelegate, CommonShareMgrDelegate, ShareMgrDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate, MainListViewControllerDelegate, MainViewControllerDelegate, AppUtilDelegate, CommonShareMgrDelegate, UITabBarControllerDelegate, ShareMgrDelegate>
 {
     NSMetadataQuery *query;
     MKMapView    *mapView;
@@ -63,6 +63,9 @@
 @property (nonatomic, retain) InAppPurchase *inapp;
 @property (nonatomic, retain) AppUtil *apputil;
 
+@property (nonatomic, retain)  UITabBarController  *tabBarController;
+
+@property (nonatomic, retain)  ContactsViewController *selFrndCntrl;
 
 
 @property bool unlocked;

@@ -84,6 +84,8 @@
 @synthesize dataOpsDelegate;
 @synthesize bRatingsAsc;
 @synthesize share_id;
+@synthesize selFrndCntrl;
+@synthesize tabBarController;
 
 
 
@@ -343,6 +345,11 @@
     NSURL *picUrl = [NSURL URLWithString:picFil];
     return picUrl;
 }
+
+- (void)displayAlert:(NSString *)msg {
+    
+}
+
 
 -(void) decodeAndStoreItem :(NSString *) ItemStr
 {
@@ -1045,6 +1052,7 @@
     pShrMgr = [[CommonShareMgr alloc] init];
     pShrMgr.pNtwIntf.connectAddr = @"openhouses.ddns.net";
     pShrMgr.pNtwIntf.connectPort = @"16789";
+     pShrMgr.pNtwIntf.port = 16803;
     appUtl.pShrMgr = pShrMgr;
     pShrMgr.delegate = self;
     pShrMgr.shrMgrDelegate = self;
@@ -1060,6 +1068,9 @@
      apputil = [apputil init];
     apputil.pShrMgr = pShrMgr;
     apputil.appShrUtl = appUtl;
+    
+    tabBarController = [[UITabBarController alloc] init];
+    tabBarController.delegate = self;
     
 #ifdef CLEANUP
          [self cleanUpEverything];
@@ -1182,13 +1193,14 @@
         NSLog (@"iCloud NOT available at this point\n");
     self.window.backgroundColor = [UIColor whiteColor];
     //[self.window addSubview:self.navViewController.view];
-    [self.window setRootViewController:self.navViewController];
+   // [self.window setRootViewController:self.navViewController];
     [self.window makeKeyAndVisible];
     [appUtl registerForRemoteNotifications];
     
     [apputil setWindow:self.window];
     [apputil setNavViewController:self.navViewController];
     [apputil initShareTabBar];
+    
     [pShrMgr start];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     [pShrMgr getItems];
