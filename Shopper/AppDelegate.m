@@ -638,7 +638,7 @@
       printf("Failed to remove album %s \n", [pAlName UTF8String]);
   }
     self.pAlName = @"";
-    [self.navViewController popViewControllerAnimated:YES];
+    [apputil.mainVwNavCntrl popViewControllerAnimated:YES];
 }
 
 
@@ -648,7 +648,7 @@
     [locmgr stopUpdatingLocation];
     aVw = nil;
           
-    AddViewController *pAddViewCntrl = (AddViewController *)[self.navViewController popViewControllerAnimated:NO];
+    AddViewController *pAddViewCntrl = (AddViewController *)[apputil.mainVwNavCntrl popViewControllerAnimated:NO];
     struct timeval tv;
     gettimeofday(&tv, 0);
     long long sec = ((long long)tv.tv_sec)*1000000;
@@ -699,7 +699,7 @@
             break;
     }
     }
-    MainViewController *pMainVwCntrl = [self.navViewController.viewControllers objectAtIndex:0];
+    MainViewController *pMainVwCntrl = apputil.aViewController2;
     [locmgr startUpdatingLocation];
     pSearchStr = nil;
     pMainVwCntrl.pSearchBar.text = nil;
@@ -714,7 +714,7 @@
     aViewController = [aViewController initWithNibName:nil bundle:nil];
     aVw = aViewController;
     mapView.showsUserLocation = YES;
-    [self.navViewController pushViewController:aViewController animated:YES];
+    [apputil.mainVwNavCntrl pushViewController:aViewController animated:YES];
   
 }
 
@@ -1164,7 +1164,7 @@
     [self.window makeKeyAndVisible];
     
     appUtl.window = self.window;
-    appUtl.navViewController = self.navViewController;
+   
         
      CGRect mapFrame = CGRectMake(90, 12, 200, 25);
     mapView = [[MKMapView alloc] initWithFrame:mapFrame];
@@ -1198,8 +1198,11 @@
     [appUtl registerForRemoteNotifications];
     
     [apputil setWindow:self.window];
-    [apputil setNavViewController:self.navViewController];
+    
     [apputil initShareTabBar];
+    self.navViewController = apputil.mainVwNavCntrl;
+     appUtl.navViewController = self.navViewController;
+    [apputil setNavViewController:self.navViewController];
     
     [pShrMgr start];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
