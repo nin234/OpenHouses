@@ -1066,6 +1066,7 @@
     apputil.delegate = self;
     [apputil setProductId:@"com.rekhaninan.openhouses_unlocked"];
      apputil = [apputil init];
+    appUtl.delegate = apputil;
     apputil.pShrMgr = pShrMgr;
     apputil.appShrUtl = appUtl;
     
@@ -1080,10 +1081,10 @@
     NSError *error;
     dataSync = [[DataOps alloc] init];
     dataSync.appName = @"Shopper";
-    [dataSync start];
+   
     
     apputil.dataSync = dataSync;
-        
+           
     NSString *pAlbumsDir = [pHdir stringByAppendingPathComponent:@"/Documents/albums"];
     saveQ = [[NSOperationQueue alloc] init];
     NSLog (@"initialized saveQ %s %d \n", __FILE__, __LINE__);
@@ -1204,6 +1205,8 @@
      appUtl.navViewController = self.navViewController;
     [apputil setNavViewController:self.navViewController];
     
+     [dataSync start];
+ 
     [pShrMgr start];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     [pShrMgr getItems];
