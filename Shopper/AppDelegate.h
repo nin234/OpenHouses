@@ -109,6 +109,7 @@
 
 -(void) decodeAndStoreItem :(NSString *) ItemStr;
 -(NSURL *) getPicUrl:(long long ) shareId picName:(NSString *) name itemName:(NSString *) iName;
+-(NSURL *) getShareUrl:(long long ) shareId picName:(NSString *) name itemName:(NSString *) iName;
 -(void) storeThumbNailImage:(NSURL *)picUrl;
 
 - (void)itemAdd;
