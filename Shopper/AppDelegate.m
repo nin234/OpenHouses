@@ -22,6 +22,8 @@
 #import "AVFoundation/AVAsset.h"
 #import "AVFoundation/AVTime.h"
 #import "CoreMedia/CMTime.h"
+#import <BackgroundTasks/BackgroundTasks.h>
+
 //#import "common/ThumbnailImageView.h"
 
 
@@ -352,7 +354,7 @@
     if (pAlbumName == nil)
         return nil;
     NSString *pAlbumDir = [apputil getAlbumDir:pAlbumName];
-    NSString *picFil = [pAlbumDir stringByAppendingString:@"/sharing/"];
+    NSString *picFil = [pAlbumDir stringByAppendingString:@"sharing/"];
     picFil  = [picFil stringByAppendingString:name];
     NSURL *picUrl = [NSURL URLWithString:picFil];
     return picUrl;
@@ -472,6 +474,14 @@
         if(bDirCr == YES)
         {
             NSLog (@"Created new album %s album_name %@\n", [pThumpnail UTF8String], intStr);
+        }
+        
+        NSString *pSharing = [pNewAlbum stringByAppendingPathComponent:@"sharing"];
+          bDirCr = [pFlMgr createDirectoryAtPath:pSharing withIntermediateDirectories:YES attributes:nil error:nil];
+        
+        if(bDirCr == YES)
+        {
+            NSLog (@"Created sharing directory for received Item %@\n", pSharing);
         }
 
         //create directory
@@ -1037,11 +1047,11 @@
     return;
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+-(void) initVariables
 {
     bFirstActive = true;
     pFlMgr = [[NSFileManager alloc] init];
-    NSString *pHdir = NSHomeDirectory();
+    
     sortIndx = 0;
     bUpgradeAlert = false;
     unlocked = false;
@@ -1073,8 +1083,6 @@
     appUtl.pShrMgr = pShrMgr;
     pShrMgr.delegate = self;
     pShrMgr.shrMgrDelegate = self;
-    NSLog(@"Launching openhouses");
-    
     NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
     [self populateOneMonth];
     kvstore = [NSUbiquitousKeyValueStore defaultStore];
@@ -1086,6 +1094,18 @@
     appUtl.delegate = apputil;
     apputil.pShrMgr = pShrMgr;
     apputil.appShrUtl = appUtl;
+    COUNT = [kvlocal integerForKey:@"TotRows"];
+    totcount = [kvlocal integerForKey:@"TotTrans"];
+        
+    bTokPut = [kvlocal boolForKey:@"TokInAws"];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [self initVariables];
+    NSLog(@"Launching openhouses");
+    NSString *pHdir = NSHomeDirectory();
+    
     
     tabBarController = [[UITabBarController alloc] init];
     tabBarController.delegate = self;
@@ -1165,10 +1185,7 @@
             [self storeDidChange:kvstore];
         });
     }
-    COUNT = [kvlocal integerForKey:@"TotRows"];
-    totcount = [kvlocal integerForKey:@"TotTrans"];
-        
-    bTokPut = [kvlocal boolForKey:@"TokInAws"];
+   
     
         // Override point for customization after application launch.
     UINavigationController *navCntrl = [[UINavigationController alloc] initWithRootViewController:aViewController];
@@ -1194,11 +1211,9 @@
     sysver = [[dev systemVersion] doubleValue];
     
     
-    if (sysver >= 6.0)
-    {
-        NSLog(@"Not pausing location updates automatically\n");
+   NSLog(@"Not pausing location updates automatically\n");
         locmgr.pausesLocationUpdatesAutomatically = NO;
-    }
+    
     [locmgr stopUpdatingLocation];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMainScreen:) name:@"RefetchAllDatabaseData" object:self];
@@ -1228,10 +1243,54 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     [pShrMgr getItems];
     
+    [self setUpBackGroundTasks];
+    
     return YES;
 }
 
+-(void) setUpBackGroundTasks
+{
+    if (@available(iOS 13.0, *)) {
+        [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:@"com.rekhaninan.sharing" usingQueue:nil launchHandler:^(BGTask *task)
+         {
+            [self initVariables];
+            dataSync.bBackGroundMode = true;
+            pShrMgr.bBackGroundMode = true;
+            [dataSync startBackGroundTask];
+            [pShrMgr startBackGroundTask];
+            [task setExpirationHandler:^{
+                
+                [pShrMgr stopBackGroundTask];
+                [dataSync stopBackGroundTask];
+            }];
+            
+        }];
+    } else {
+        // Fallback on earlier versions
+        NSLog(@"Background tasks not supported");
+    }
+}
 
+-(void) scheduleBackGroundTask
+{
+    if (@available(iOS 13.0, *)) {
+        BGProcessingTaskRequest *bgTaskRequest = [[BGProcessingTaskRequest alloc] initWithIdentifier:@"com.rekhaninan.sharing"];
+        bgTaskRequest.requiresExternalPower = false;
+        bgTaskRequest.requiresNetworkConnectivity = true;
+        NSError *error;
+        if ([[BGTaskScheduler sharedScheduler] submitTaskRequest:bgTaskRequest error:&error] == YES)
+        {
+            NSLog(@"Submitted background task request");
+        }
+        else
+        {
+            NSLog(@"Failed to submit background task error=%@", error);
+        }
+    } else {
+        // Fallback on earlier versions
+        NSLog(@"Background tasks not supported");
+    }
+}
 
 -(void) storeInKeyChain
 {
@@ -1283,12 +1342,14 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     bInBackGround = true;
+    dataSync.bBackGroundMode = true;
     self.navViewController.navigationBar.tintColor = nil;
     return;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    dataSync.bBackGroundMode = false;
     bInBackGround = false;
     return;
 }

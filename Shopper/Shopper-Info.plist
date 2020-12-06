@@ -4,6 +4,10 @@
 <dict>
 	<key></key>
 	<string></string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.rekhaninan.sharing</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
@@ -18,6 +22,8 @@
 		<string>Icon.png</string>
 		<string>openhouses_120.png</string>
 	</array>
+	<key>CFBundleIconName</key>
+	<string></string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>UINewsstandIcon</key>

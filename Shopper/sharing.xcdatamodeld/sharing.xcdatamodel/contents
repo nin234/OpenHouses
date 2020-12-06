@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="PicMetaData" representedClassName="PicMetaData" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="index"/>
@@ -10,8 +10,8 @@
         </uniquenessConstraints>
     </entity>
     <entity name="PicUrl" representedClassName="PicUrl" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="index"/>
@@ -19,9 +19,9 @@
         </uniquenessConstraints>
     </entity>
     <entity name="ShareItem" representedClassName="ShareItem" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="upord" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="upord" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="index"/>
@@ -29,8 +29,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="PicMetaData" positionX="-9" positionY="63" width="128" height="75"/>
+        <element name="PicMetaData" positionX="-9" positionY="63" width="128" height="73"/>
         <element name="PicUrl" positionX="0" positionY="72" width="128" height="75"/>
-        <element name="ShareItem" positionX="-9" positionY="36" width="128" height="90"/>
+        <element name="ShareItem" positionX="-9" positionY="36" width="128" height="88"/>
     </elements>
 </model>

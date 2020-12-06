@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="PicMetaDataNew" representedClassName="PicMetaDataNew" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PicUrlNew" representedClassName="PicUrlNew" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ShareItemNew" representedClassName="ShareItemNew" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="upord" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="Binary"/>
+    </entity>
+    <elements>
+        <element name="ShareItemNew" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="PicUrlNew" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="PicMetaDataNew" positionX="-36" positionY="27" width="128" height="73"/>
+    </elements>
+</model>

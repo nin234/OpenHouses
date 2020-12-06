@@ -23,8 +23,10 @@
 #import "DataOpsDelegate.h"
 
 
+
 #define PHOTOREQSOURCE_SHARE 2
 #define AWS_OPENHOUSES_APPID 2
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIActionSheetDelegate, MKMapViewDelegate, UIAlertViewDelegate, CLLocationManagerDelegate, MainListViewControllerDelegate, MainViewControllerDelegate, AppUtilDelegate, CommonShareMgrDelegate, UITabBarControllerDelegate, ShareMgrDelegate>
 {
@@ -37,6 +39,7 @@
     bool bFirstActive;
     bool bUpgradeAlert;
     UINavigationController *mainVwNavCntrl;
+    
     
 }
 
@@ -140,5 +143,6 @@
 -(long long) getShareId;
 -(void) refreshShareView;
 -(ItemKey *) getItemKey:(id) itm;
+-(void) scheduleBackGroundTask;
 
 @end
