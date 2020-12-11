@@ -964,40 +964,24 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
+    NSLog(@"Application did become active app state=%ld %s %d", (long)[[UIApplication sharedApplication] applicationState], __FILE__, __LINE__);
+    [dataSync start];
+
+   [pShrMgr start];
     NSLog(@"Application did become active %s %d", __FILE__, __LINE__);
-    
-    NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
-    BOOL download = [kvlocal boolForKey:@"ToDownload"];
-    if (download == YES)
-    {
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
         
-        [pShrMgr getItems];
-        [kvlocal setBool:NO forKey:@"ToDownload"];
-    }
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     
-    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
     NSLog(@"didReceiveRemoteNotification: Downloading items %s %d", __FILE__, __LINE__);
-    [pShrMgr getItems];
-    if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
-    {
-        //Do checking here.
-        NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
-        [kvlocal setBool:YES forKey:@"ToDownload"];
-        
-        [pShrMgr processItems];
-    }
-    
-    
-    
-    
-    completionHandler(UIBackgroundFetchResultNewData);
+    NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
+    [kvlocal setBool:YES forKey:@"ToDownload"];
+    completionHandler(UIBackgroundFetchResultNoData);
     return;
 }
 
@@ -1237,11 +1221,11 @@
      appUtl.navViewController = self.navViewController;
     [apputil setNavViewController:self.navViewController];
     
-     [dataSync start];
- 
-    [pShrMgr start];
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
-    [pShrMgr getItems];
+    
+    NSUserDefaults* kvlocal = [NSUserDefaults standardUserDefaults];
+    [kvlocal setBool:YES forKey:@"ToDownload"];
     
     [self setUpBackGroundTasks];
     
