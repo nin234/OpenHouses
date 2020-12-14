@@ -360,6 +360,11 @@
     return picUrl;
 }
 
+-(void) updateTotalUpload:(long)uploaded
+{
+    [apputil updateTotalUpload:uploaded];
+}
+
 - (void)displayAlert:(NSString *)msg {
     
 }
