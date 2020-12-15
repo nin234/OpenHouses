@@ -144,5 +144,7 @@
 -(void) refreshShareView;
 -(ItemKey *) getItemKey:(id) itm;
 -(void) scheduleBackGroundTask;
+-(void) startDownLoadProgressVw;
+-(void) updateTotalDownLoaded:(long)downloaded;
 
 @end

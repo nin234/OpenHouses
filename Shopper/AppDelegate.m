@@ -359,11 +359,21 @@
     NSURL *picUrl = [NSURL URLWithString:picFil];
     return picUrl;
 }
+-(void) startDownLoadProgressVw
+{
+    [apputil startDownLoadProgressVw];
+}
 
 -(void) updateTotalUpload:(long)uploaded
 {
-    [apputil updateTotalUpload:uploaded];
+    [apputil updateTotalTransferred:uploaded];
 }
+
+-(void) updateTotalDownLoaded:(long)downloaded
+{
+    [apputil updateTotalTransferred:downloaded];
+}
+
 
 - (void)displayAlert:(NSString *)msg {
     
