@@ -1076,7 +1076,7 @@
     appUtl = [[AppShrUtil alloc] init];
     appUtl.purchased = false;
     pShrMgr = [CommonShareMgr alloc];
-    pShrMgr.appId = @"OpenHouses";
+    pShrMgr.appId = 0;
     pShrMgr = [pShrMgr init];
     
     if (pShrMgr.pNtwIntf.connectAddr == nil)
