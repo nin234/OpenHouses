@@ -63,7 +63,7 @@
 @property (nonatomic, strong) NSString *friendList;
 @property (nonatomic, retain) DataOps *dataSync;
 @property (nonatomic, retain) KeychainItemWrapper *kchain;
-@property (nonatomic, retain) InAppPurchase *inapp;
+
 @property (nonatomic, retain) AppUtil *apputil;
 
 @property (nonatomic, retain)  UITabBarController  *tabBarController;
