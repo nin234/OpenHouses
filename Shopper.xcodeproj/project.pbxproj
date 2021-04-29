@@ -84,6 +84,7 @@
 		E84B6E58257C51CA00348B4F /* sharing_new.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E84B6E56257C51CA00348B4F /* sharing_new.xcdatamodeld */; };
 		E84B6E60257C5A7900348B4F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84B6E5F257C5A7800348B4F /* CoreServices.framework */; };
 		E862142424EFD0F3007FBF89 /* client.der in Resources */ = {isa = PBXBuildFile; fileRef = E862142124EFD0F3007FBF89 /* client.der */; };
+		E8B43B9E263B48B3000785EF /* SubscribeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8B43B9B263B48B3000785EF /* SubscribeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -241,6 +242,7 @@
 		E84B6E57257C51CA00348B4F /* sharing_new.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sharing_new.xcdatamodel; sourceTree = "<group>"; };
 		E84B6E5F257C5A7800348B4F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		E862142124EFD0F3007FBF89 /* client.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = client.der; sourceTree = "<group>"; };
+		E8B43B9B263B48B3000785EF /* SubscribeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +371,7 @@
 				3B3D290C1F1BE31400AC3D5D /* 895-user-group-selected@2x.png */,
 				3B9319121FE5CA5100BE38E3 /* Shopper.xcassets */,
 				3B3D290D1F1BE31400AC3D5D /* 895-user-group-selected@3x.png */,
+				E8B43B9B263B48B3000785EF /* SubscribeViewController.xib */,
 				3B3D290E1F1BE31400AC3D5D /* 895-user-group@2x.png */,
 				3B3D290F1F1BE31400AC3D5D /* 895-user-group@3x.png */,
 				DBD16AF01C8DA25E00052A03 /* AddEditDispDelegate.h */,
@@ -596,6 +599,7 @@
 				E862142424EFD0F3007FBF89 /* client.der in Resources */,
 				DB7B77CC15099FA80020B581 /* map.png in Resources */,
 				DB7B77CF15099FDA0020B581 /* camera.png in Resources */,
+				E8B43B9E263B48B3000785EF /* SubscribeViewController.xib in Resources */,
 				DB7B77D1150B5AA20020B581 /* note.png in Resources */,
 				DB7B77D8150CC5820020B581 /* camera1.png in Resources */,
 				DB7B77DA150CC5920020B581 /* video.png in Resources */,
